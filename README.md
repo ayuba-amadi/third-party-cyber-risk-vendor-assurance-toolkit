@@ -8,8 +8,8 @@ ICSDF Certified GRC Engineering Group 3 capstone. This public repository is the 
 
 ```mermaid
 flowchart LR
-  R["🔎 Research\n16–18 Nov"] --> D["🛠️ Build\n19–23 Nov"] --> Q["🧪 QA\n24–27 Nov"] --> F["📦 Final review\n28–29 Nov"]
-  P["📝 Documentation\n16–29 Nov"] --> F
+  R["🔎 Research: 16–18 Nov"] --> D["🛠️ Build: 19–23 Nov"] --> Q["🧪 QA: 24–27 Nov"] --> F["📦 Final review: 28–29 Nov"]
+  P["📝 Documentation: 16–29 Nov"] --> F
 ```
 
 Each arrow is a reviewed handoff with named files, a commit/version, test evidence and a team-lead decision. Documentation runs alongside all phases.
