@@ -1,12 +1,21 @@
-# Research and Risk Assessment — 72-hour work package
+# 🔎 Research and Risk Assessment — 3 days
 
 **Window:** Monday 16 November to Wednesday 18 November 2026, 23:59 WAT. **Owner:** Research and Risk Assessment subgroup. **Handoff:** reviewed, versioned specification to Toolkit Development. The team lead signs off the acceptance checklist. Record each member's contribution in `governance/CONTRIBUTIONS.md`.
+
+## At a glance
+
+```mermaid
+flowchart LR
+  A["Requirements + data"] --> B["Rules + questions"] --> C["10-vendor sample + acceptance cases"] --> D["Lead approves handoff"]
+```
+
+**Submit:** editable files under this folder and `sample-data/`, an exact commit link, and a completed [handoff entry](../governance/HANDOFFS.md). Use the [submission rules](../governance/SUBMISSION_RULES.md). A reviewer must be able to reproduce every score from the documented inputs. The folder [README](README.md) is the starting point.
 
 ## Mission
 
 Define a practical, reproducible vendor assurance process and its exact data and calculation rules. This is a specification for a functioning toolkit, not a collection of generic templates. Use only fictional vendor and person data in public files.
 
-## Day 1 — Monday: requirements and data model
+## Day 1 — Monday 16 November: requirements and data model
 
 1. Read the capstone brief in the root README. Build a requirements traceability table with IDs R01–R08 for the eight required components, D01–D08 for the demonstration scenarios, and Q01–Q10 for the live demonstration actions. For each, name the input, calculation or workflow, expected output, and test.
 2. Define the lifecycle: new vendor → criticality → questionnaire → evidence review → risk calculation → authorised decision → actions → periodic or change-triggered reassessment → reporting. Specify who creates, reviews and approves records; a calculated score never grants approval.
@@ -16,7 +25,7 @@ Define a practical, reproducible vendor assurance process and its exact data and
 
 **Day 1 output:** `requirements_matrix.md`, `data_dictionary.md`, `workflow.md`, `demo_scenarios.md` in this folder.
 
-## Day 2 — Tuesday: methodology and questionnaire
+## Day 2 — Tuesday 17 November: methodology and questionnaire
 
 1. Define criticality inputs with enumerated values, weights, threshold bands for Low/Medium/High/Critical, treatment of missing input, and worked examples. Cover sensitive data, privileged access, disruption, and replaceability. Explain any automatic Critical override.
 2. Write at least 24 answerable, uniquely numbered questions: access management, data protection, incident notification, continuity/recovery, subcontractors, and governance. For every question provide response options, weight/severity, evidence requirement, acceptance criteria, and critical-failure flag. Evidence requirements must describe an artifact and relevant review period, not just “provide documentation.”
@@ -27,7 +36,7 @@ Define a practical, reproducible vendor assurance process and its exact data and
 
 **Day 2 output:** `criticality_method.md`, `question_bank.csv` (24+ rows), `risk_scoring_method.md`, `evidence_and_decision_rules.md`, `worked_examples.md`.
 
-## Day 3 — Wednesday: sample data and acceptance handoff
+## Day 3 — Wednesday 18 November: sample data and acceptance handoff
 
 1. Create complete fictional source records for ten vendors and 24+ questionnaire answers for **each** vendor (at least 240 response rows). Populate evidence states and decisions, findings/actions, dates and service links to exercise every required scenario. Do not claim an artifact has been reviewed if it is only vendor-supplied.
 2. Review IDs, referential integrity, allowed values, scoring examples, dates and scenario coverage. Make sample inputs compatible with the chosen build format (CSV is portable). Put files under `sample-data/` with a README explaining each table.
