@@ -1,34 +1,45 @@
-# Testing and Quality Assurance — 72-hour work package
+# 🧪 Testing and Quality Assurance — 4 days
 
-**Window:** Sunday 22 November to Tuesday 24 November 2026, 23:59 WAT. **Input:** development candidate and approved research acceptance cases. **Handoff:** tested release candidate and defect register to Documentation and Presentation/team lead.
+**Window:** Tuesday 24 to Friday 27 November 2026, **23:59 WAT**. Test the development candidate independently. Start at [folder guide](README.md) and follow [submission rules](../governance/SUBMISSION_RULES.md).
 
-## Day 1 — Sunday: independent setup and baseline
+```mermaid
+flowchart LR
+  A["Clean install"] --> B["Run cases"] --> C["Log defects"] --> D["Retest fixes"] --> E["Reconcile + sign off"]
+```
 
-1. Download a clean copy and follow only the supplied user guide. Record environment, commands, dependencies, actual outputs and any setup defect.
-2. Verify file inventory, ten unique fictional vendors across five categories, three critical dependencies and 24+ answered questions per vendor.
-3. Independently calculate at least one Low, Medium, High and Critical criticality example and compare threshold/reason output.
-4. Verify duplicate IDs, missing required values, invalid enumerations, malformed dates and orphan references produce actionable errors without corrupting valid records.
-5. Start `tests/TEST_REGISTER.md`: case ID, requirement ID, input/precondition, expected result, actual result, pass/fail, evidence path/screenshot, defect ID, retest result.
+## Tuesday 24 — independent setup and data checks
 
-## Day 2 — Monday: security and workflow edge cases
+1. Download a clean copy; follow only the supplied guide. Record versions, commands, actual results and setup defects.
+2. Confirm 10 unique vendors, five categories, three critical services and every questionnaire row.
+3. Check duplicate IDs, missing values, bad dates/options and orphan links. Independently calculate sample criticality classifications.
 
-1. Check vendor claim versus reviewer verification, all evidence states (Missing, Received, Accepted, Rejected, Expired), expiry date logic and incomplete flags.
-2. Use the high-scoring vendor with a critical failure to prove that the weakness and approval restriction remain visible.
-3. Record approved, conditional and rejected decisions, decision-maker and justification. Confirm score does not automatically approve.
-4. Create overdue corrective action, condition and review; expire an approval; change access/dependency to trigger criticality change; perform material-change reassessment and confirm previous version remains readable.
-5. Validate report reasons, source IDs and period dates. Log defects with severity, reproduction steps, expected/actual, owner and commit fixing it. Retest only after a fix is available.
+**Output:** `tests/TEST_REGISTER.md` started with requirement ID, input, expected, actual, pass/fail, evidence, defect and retest columns.
 
-## Day 3 — Tuesday: reporting, regression and release gate
+## Wednesday 25 — evidence, scoring and approvals
 
-1. Reconcile every management total to a list of underlying distinct vendor IDs, findings, actions or conditions. Check the concentrated supplier supports several services without inflating unique-vendor totals.
-2. Run the complete live demonstration checklist in the README from a clean state. Capture actual outputs and screenshots for the PDF.
-3. Rerun automated tests and the cases affected by fixes. Record expected, actual, correction and retest evidence; do not mark an unrun case Pass.
-4. Publish a concise QA sign-off with pass/fail counts, unresolved blockers, known limitations, tested commit/version, reviewer and date by **23:59 WAT**.
+1. Exercise Missing, Received, Accepted, Rejected and Expired evidence; distinguish claim from reviewer verification.
+2. Prove a critical failure cannot be hidden by favourable unrelated answers.
+3. Verify the three decision outcomes, human reviewer and justification; score alone cannot grant approval.
+4. Test overdue conditions/actions, expired approval and overdue review.
 
-## Release criteria
+**Output:** reproducible test cases, screenshots/output paths and defect entries.
 
-No unresolved blocker or high-severity defect in ID uniqueness, scoring, critical-failure flags, evidence treatment, history, decisions or report reconciliation. All required demonstration actions must pass, or the team lead records a visible limitation and corrective plan before presentation. QA does not approve its own unverified assertions.
+## Thursday 26 — change, history and reporting
 
-## Test files
+1. Change access/dependency and verify criticality and reasons change.
+2. Reassess after material service change; confirm previous assessment remains readable.
+3. Reconcile management counts to distinct vendor, action and condition IDs. Verify multi-service concentration without double-counting vendors.
+4. Retest fixed defects against the original reproduction steps.
 
-Use `tests/TEST_REGISTER.md`, `tests/DEFECT_REGISTER.md`, `tests/QA_SIGNOFF.md` and reproducible synthetic fixtures. Suggested severity: Blocker (cannot use/report), High (misleading assurance outcome), Medium (workflow impaired), Low (cosmetic).
+**Output:** `tests/DEFECT_REGISTER.md` and reconciled report evidence.
+
+## Friday 27 — full demo and release gate
+
+1. Run all ten live demo actions in main README from a clean state.
+2. Record expected, actual, correction, retest and evidence for every case. Do not mark an unrun case Pass.
+3. Publish `tests/QA_SIGNOFF.md`: tested commit, environment, pass/fail totals, unresolved defects with severity, limitations, reviewer and date.
+4. Hand the tested version to Documentation and team lead by **23:59 WAT**.
+
+## Strict acceptance
+
+No open Blocker or High defect in ID integrity, criticality, evidence treatment, critical flags, decision authority, history or report totals. Any unmet demo action is visible in sign-off with owner and correction date. QA submits file links, tested commit and a completed [handoff entry](../governance/HANDOFFS.md). Severity: Blocker (cannot use), High (misleading assurance), Medium (workflow impaired), Low (cosmetic).
