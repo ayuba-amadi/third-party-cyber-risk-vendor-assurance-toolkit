@@ -2,18 +2,38 @@
 
 ICSDF Certified GRC Engineering Group 3 capstone. This public repository is the team's working hub. **Status: planning/specification; no functioning toolkit has been delivered yet.** The final implementation may be a Python tool, automated workbook or another suitable approach. A web application is not required. All public examples must use fictional data.
 
+## Two-week delivery map
+
+**Target:** finish the integrated capstone package by **Sunday 29 November 2026, 23:59 WAT**. Monday 16 November begins the first work block. This is an internal target; verify the official E-Campus submission date separately.
+
+```mermaid
+flowchart LR
+  R["🔎 Research\n16–18 Nov"] --> D["🛠️ Build\n19–23 Nov"] --> Q["🧪 QA\n24–27 Nov"] --> F["📦 Final review\n28–29 Nov"]
+  P["📝 Documentation\n16–29 Nov"] --> F
+```
+
+Each arrow is a reviewed handoff with named files, a commit/version, test evidence and a team-lead decision. Documentation runs alongside all phases.
+
 ## Work packages and handoffs
 
-All times are **WAT (UTC+1)**. The 72-hour blocks below are internal working deadlines beginning Monday 16 November 2026. Work is measured by accepted outputs, not elapsed time alone. Documentation runs alongside the sequential technical handoffs.
+All times are **WAT (UTC+1)**. These are internal working deadlines beginning Monday 16 November 2026. Work is measured by accepted outputs, not elapsed time alone. Documentation runs alongside the sequential technical handoffs.
 
 | Group | Dates and deadline | Work package | Strict handoff |
 |---|---|---|---|
 | [1. Research and Risk Assessment](01-research-and-risk-assessment/WORKPLAN.md) | Mon 16–Wed 18 Nov; 18 Nov 23:59 | Requirements, schema, 24+ question bank, criticality/risk rules, fictional data and expected test results | Approved `research-spec-v1.0` and ten-vendor source dataset |
-| [2. Toolkit Development](02-toolkit-development/WORKPLAN.md) | Thu 19–Sat 21 Nov; 21 Nov 23:59 | Validated import, working calculations, evidence/decision/action workflow, reports and examples | Reproducible `dev-candidate-v1`, code/workbook and run guide |
-| [3. Testing and Quality Assurance](03-testing-and-quality-assurance/WORKPLAN.md) | Sun 22–Tue 24 Nov; 24 Nov 23:59 | Independent functional, edge-case, regression and reconciliation testing | Test/defect registers, retest evidence and QA sign-off |
-| [4. Documentation and Presentation](04-documentation-and-presentation/WORKPLAN.md) | Mon 16–Wed 25 Nov; integrated package 25 Nov 23:59 | PDF, guide, abstract, presentation/demo and contribution record | Version-matched submission and rehearsed demonstration |
+| [2. Toolkit Development](02-toolkit-development/WORKPLAN.md) | Thu 19–Mon 23 Nov; 23 Nov 23:59 | Validated import, working calculations, evidence/decision/action workflow, reports and examples | Reproducible `dev-candidate-v1`, code/workbook and run guide |
+| [3. Testing and Quality Assurance](03-testing-and-quality-assurance/WORKPLAN.md) | Tue 24–Fri 27 Nov; 27 Nov 23:59 | Independent functional, edge-case, regression and reconciliation testing | Test/defect registers, retest evidence and QA sign-off |
+| [4. Documentation and Presentation](04-documentation-and-presentation/WORKPLAN.md) | Mon 16–Sun 29 Nov; integrated package 29 Nov 23:59 | PDF, guide, abstract, presentation/demo and contribution record | Version-matched submission and rehearsed demonstration |
 
-The [handoff register](governance/HANDOFFS.md) records the commit, reviewer, acceptance result and gaps. [Contribution record](governance/CONTRIBUTIONS.md) tracks all project members. [Working templates](templates/REQUIREMENTS_AND_TESTS.md) give the required fields. Subgroup membership must be confirmed against the final roster; folder creation does not assign people or grant repository write access.
+Follow the [submission rules](governance/SUBMISSION_RULES.md) for filenames, commits, review and reporting. The [handoff register](governance/HANDOFFS.md) records the commit, reviewer, acceptance result and gaps. [Contribution record](governance/CONTRIBUTIONS.md) tracks all project members. [Working templates](templates/REQUIREMENTS_AND_TESTS.md) give the required fields. Subgroup membership must be confirmed against the final roster; folder creation does not assign people or grant repository write access.
+
+## How each member works
+
+1. Open your subgroup folder README, then follow its daily work plan.
+2. Claim a specific output with your name in the subgroup chat and record the owner in the handoff/contribution record.
+3. Save editable source files in the named folder, commit them or send them to a nominated GitHub contributor, and report the file link plus commit SHA in the chat.
+4. Ask for review using the [submission format](governance/SUBMISSION_RULES.md). A chat message alone is not a deliverable.
+5. Correct review comments and record the final accepted version before the next group builds on it.
 
 ## Scope and required outputs
 
