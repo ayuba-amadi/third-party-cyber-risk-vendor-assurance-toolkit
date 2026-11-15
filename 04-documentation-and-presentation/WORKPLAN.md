@@ -1,41 +1,46 @@
-# Documentation and Presentation — continuous work package
+# 📝 Documentation and Presentation — continuous, 16–29 November
 
-**Window:** Monday 16 November to Wednesday 25 November 2026, 23:59 WAT for the integrated rehearsal package. Work in parallel with the other groups; update factual outputs as their versions are accepted. Confirm final institutional submission date separately with the supervisor; this internal target is not the E-Campus deadline.
+**Final integrated target:** Sunday 29 November 2026, **23:59 WAT**. Work alongside Research, Development and QA. Use [folder guide](README.md) and [submission rules](../governance/SUBMISSION_RULES.md). Confirm the official E-Campus deadline separately.
 
-## Monday–Wednesday 16–18 November: build the documentation skeleton
+```mermaid
+flowchart LR
+  S["Research rules"] --> P["PDF + guide"]
+  B["Working build"] --> P
+  T["QA evidence"] --> P
+  P --> D["Rehearsed final demo"]
+```
 
-1. Convert the capstone brief into the PDF outline: abstract (200–300 words), problem/objectives, requirements traceability, methodology, schema, workflows, scoring rules, screenshots, testing, limitations, operating guide and contribution record.
-2. Prepare the user guide structure: install/open, import/register vendor, assess, review evidence, calculate, decide, track actions, reassess and export reports. Leave screenshots marked pending until real screens exist.
-3. Maintain `docs/DECISION_LOG.md` for methodology changes and team-lead sign-off. Do not present draft scoring rules as final.
+## 16–18 Nov — structure and research content
 
-## Thursday–Saturday 19–21 November: document the real build
+1. Outline the PDF: 200–300 word abstract; problem/objectives; requirements; architecture and data model; scoring; evidence and decision workflows; testing; limitations; storage/access/versioning; operating steps.
+2. Draft the user-guide steps and slide/demo storyboard. Link each of the ten live demonstration actions in the root README to an operator, input, expected screen and screenshot to capture.
+3. Copy only accepted research rules into the PDF. Record sources and decisions. Mark absent build screenshots as pending.
 
-1. Follow development commits and write exact setup, supported versions, input file format, commands/formulas, output locations and troubleshooting.
-2. Capture only actual toolkit screenshots and generated reports from fictional data. Label each screenshot with version and demonstration case.
-3. Explain operational safeguards: restricted storage and access for real assessments, authorised decision records, evidence references, backup/version retention, and public-repository synthetic-data rule.
-4. Draft individual assessment report narrative and management interpretation with totals sourced from output, not typed estimates.
+**Output:** `docs/PROJECT_OUTLINE.md`, draft abstract, guide outline and demo storyboard.
 
-## Sunday–Tuesday 22–24 November: incorporate QA
+## 19–23 Nov — document the running toolkit
 
-1. Attach the test register summary with expected vs actual, corrections, retest outcome and limitations; reflect unresolved issues honestly.
-2. Make a presentation flow that shows all ten required live actions in the README. Assign a presenter/operator, speaking cue, exact input, expected output and fallback screenshot for each action.
-3. Reconcile the PDF, slides and guide to the same tested commit and data version. Have QA verify screenshots and totals.
+1. Follow the implementation each day. Write exact setup, inputs, version requirements, commands or workbook instructions and output paths.
+2. Capture actual screenshots using fictional data with a caption, tested build version and scenario ID. Explain formulas and report fields in plain language.
+3. Explain how real assessment files would be stored with restricted access, who records reviewer decisions, and how previous versions are retained.
+4. Draft an individual assessment narrative and management report explanation from generated outputs.
 
-## Wednesday 25 November: integrated handoff and rehearsal
+**Output:** draft `docs/USER_GUIDE.md`, PDF draft and screenshot inventory.
 
-1. Produce `docs/PROJECT_DOCUMENTATION.pdf`, `docs/USER_GUIDE.md`, a presentation deck or script, 200–300-word E-Campus abstract, link to the public toolkit files and a complete contribution record.
-2. Rehearse the live demo end to end. Time transitions, confirm all sample data is fictional, all links work, and the PDF download link resolves.
-3. Submit the final package to the team lead for content and QA sign-off. Record version and unresolved limitations.
+## 24–27 Nov — align to QA evidence
 
-## Acceptance gate
+1. Replace draft numbers and screenshots with the QA-tested version. Include expected/actual test results, fixes, retests and limitations.
+2. Check each management total against QA's source-ID reconciliation.
+3. Finish slides/script for all ten actions, assigning presenter, operator, timing, exact input, expected output and fallback screenshot.
 
-Another GRC analyst can use the guide to reproduce the demo; every scoring claim points to an implemented rule; all screenshots match the tested release; management totals match the source; the abstract fits 200–300 words; the PDF covers each E-Campus heading; every member has a contribution entry; and the download link is accessible without revealing real vendor data.
+**Output:** review-ready PDF, abstract and demo deck/script linked to tested commit.
 
-## Hand-in checklist
+## 28–29 Nov — final review and rehearsal
 
-- Abstract 200–300 words
-- Project PDF: requirements, design, scoring, workflows, real screenshots, testing, limitations, operating instructions
-- Accessible link to implementation and fictional sample files
-- Individual reports and management report
-- Presentation script/slides covering ten live actions
-- Versioned contribution record and QA sign-off
+1. Deliver `docs/PROJECT_DOCUMENTATION.pdf`, `docs/USER_GUIDE.md`, the 200–300-word E-Campus abstract, deck/script, accessible implementation link and complete contribution record.
+2. Run a full rehearsal from a clean download. Confirm all links, screenshots, fictional labels and reports match QA sign-off.
+3. Submit file links and final commit/version in [handoff register](../governance/HANDOFFS.md). Obtain team-lead review by **29 Nov, 23:59 WAT**.
+
+## Strict acceptance
+
+A new GRC analyst can follow the guide and reproduce the demo. The PDF contains every E-Campus section and real screenshots; scoring claims match implementation; totals reconcile; limitations are honest; abstract is 200–300 words; all members have contribution entries. State any missing item and owner explicitly.
