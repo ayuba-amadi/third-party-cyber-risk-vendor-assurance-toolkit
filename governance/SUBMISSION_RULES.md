@@ -1,6 +1,6 @@
 # 📤 How to submit and report subgroup work
 
-This applies to all four subgroups. **Deadline times use WAT (UTC+1).** A chat update is useful for coordination; the reviewable artifact is the committed file or linked deliverable.
+This applies to all four subgroups. For exact GitHub click paths and access troubleshooting, start with [How to upload subgroup work](../UPLOAD_GUIDE.md). Public access alone does not grant direct upload rights. **Deadline times use WAT (UTC+1).** A chat update is useful for coordination; the reviewable artifact is the committed file or linked deliverable.
 
 ```mermaid
 flowchart LR
