@@ -1,5 +1,7 @@
 # 📝 You are in Documentation and Presentation
 
+**Upload blocked?** Read the [upload and access guide](../UPLOAD_GUIDE.md); an unaccepted invitation or missing collaborator access prevents direct upload. A fork and pull request works while access is arranged.
+
 **16–29 November 2026 · final package Sunday 23:59 WAT**
 
 ```mermaid
