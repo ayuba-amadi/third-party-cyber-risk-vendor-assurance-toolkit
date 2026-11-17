@@ -27,6 +27,10 @@ All times are **WAT (UTC+1)**. These are internal working deadlines beginning Mo
 
 Follow the [submission rules](governance/SUBMISSION_RULES.md) for filenames, commits, review and reporting. The [handoff register](governance/HANDOFFS.md) records the commit, reviewer, acceptance result and gaps. [Contribution record](governance/CONTRIBUTIONS.md) tracks all project members. [Working templates](templates/REQUIREMENTS_AND_TESTS.md) give the required fields. Subgroup membership must be confirmed against the final roster; folder creation does not assign people or grant repository write access.
 
+## Upload access and instructions
+
+**Read [How to upload subgroup work](UPLOAD_GUIDE.md) before submitting.** Public visibility is read access, not permission to upload. Accept your GitHub collaborator invitation for direct upload, or submit from a fork with a pull request while access is arranged. Share your exact GitHub username and profile URL with the team lead if you have no invitation.
+
 ## How each member works
 
 1. Open your subgroup folder README, then follow its daily work plan.
