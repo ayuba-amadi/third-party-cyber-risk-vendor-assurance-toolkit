@@ -1,5 +1,7 @@
 # 🛠️ You are in Toolkit Development
 
+**Upload blocked?** Read the [upload and access guide](../UPLOAD_GUIDE.md); an unaccepted invitation or missing collaborator access prevents direct upload. A fork and pull request works while access is arranged.
+
 **19–23 November 2026 · deadline Monday 23:59 WAT**
 
 ```mermaid
