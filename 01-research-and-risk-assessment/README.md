@@ -1,5 +1,7 @@
 # 🔎 You are in Research and Risk Assessment
 
+**Upload blocked?** Read the [upload and access guide](../UPLOAD_GUIDE.md); an unaccepted invitation or missing collaborator access prevents direct upload. A fork and pull request works while access is arranged.
+
 **16–18 November 2026 · deadline Wednesday 23:59 WAT**
 
 ```mermaid
