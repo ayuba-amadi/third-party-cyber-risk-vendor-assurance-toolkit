@@ -1,5 +1,7 @@
 # 🧪 You are in Testing and Quality Assurance
 
+**Upload blocked?** Read the [upload and access guide](../UPLOAD_GUIDE.md); an unaccepted invitation or missing collaborator access prevents direct upload. A fork and pull request works while access is arranged.
+
 **24–27 November 2026 · deadline Friday 23:59 WAT**
 
 ```mermaid
