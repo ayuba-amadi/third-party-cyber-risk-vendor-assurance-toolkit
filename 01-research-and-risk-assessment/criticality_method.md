@@ -1,27 +1,32 @@
 # Vendor Criticality Assessment Method
 
 **Project:** Third-Party Cyber Risk Assessment and Vendor Assurance Toolkit  
-**Document Owner:** Saadu Shukurat Titilayo 
+**Document Owner:** Saadu Shukurat Titilayo  
 **Subgroup:** Research and Risk Assessment  
-**Version:** 0.1 DRAFT  
-**Date:** 17 November 2026  
-**Status:** Draft – Pending Team Review
+**Version:** 0.2 DRAFT  
+**Date:** 18 November 2026  
+**Status:** Revised Draft – Pending Team Review
 
 ---
 
 ## 1. Purpose
 
-This document defines a proposed method for determining the criticality of third-party vendors.
+This document defines the method for determining the criticality of third-party vendors.
 
 Vendor criticality helps the organisation understand how important a vendor is to business operations and how much disruption could occur if the vendor's services became unavailable, were compromised, or could no longer be relied upon.
 
-The method considers the sensitivity of information handled by the vendor, the level of system access granted, the potential business impact of disruption, and how difficult it would be to replace the vendor.
+The method considers four factors:
 
-The criticality assessment is separate from the security risk assessment. A vendor may be critical to business operations while still having strong security controls.
+- Data sensitivity.
+- System access.
+- Dependency impact.
+- Replaceability.
+
+Criticality assessment is separate from the security risk assessment. A vendor may be critical to business operations while still having strong security controls.
 
 ## 2. Criticality Categories
 
-Each vendor will be assigned one of four criticality categories:
+Each vendor will be assigned one of four criticality categories.
 
 | Criticality | Description |
 |---|---|
@@ -32,13 +37,13 @@ Each vendor will be assigned one of four criticality categories:
 
 ## 3. Assessment Factors
 
-The proposed methodology uses four factors from the project data dictionary.
+The methodology uses four factors from the project data dictionary.
 
 ### 3.1 Data Sensitivity
 
 This measures the sensitivity of information handled by the vendor.
 
-| Data Sensitivity | Proposed Score |
+| Data Sensitivity | Score |
 |---|---:|
 | None | 0 |
 | Internal | 1 |
@@ -49,7 +54,7 @@ This measures the sensitivity of information handled by the vendor.
 
 This measures the level of access the vendor has to the organisation's systems.
 
-| System Access | Proposed Score |
+| System Access | Score |
 |---|---:|
 | None | 0 |
 | Standard | 1 |
@@ -58,8 +63,6 @@ This measures the level of access the vendor has to the organisation's systems.
 ### 3.3 Dependency Impact
 
 This measures the potential impact on business operations if the vendor's service becomes unavailable.
-
-The project data dictionary defines this factor on a scale of 1 to 4.
 
 | Dependency Impact | Description | Score |
 |---|---|---:|
@@ -72,18 +75,22 @@ The project data dictionary defines this factor on a scale of 1 to 4.
 
 This measures how difficult it would be to replace the vendor or move the service to another provider.
 
-| Replaceability | Proposed Score |
+| Replaceability | Score |
 |---|---:|
 | Easy | 1 |
 | Moderate | 2 |
 | Hard | 3 |
 | Very hard | 4 |
 
-## 4. Proposed Criticality Calculation
+## 4. Criticality Calculation
 
 The proposed calculation is:
 
 **Criticality Score = Data Sensitivity Score + System Access Score + Dependency Impact Score + Replaceability Score**
+
+The minimum possible score is 2:
+
+0 (None data sensitivity) + 0 (No system access) + 1 (Minor dependency impact) + 1 (Easy replaceability) = 2.
 
 The maximum possible score is 13.
 
@@ -91,7 +98,7 @@ The proposed classification thresholds are:
 
 | Total Score | Criticality Category |
 |---|---|
-| 0–3 | Low |
+| 2–3 | Low |
 | 4–6 | Medium |
 | 7–9 | High |
 | 10–13 | Critical |
@@ -102,15 +109,17 @@ These thresholds are proposed for team review and must be approved before implem
 
 A vendor's total score should not be the only consideration.
 
-The following proposed override rules ensure that important business dependencies are not underestimated.
+The following override rules ensure that important business dependencies are not underestimated.
 
 ### Override 1: Business-Critical Service
 
-Where a vendor supports a business service classified as Business-critical, its criticality should not be lower than High.
+Where a vendor supports a business service classified as Business-critical, its criticality must not be lower than High.
 
 ### Override 2: Regulated Data and Privileged Access
 
 Where a vendor handles Regulated data and has Privileged system access, its criticality should be Critical.
+
+Both conditions must be present for this override to apply.
 
 ### Override 3: Severe Dependency and Difficult Replacement
 
@@ -122,28 +131,28 @@ Any override applied must be documented with its reason.
 
 Criticality calculations require complete and valid information.
 
-The following rules are proposed:
+The following rules apply:
 
 - Required fields must not be left blank.
 - Values outside the approved data dictionary must be rejected.
-- Missing information must not automatically be treated as a low-risk value.
-- Where a required factor is missing, the assessment should be flagged as incomplete.
-- The assessor should obtain the missing information before confirming the final criticality category.
+- Missing information must not automatically be treated as a low-criticality value.
+- Where a required factor is missing, the assessment must be flagged as incomplete.
+- The assessor must obtain the missing information before confirming the final criticality category.
 - Any provisional classification must be clearly labelled as provisional.
 
 ## 7. Multiple Business Services
 
 Where a vendor supports more than one business service, all linked services must be considered.
 
-The highest service tier supported by the vendor should be used when applying the business-critical service override.
+The highest service tier supported by the vendor must be used when applying the Business-critical service override.
 
 For example, a vendor supporting both an Important service and a Business-critical service should be treated as supporting a Business-critical service.
 
-The vendor's service links should be retained so that concentration and dependency can also be considered in management reporting.
+The vendor's service links must be retained so that concentration and dependency can also be considered in management reporting.
 
 ## 8. Reassessment Triggers
 
-Criticality should be reviewed when a material change affects the vendor's relationship with the organisation.
+Criticality must be reviewed when a material change affects the vendor's relationship with the organisation.
 
 Examples include:
 
@@ -154,7 +163,7 @@ Examples include:
 - Change in ownership.
 - Significant change in business dependency.
 
-A material change should trigger a new assessment version.
+A material change must trigger a new assessment version.
 
 Previously submitted assessments must be retained and must not be overwritten.
 
@@ -164,47 +173,45 @@ The following examples use fictional vendors from the project demo scenarios.
 
 ### VEN-001 – NimbusCloud Hosting
 
-NimbusCloud Hosting supports several services, including the customer portal, card payments, core ERP, and staff email and collaboration.
+NimbusCloud Hosting supports several services, including:
 
-The vendor supports multiple services and has a Critical target band in the demo scenarios.
+- Customer portal (SVC-01).
+- Card payments (SVC-03).
+- Core ERP (SVC-04).
+- Staff email and collaboration (SVC-05).
 
-Its criticality assessment should consider:
+The vendor supports multiple services, including Business-critical services.
 
-- Data sensitivity.
-- System access.
-- Dependency impact.
-- Replaceability.
-- The business-critical services it supports.
+The Business-critical service override therefore ensures that its criticality is not lower than High.
 
-The final score must be calculated using the approved methodology.
+Its final classification must also consider data sensitivity, system access, dependency impact and replaceability.
 
 ### VEN-002 – PayStream Processing
 
-PayStream Processing supports card payments, which is classified as a Business-critical service.
+PayStream Processing supports card payments (SVC-03), which is classified as a Business-critical service.
 
-The business-critical service override should ensure that its criticality is not classified below High.
+The Business-critical service override ensures that its criticality is not lower than High.
 
-Its final category should be determined using the approved scoring method.
+Its final category must be determined using the approved scoring method.
 
 ### VEN-009 – LegalDocs Storage
 
-LegalDocs Storage supports contract and legal document storage.
+LegalDocs Storage supports contract and legal document storage (SVC-08).
 
 Its demo scenario identifies a High target band.
 
-The absence of encryption evidence for regulated data is a security control failure. This should be considered in the risk assessment and critical-failure rules rather than automatically changing the vendor's business criticality category.
+For this example, its system access is Standard, not Privileged. Therefore, the Regulated Data and Privileged Access override does not apply.
+
+The absence of encryption evidence for regulated data is a security control failure. It must be considered under the risk scoring and critical-failure rules rather than automatically changing the vendor's business criticality category.
+
+Its final criticality must be determined using the approved factor scores and applicable overrides.
 
 ## 10. Governance and Review
 
-The criticality methodology should be reviewed and approved by the project team before implementation.
+The criticality methodology must be reviewed and approved by the project team before implementation.
 
-The methodology should be version-controlled.
+The methodology must be version-controlled.
 
 Changes to scoring factors, thresholds or override rules must be documented.
 
 The criticality result should inform the vendor risk assessment and review priorities. It must not independently determine whether a vendor is approved.
-
----
-
-
-
