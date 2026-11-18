@@ -3,15 +3,15 @@
 **Project:** Third-Party Cyber Risk Assessment and Vendor Assurance Toolkit  
 **Document Owner:** Saadu Shukurat Titilayo  
 **Subgroup:** Research and Risk Assessment  
-**Version:** 0.1 DRAFT  
-**Date:** 17 November 2026  
-**Status:** Draft – Pending Team Review
+**Version:** 0.2 DRAFT  
+**Date:** 18 November 2026  
+**Status:** Revised Draft – Pending Team Review
 
 ---
 
 ## 1. Purpose
 
-This document defines a proposed method for calculating and interpreting vendor security risk assessment results.
+This document defines the method for calculating and interpreting vendor security risk assessment results.
 
 The scoring method uses responses to the third-party security due diligence questionnaire.
 
@@ -93,11 +93,11 @@ The project data dictionary defines five evidence statuses.
 
 | Evidence Status | Meaning | Scoring Treatment |
 |---|---|---|
-| Missing | Evidence has not been provided | No verified credit |
-| Received | Evidence has been submitted but not yet accepted | No verified credit |
-| Accepted | Evidence has been reviewed and accepted | Eligible for verified credit |
-| Rejected | Evidence has been reviewed and rejected | No verified credit |
-| Expired | Evidence is no longer valid | No verified credit |
+| Missing | Evidence has not been provided | Risk value 4 where evidence is required |
+| Received | Evidence has been submitted but not yet accepted | Risk value 4 where evidence is required |
+| Accepted | Evidence has been reviewed and accepted | Eligible for verified scoring |
+| Rejected | Evidence has been reviewed and rejected | Risk value 4 where evidence is required |
+| Expired | Evidence is no longer valid | Risk value 4 where evidence is required |
 
 For evidence to be Accepted:
 
@@ -113,11 +113,9 @@ An Accepted evidence status does not automatically mean that the vendor's contro
 
 The project requires a weighted score with a denominator.
 
-The following is a proposed calculation structure for team review.
+The proposed scoring approach assigns a verified risk value to every questionnaire question.
 
-Each question is assigned a verified risk value based on the reviewed answer and the question's acceptance criteria.
-
-For the proposed model:
+### 6.1 Verified Risk Values
 
 | Verified Risk Value | Interpretation |
 |---|---|
@@ -125,45 +123,73 @@ For the proposed model:
 | 1 | Minor control weakness |
 | 2 | Moderate control weakness |
 | 3 | Significant control weakness |
-| 4 | Severe control weakness |
+| 4 | Severe control weakness or unresolved response/evidence requirement |
 
-The reviewer must assign the value based on the question's documented acceptance criteria. The value must not be assigned merely because the vendor selected a particular response.
+The reviewer must assign the value based on the question's documented acceptance criteria.
 
-### Proposed Weighted Formula
+The value must not be assigned merely because the vendor selected a particular response.
 
-For each eligible question:
+### 6.2 Weighted Risk Points
 
-**Weighted Risk Points = Question Weight × Verified Risk Value**
+For each question:
 
-The maximum possible weighted risk points for a question are:
+**Weighted Risk Points = Question Weight × Assigned Risk Value**
+
+The maximum possible weighted risk points for each question are:
 
 **Maximum Question Points = Question Weight × 4**
 
-The overall proposed risk percentage is:
+### 6.3 Denominator Rule
 
-**Risk Percentage = (Total Weighted Risk Points ÷ Total Maximum Eligible Question Points) × 100**
+### 6.3 Denominator Rule
+
+The denominator must include every question in the assessment, regardless of whether the vendor has answered it or supplied the required evidence.
+
+No question may be excluded from the denominator because its response or evidence is incomplete.
+
+**Total Maximum Question Points = Sum of (Question Weight × 4) for every question in the assessment.**
+This ensures that missing responses or evidence do not reduce the denominator and artificially lower the risk percentage.
+
+### 6.4 Risk Percentage Formula
+
+**Risk Percentage = (Total Weighted Risk Points ÷ Total Maximum Question Points) × 100**
+
+Where:
+
+- Total Weighted Risk Points is the sum of the weighted risk points for every question.
+- Total Maximum Question Points is the sum of the maximum possible points for every question.
 
 A higher percentage represents a greater level of identified control weakness.
 
-This formula and the interpretation of the risk values are proposals. The team must approve them before they are used in the toolkit.
+### 6.5 Treatment of Unreviewed Responses and Required Evidence
+
+The following rules apply:
+
+1. Where a question has no reviewed answer, assign a risk value of 4.
+2. Where evidence is required but its status is Missing, Received, Rejected or Expired, assign a risk value of 4.
+3. Where required evidence has been Accepted and the response has been reviewed, assign the risk value based on the verified answer and the question's acceptance criteria.
+4. Where evidence is not required, the response must still be reviewed before a verified risk value can be assigned.
+5. A vendor claim without reviewer verification must not receive verified credit.
+
+These rules ensure that unanswered questions and unresolved evidence requirements remain visible in the calculated risk result.
 
 ## 7. Assessment Completeness
 
-The toolkit must calculate assessment completeness separately from the risk percentage.
+Assessment completeness must be calculated separately from the risk percentage.
 
-**Completion Percentage = (Number of Questions with Reviewed Responses ÷ Total Questions in Assessment) × 100**
+An assessment is **Incomplete** if at least one of the following conditions applies:
 
-The toolkit should also identify:
+- One or more questionnaire questions have no reviewer-verified answer.
+- One or more questions requiring evidence have an evidence status other than Accepted.
+- One or more critical-failure questions remain unresolved.
+- A required response or evidence review is still outstanding.
 
-- Questions with no vendor response.
-- Questions awaiting reviewer verification.
-- Questions requiring evidence.
-- Questions with Missing evidence.
-- Questions with Received evidence awaiting review.
-- Questions with Rejected evidence.
-- Questions with Expired evidence.
+An assessment may be treated as complete only when every questionnaire question has a reviewed answer, every required evidence item has been Accepted, and no critical-failure question remains unresolved.
 
-An assessment must not be presented as fully assessed merely because the vendor has submitted responses.
+The toolkit must display the assessment status separately from its calculated risk percentage.
+
+An incomplete assessment must not be presented as a favourable completed assessment.
+An assessment must not be marked Complete while any questionnaire response remains unreviewed or any required evidence remains in a status other than Accepted.
 
 ## 8. Critical-Failure Rules
 
@@ -173,20 +199,35 @@ Some questionnaire questions are marked with:
 
 A critical-failure question identifies a control weakness that cannot be treated as an ordinary scoring issue.
 
-Where a critical-failure condition is confirmed:
+The following rules apply:
 
-- The toolkit must flag the issue clearly.
+### 8.1 Confirmed Critical Failure
+
+Where the reviewer has verified a failure against the acceptance criteria of a critical-failure question:
+
+- The toolkit must flag the issue clearly as a Critical Failure.
 - The issue must be linked to the relevant question.
 - Supporting evidence and reviewer notes must be retained.
-- The overall assessment must not be treated as favourable merely because other questions have good scores.
-- The calculated rating must reflect the approved critical-failure rule.
+- The question must receive a risk value of 4.
+- The overall risk rating must be at least High.
+- If the calculated risk rating is already Critical, it must remain Critical.
 - The authorised approver must consider the finding before making a decision.
 
-A critical failure must not be averaged away by strong performance in other questionnaire areas.
+A confirmed critical failure must not be averaged away by strong performance in other questionnaire areas.
 
-Where required evidence is Missing, Received, Rejected, or Expired for a critical-failure question, the assessment must be flagged as incomplete or unresolved until the issue is reviewed.
+### 8.2 Unresolved Critical-Failure Question
 
-The team must confirm the exact rating treatment for confirmed critical failures before implementation.
+A critical-failure question is unresolved where:
+
+- No reviewer-verified answer exists; or
+- Required evidence is Missing, Received, Rejected or Expired; or
+- The available information is insufficient for the reviewer to determine whether the required control is effective.
+
+An unresolved critical-failure question must cause the assessment to be marked Incomplete.
+
+The toolkit must not treat an unresolved critical-failure question as a confirmed passing control.
+
+The assessment must remain Incomplete until the reviewer resolves the outstanding issue.
 
 ## 9. Proposed Risk Rating Bands
 
@@ -194,30 +235,35 @@ The following percentage bands are proposed for team review.
 
 | Risk Percentage | Proposed Rating |
 |---|---|
-| 0–19% | Low |
-| 20–39% | Medium |
-| 40–59% | High |
-| 60–100% | Critical |
+| 0% to less than 20% | Low |
+| 20% to less than 40% | Medium |
+| 40% to less than 60% | High |
+| 60% to 100% | Critical |
 
 These thresholds are not yet approved.
 
-The final thresholds must be agreed by the scoring owner and project lead before the toolkit uses them.
+Where a confirmed critical failure exists, the final risk rating must be no lower than High, regardless of the calculated percentage.
+
+Where an assessment is Incomplete, the toolkit must display the calculated percentage as provisional and clearly identify the outstanding questions or evidence requirements.
+
+The final thresholds must be agreed by the scoring owner and project lead before implementation.
 
 ## 10. Incomplete Assessments
 
-An incomplete assessment must be identified separately from a completed risk assessment.
+The toolkit must automatically mark an assessment as Incomplete whenever any of the conditions in Section 7 is met.
 
-Examples include:
+The toolkit must:
 
-- Required questions have not been answered.
-- Evidence required for a question has not been received.
-- Evidence has been received but has not been reviewed.
-- Critical-failure questions remain unresolved.
-- The reviewer has not verified the relevant response.
+- Identify the unanswered or unreviewed questions.
+- Identify questions with Missing evidence.
+- Identify questions with Received evidence awaiting review.
+- Identify questions with Rejected evidence.
+- Identify questions with Expired evidence.
+- Identify unresolved critical-failure questions.
+- Display the calculated risk percentage as provisional.
+- Prevent an incomplete assessment from being presented as a favourable completed assessment.
 
-An incomplete assessment must not be reported as a favourable completed assessment.
-
-Where the available information is insufficient to calculate a reliable final score, the toolkit should display the assessment as incomplete and identify the outstanding items.
+The assessment may be changed from Incomplete only after all outstanding review and evidence requirements have been resolved.
 
 ## 11. Risk Rating and Approval Decision
 
@@ -242,6 +288,8 @@ The approver should consider:
 - The business justification for using the vendor.
 
 The toolkit must not automatically approve a vendor based on a favourable score.
+
+An Incomplete assessment must not be treated as a completed favourable assessment. The approver must consider the outstanding issues before making an appropriate decision.
 
 The decision must include:
 
@@ -282,9 +330,10 @@ Reports should identify:
 - Vendor ID and name.
 - Assessment ID and version.
 - Assessment completeness.
-- Calculated risk rating.
+- Calculated risk percentage.
+- Final risk rating.
 - Critical-failure findings.
-- Missing, rejected, or expired evidence.
+- Missing, rejected or expired evidence.
 - Open findings.
 - Overdue corrective actions.
 - Approval outcome.
@@ -300,6 +349,3 @@ The proposed scoring formula, risk values, rating thresholds and critical-failur
 The approved method should be version-controlled.
 
 Any subsequent changes must be documented and reflected in the toolkit's calculation logic and test cases.
-
----
-
