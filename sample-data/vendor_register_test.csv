@@ -1,0 +1,5 @@
+vendor_id,vendor_name,category,service_description,business_owner,data_sensitivity,data_types,system_access,dependency_impact,replaceability,subcontractor_use,assessment_status,current_assessment_id,next_review_date,material_change_flag
+VEN-001,NimbusCloud Hosting,Cloud hosting,Hosts customer portal and ERP,Head of IT Operations,Regulated,customer;payment,Privileged,4,Very hard,Yes,Assessed,ASMT-001,2027-05-18,No
+VEN-002,Harbor Payroll,Payroll,Processes fictional payroll records,Head of Finance,Confidential,payroll;HR,Standard,2,Moderate,No,In progress,,2027-06-01,No
+VEN-003,Unknown Vendor,Unknown,Provides test support,Head of IT,Internal,,None,1,Easy,Unknown,Not started,,2027-06-15,Yes
+VEN-001,Duplicate Cloud,Cloud hosting,Duplicate test record,Head of IT,Internal,,Standard,2,Easy,No,Not started,,2027-06-20,No
