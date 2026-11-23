@@ -1,6 +1,6 @@
 # Research → Development handoff — proposed Day 3 v0.9.1
 
-Prepared 21 Nov 2026. Original deadline: 18 Nov 2026, 23:59 WAT (passed). Status: **Ready for team review; not accepted, not committed.** The lead, not the preparer, records the gate decision and approved `research-spec-v1.0`.
+Prepared 21 Nov 2026. Original deadline: 18 Nov 2026, 23:59 WAT (passed). Status: **Committed on research-day3-olasubomi-olakunle; ready for review; not yet accepted** The lead, not the preparer, records the gate decision and approved `research-spec-v1.0`.
 
 ## Walkthrough and implementation order
 
