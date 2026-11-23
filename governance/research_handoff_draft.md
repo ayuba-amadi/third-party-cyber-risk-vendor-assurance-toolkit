@@ -36,7 +36,7 @@ Prepared 21 Nov 2026. Original deadline: 18 Nov 2026, 23:59 WAT (passed). Status
 | G06 — evidence sufficiency vs control effectiveness (R04) | Accepted can verify an adverse answer; cannot claim a failed control is effective. Clarify evidence acceptance criteria accordingly. | Evidence owner + lead; before acceptance |
 | G07 — decision policy (R06) | Confirm exception rules, reviewer/approver separation, approval validity, rejected decision dates, and `Incomplete` in decision.calculated_rating. Conditional VEN-005 uses non-critical gap and resubmission; VEN-003 is a written exception. | Lead + evidence owner; before approval workflow |
 | G08 — naming and citations (R03/R05) | BC domain uses dictionary name; repository file is currently `Risk Scoring Method.md`, expected name `risk_scoring_method.md`; lead to decide rename. Specific NIST method citations still pending as reported by Day 2 owners. | Day 2 owners; before final specification |
-| G09 — demo date versus delivery date | Frozen 18 Nov date for reproducibility, actual preparation 21 Nov. Do not backdate submission or simulated review signoff. | Subgroup owner + lead; immediately |
+| G09 — Assessment reference and submission dates | Assessment calculations use 18 November 2026 as the reference date. The dataset was prepared on 21 November 2026 and submitted for review on 23 November 2026. Final approval remains pending. | Research and Risk Assessment / Team lead |
 
 ## Handoff Status and Approval
 
