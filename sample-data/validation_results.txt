@@ -1,0 +1,5 @@
+PASS: 12 source tables; unique keys, tested FKs, option labels, decision date constraints, evidence states, 264 response/evidence pairs and all 11 expected risk calculations.
+PASS: 10 vendors, 5 categories, 24 rows per assessment; fixed report date and history selection.
+LIMIT: fixture verification only. Independent review, complete schema/policy approval and toolkit acceptance execution pending.
+PASS: independently recalculated 11 criticality classifications, 264 question scores, 66 domain completeness results and all management count/source-ID expectations; checked audit references and version links.
+PASS: reconstructed question bank Git blob SHA c9b525df9c46f133e83329ed12bd793b90cfd67f matches repository.

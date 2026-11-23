@@ -1,0 +1,12 @@
+assessment_id,vendor_id,answered_count,verified_count,weighted_points,maximum_points,risk_percent,raw_band,final_rating,completeness,confirmed_critical_failures,unresolved_critical_questions,evidence_flags
+ASMT-001,VEN-001,24,24,6,344,1.744186,Low,Low,Complete,,,
+ASMT-002,VEN-002,24,22,59,344,17.151163,Low,Incomplete,Incomplete,,AM-01;DP-01,AM-01:Missing;DP-01:Missing
+ASMT-003,VEN-003,24,24,28,344,8.139535,Low,High,Complete,AM-01,,
+ASMT-004,VEN-004,24,24,3,344,0.872093,Low,Low,Complete,,,
+ASMT-005,VEN-005,24,23,22,344,6.395349,Low,Incomplete,Incomplete,,,IN-02:Rejected
+ASMT-006,VEN-006,24,23,19,344,5.523256,Low,Incomplete,Incomplete,,,GV-02:Expired
+ASMT-007,VEN-007,24,24,0,344,0.000000,Low,Low,Complete,,,
+ASMT-008,VEN-008,24,24,3,344,0.872093,Low,Low,Complete,,,
+ASMT-009,VEN-009,24,24,20,344,5.813953,Low,High,Complete,DP-01,,
+ASMT-010,VEN-010,14,14,141,344,40.988372,High,Incomplete,Incomplete,,SC-01,BC-03:Missing;BC-04:Missing;SC-01:Missing;SC-02:Missing;SC-03:Missing;SC-04:Missing;GV-01:Missing;GV-02:Missing;GV-03:Missing;GV-04:Missing
+ASMT-011,VEN-004,24,23,39,344,11.337209,Low,Incomplete,Incomplete,,SC-01,SC-01:Received

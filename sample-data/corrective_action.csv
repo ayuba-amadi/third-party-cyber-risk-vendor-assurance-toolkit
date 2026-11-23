@@ -1,0 +1,5 @@
+action_id,finding_id,vendor_id,action_text,responsible_party,due_date,status,closed_date
+ACT-001,FND-003,VEN-003,Enforce MFA for every privileged account,Vendor security lead,2026-10-31,Open,
+ACT-002,FND-004,VEN-005,Submit current incident exercise report,Vendor security lead,2026-12-15,Open,
+ACT-003,FND-005,VEN-006,Submit renewed independent assurance,Vendor security lead,2026-12-15,In progress,
+ACT-004,FND-007,VEN-004,Review new subcontractor register and notification clause,Security reviewer,2026-12-15,Open,

@@ -1,0 +1,14 @@
+vendor_id,service_id,dependency_note
+VEN-001,SVC-01,Supports Customer portal
+VEN-001,SVC-03,Supports Card payments
+VEN-001,SVC-04,Supports Core ERP
+VEN-001,SVC-05,Supports Staff email and collaboration
+VEN-002,SVC-03,Supports Card payments
+VEN-003,SVC-02,Supports Payroll run
+VEN-004,SVC-03,Supports Card payments
+VEN-005,SVC-06,Supports IT helpdesk
+VEN-006,SVC-04,Supports Core ERP
+VEN-006,SVC-06,Supports IT helpdesk
+VEN-007,SVC-07,Supports Data backup and recovery
+VEN-009,SVC-08,Supports Contract and legal documents
+VEN-010,SVC-05,Supports Staff email and collaboration

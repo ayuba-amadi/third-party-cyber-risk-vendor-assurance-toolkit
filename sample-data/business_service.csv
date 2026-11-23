@@ -1,0 +1,9 @@
+service_id,service_name,service_tier,service_owner
+SVC-01,Customer portal,Business-critical,Service owner
+SVC-02,Payroll run,Business-critical,Service owner
+SVC-03,Card payments,Business-critical,Service owner
+SVC-04,Core ERP,Important,Service owner
+SVC-05,Staff email and collaboration,Important,Service owner
+SVC-06,IT helpdesk,Standard,Service owner
+SVC-07,Data backup and recovery,Important,Service owner
+SVC-08,Contract and legal documents,Important,Service owner

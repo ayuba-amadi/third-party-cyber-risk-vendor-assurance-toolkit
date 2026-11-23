@@ -1,0 +1,11 @@
+vendor_id,vendor_name,category,service_description,business_owner,data_sensitivity,data_types,system_access,dependency_impact,replaceability,subcontractor_use,assessment_status,current_assessment_id,next_review_date,material_change_flag
+VEN-001,NimbusCloud Hosting,Cloud hosting,Customer portal; Card payments; Core ERP; Staff email and collaboration,Business service owner,Regulated,customer;regulated,Privileged,4,Very hard,Yes,Assessed,ASMT-001,2026-12-01,No
+VEN-002,PayStream Processing,Payment processing,Card payments,Business service owner,Regulated,customer;regulated,Privileged,4,Hard,Yes,In progress,ASMT-002,2026-12-01,No
+VEN-003,SalaryBridge Payroll,Payroll,Payroll run,Business service owner,Regulated,customer;regulated,Standard,4,Very hard,Yes,Reassessment due,ASMT-003,2026-10-31,No
+VEN-004,SwiftPay Gateway,Payment processing,Card payments,Business service owner,Regulated,customer;regulated,Privileged,4,Hard,Yes,In progress,ASMT-011,2026-12-15,Yes
+VEN-005,HelpDeskPro Support,Technical support,IT helpdesk,Business service owner,Internal,internal,Standard,2,Moderate,Yes,Assessed,ASMT-005,2026-12-15,No
+VEN-006,SecureTech Managed IT,Technical support,Core ERP; IT helpdesk,Business service owner,Confidential,business;confidential,Privileged,3,Moderate,Yes,Reassessment due,ASMT-006,2026-10-31,No
+VEN-007,CoreData Backup,Cloud hosting,Data backup and recovery,Business service owner,Confidential,business;confidential,Standard,3,Hard,Yes,Assessed,ASMT-007,2027-05-18,No
+VEN-008,TalentPay HR,Payroll,Non-critical HR administration,Business service owner,Confidential,business;confidential,None,2,Moderate,Yes,Assessed,ASMT-008,2027-05-18,No
+VEN-009,LegalDocs Storage,Collaboration SaaS,Contract and legal documents,Business service owner,Regulated,customer;regulated,Standard,3,Moderate,Yes,Assessed,ASMT-009,2027-05-18,No
+VEN-010,BrightMeet Collaboration,Collaboration SaaS,Staff email and collaboration,Business service owner,Internal,internal,None,1,Easy,Yes,In progress,ASMT-010,2026-12-01,No

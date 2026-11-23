@@ -1,0 +1,4 @@
+test_id,vendor_id,field,value,expected_result
+T01,VEN-001,vendor_id,VEN-001,Reject appended duplicate; retain first
+T02,VEN-011,data_sensitivity,,Reject missing required factor
+T02,VEN-011,assessment_status,Approved,Reject invalid enumeration

@@ -1,0 +1,3 @@
+test_id,evidence_id,assessment_id,question_id,status,expected_result
+T02,EV-900,ASMT-999,AM-01,Accepted,Reject orphan assessment
+T02,EV-901,ASMT-001,AM-01,Pending,Reject invalid status
