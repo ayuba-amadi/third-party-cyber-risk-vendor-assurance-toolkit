@@ -38,10 +38,14 @@ Prepared 21 Nov 2026. Original deadline: 18 Nov 2026, 23:59 WAT (passed). Status
 | G08 — naming and citations (R03/R05) | BC domain uses dictionary name; repository file is currently `Risk Scoring Method.md`, expected name `risk_scoring_method.md`; lead to decide rename. Specific NIST method citations still pending as reported by Day 2 owners. | Day 2 owners; before final specification |
 | G09 — demo date versus delivery date | Frozen 18 Nov date for reproducibility, actual preparation 21 Nov. Do not backdate submission or simulated review signoff. | Subgroup owner + lead; immediately |
 
-## Paste into existing governance/HANDOFFS.md after submission
+## Handoff Status and Approval
 
-Do not overwrite the other phase rows or decision history. Replace only the Research → Development row after owners agree:
+The Research to Development handoff has been recorded in governance/HANDOFFS.md.
 
-| Research → Development | 18 Nov 2026, 23:59 | Day 3 v0.9.1 / actual SHA pending | Olasubomi Olakunle (pending submission) | Team lead (pending) | Pending | G01–G09; owners above; independent review and Development walkthrough pending |
+The Day 3 deliverables have been committed to the research-day3-olasubomi-olakunle branch and submitted for review.
 
-Record each actual approval with date, approver, reason and commit in the decision log. If only part of the gate is accepted, record Accepted with named gaps and scope of accepted implementation. No sign-off is claimed here. The Day 2 worked examples are not supplied by this package; the Day 3 acceptance cases and expected results are not a replacement for that assigned deliverable.
+Final acceptance remains subject to team-lead review, confirmation of outstanding methodology decisions, and the Development walkthrough.
+
+Any approved changes, outstanding gaps or acceptance decisions must be recorded in the handoff register with the relevant date, approver and commit reference.
+
+The outstanding Day 2 worked examples remain outside the scope of this Day 3 submission.
