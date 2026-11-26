@@ -1,6 +1,6 @@
 # Third-Party Cyber Risk Assessment and Vendor Assurance Toolkit
 
-This ICSDF Certified GRC Engineering capstone gives teams a repeatable way to assess fictional suppliers, explain cyber risk results, record human decisions and track corrective actions. The toolkit brings the vendor register, questionnaire, evidence review, reassessment history and management reporting into one Streamlit application.
+This ICDFA Certified GRC Engineering capstone gives teams a repeatable way to assess fictional suppliers, explain cyber risk results, record human decisions and track corrective actions. The toolkit brings the vendor register, questionnaire, evidence review, reassessment history, and management reporting into one Streamlit application.
 
 ## Problem being addressed
 
