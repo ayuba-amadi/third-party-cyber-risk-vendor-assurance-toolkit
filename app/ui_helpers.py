@@ -1,8 +1,5 @@
 """Shared navigation, selection, messages and display components."""
-from datetime import date
 from html import escape
-from numbers import Number
-import re
 
 import streamlit as st
 
@@ -52,14 +49,16 @@ PALETTE = {
 }
 
 
-def _badge(label, default=("#1F2937", "#F3F4F6", "#9CA3AF")):
+def badge_html(label, default=("#1F2937", "#F3F4F6", "#9CA3AF")):
     value = str(label)
     text, bg, border = PALETTE.get(value, default)
-    st.markdown(
-        f'<span class="status-badge" aria-label="{escape(value)}" '
-        f'style="--badge-text:{text};--badge-bg:{bg};--badge-border:{border}">'
-        f'{escape(value)}</span>', unsafe_allow_html=True,
-    )
+    return (f'<span class="status-badge" aria-label="{escape(value)}" '
+            f'style="--badge-text:{text};--badge-bg:{bg};--badge-border:{border}">'
+            f'{escape(value)}</span>')
+
+
+def _badge(label):
+    st.markdown(badge_html(label), unsafe_allow_html=True)
 
 
 def severity_badge(label):
@@ -222,13 +221,26 @@ TABLE_CSS = """
 .assurance-table th { background:#E5E7EB; text-align:center; font-weight:700; white-space:nowrap; }
 .assurance-table td { background:#FFF; text-align:left; }
 .assurance-table tr:nth-child(even) td { background:#F3F4F6; }
-.assurance-table td.center { text-align:center; white-space:nowrap; }
+.assurance-table td.center { text-align:center; }
 .assurance-table td.long { min-width:15rem; }
 .assurance-table .table-status {
     display:inline-block; padding:.1rem .45rem; border:1px solid; border-radius:.45rem;
     font-weight:600; white-space:nowrap;
 }
 """
+
+
+CENTERED_FIELDS = {
+    "answered", "criticality", "days_overdue", "decision", "errors", "expected",
+    "linked_vendors", "outcome", "overdue", "review_period_end", "reviewer_verified",
+    "risk_value", "row", "rows", "tier", "total", "total_points", "total_questions",
+    "verified", "verified_answer", "version_no",
+}
+CENTERED_FIELD_ENDINGS = {
+    "band", "count", "date", "deadline", "id", "ids", "percent", "percentage",
+    "rating", "rows", "score", "severity", "status", "tier", "version",
+}
+LONG_TEXT_FIELDS = {"action", "action_text", "description", "question", "question_text", "vendor"}
 
 
 def table_value(value):
@@ -246,28 +258,25 @@ def table_html(rows, *, columns=None, name="Records"):
     if not rows and not columns:
         return "<p>No matching records.</p>"
     headings = "".join(f'<th scope="col">{escape(label(field))}</th>' for field in columns)
+    column_classes = []
+    for field in columns:
+        if field in CENTERED_FIELDS or field.rsplit("_", 1)[-1] in CENTERED_FIELD_ENDINGS:
+            column_classes.append("center")
+        elif field in LONG_TEXT_FIELDS or any(len(table_value(row.get(field))) > 65 for row in rows):
+            column_classes.append("long")
+        else:
+            column_classes.append("left")
     body = []
     for row in rows:
         cells = []
-        for field in columns:
+        for field, column_class in zip(columns, column_classes):
             value = row.get(field)
-            display = table_value(value)
-            content = escape(display)
-            centered = (
-                isinstance(value, (Number, date)) or field == "id"
-                or field.endswith(("_id", "_date", "_deadline", "_percent"))
-                or field in ("deadline", "review_period_end", "percentage", "version", "version_no")
-                or (isinstance(value, str) and re.fullmatch(
-                    r"[-+]?\d+(?:\.\d+)?%?|\d{4}-\d{2}-\d{2}(?:T\S+)?|[A-Z]+(?:-[A-Z]+)*-\d+",
-                    value))
-            )
-            style = (' class="center"' if centered else ' class="long"'
-                     if len(display) > 65 or field == "vendor" else "")
+            content = escape(table_value(value))
             if isinstance(value, str) and value in PALETTE:
                 color, background, border = PALETTE[value]
                 content = (f'<span class="table-status" style="color:{color};background:{background};'
                            f'border-color:{border}">{content}</span>')
-            cells.append(f"<td{style}>{content}</td>")
+            cells.append(f'<td class="{column_class}">{content}</td>')
         body.append("<tr>" + "".join(cells) + "</tr>")
     if not body:
         body.append(f'<tr><td colspan="{len(columns)}">No matching records.</td></tr>')

@@ -6,6 +6,7 @@ from zipfile import ZipFile
 
 from app.export_helpers import REPORT_TYPES, export_package, render_report, report_payload, report_sections, table_csv
 from app.state import Workspace
+from app.ui_helpers import table_html
 
 
 class ExportTests(unittest.TestCase):
@@ -41,8 +42,23 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(counts["vendor.csv"], 10)
         html = render_report(metadata, rows, sections=sections)["html"]
         self.assertIn('<table class="assurance-table" aria-label="Report metadata">', html)
-        self.assertIn('<td class="center">2026-11-18</td>', html)
+        self.assertIn('<td class="left">2026-11-18</td>', html)
         self.assertIn('<th scope="col">Responsible party</th>', html)
+
+    def test_table_alignment_follows_columns(self):
+        html = table_html([
+            dict(value=12, count=12, evidence_id="EVD-001", due_date="2026-11-18",
+                 status="Overdue", question="2026"),
+            dict(value="Text", count=None, evidence_id="", due_date="Not applicable",
+                 status="", question="Is evidence current?"),
+        ])
+        self.assertIn('<td class="left">12</td><td class="center">12</td>', html)
+        self.assertIn('<td class="left">Text</td><td class="center"></td>', html)
+        self.assertIn('<td class="center">EVD-001</td>', html)
+        self.assertIn('<td class="center">Not applicable</td>', html)
+        self.assertIn('<td class="center"><span class="table-status"', html)
+        self.assertIn('<td class="long">2026</td>', html)
+        self.assertIn('<td class="long">Is evidence current?</td>', html)
 
     def test_changed_records_and_manifest(self):
         row = dict(self.ws.rows("vendor")[0], vendor_name="Fictional & Partners <Test>")

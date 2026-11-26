@@ -3,7 +3,7 @@ from datetime import timedelta
 import streamlit as st
 
 from app.state import next_id, put
-from app.ui_helpers import (assessment_label, download_csv, filters, label, question_label, save, show_rows, start,
+from app.ui_helpers import (assessment_label, badge_html, download_csv, filters, label, question_label, save, show_rows, start,
                             vendor_label, severity_badge, status_badge)
 from src.config import ALLOWED_VALUES
 from src.loader import load_report_date
@@ -15,18 +15,18 @@ _, assessments, _, _, decisions, actions = ws.operations
 bank = {row["question_id"]: row for row in ws.rows("question")}
 records = [dict(row, overdue="Yes" if row["action_overdue"] else "No") for row in actions]
 st.subheader("Action overview")
-summary_cols = st.columns(4)
 summary_data = (
     ("Open actions", sum(bool(row["action_id"]) and row["action_status"] != "Closed" for row in records), None),
     ("Closed actions", sum(row["action_status"] == "Closed" for row in records), "Valid"),
     ("Overdue actions", sum(bool(row["action_overdue"]) for row in records), "Overdue"),
     ("Open findings", sum(row["finding_status"] == "Open" for row in records), "Incomplete"),
 )
-for col, (title, value, badge) in zip(summary_cols, summary_data):
-    with col:
-        if badge:
-            status_badge(badge)
-        st.metric(title, value)
+with st.container(key="remediation-overview"):
+    for col, (title, value, badge) in zip(st.columns(4), summary_data):
+        with col.container(border=True):
+            st.metric(title, value)
+            status = badge_html(badge) if badge else ""
+            st.html(f'<div class="remediation-metric-status">{status}</div>')
 records = filters(records, ("vendor_id", "severity", "finding_status", "action_status", "overdue",
                             "assessment_id", "responsible_party"), "remediation",
                   {"vendor_id": lambda vid: vendor_label(ws, vid),
