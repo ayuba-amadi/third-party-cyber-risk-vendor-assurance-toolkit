@@ -15,7 +15,7 @@ Record actual work for **all 16 project members**. This is an accountability log
 | Mengnjoh Beri Pamela | To confirm | Pending | Pending | Pending | Pending |
 | Nguveren Monica Dzuamo | To confirm | Pending | Pending | Pending | Pending |
 | Nworah Chiamaka Esther | To confirm | Pending | Pending | Pending | Pending |
-| Olasubomi Olakunle | To confirm | Pending | Pending | Pending | Pending |
+| Olasubomi Olakunle | Research and Risk Assessment | Day 3: fictional vendor dataset, acceptance cases and Development handoff | [Acceptance cases](../01-research-and-risk-assessment/acceptance_cases.md), [Sample data](../sample-data/README.md), [Development handoff](research_handoff_draft.md) | Reference validation passed; team-lead review pending | 23 Nov 2026 |
 | Precious Okunlola | To confirm | Pending | Pending | Pending | Pending |
 | Shukurat Titilayo Saadu | To confirm | Pending | Pending | Pending | Pending |
 | Victoria Onyekachi Mbachu | To confirm | Pending | Pending | Pending | Pending |

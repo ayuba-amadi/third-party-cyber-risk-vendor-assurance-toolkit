@@ -1,0 +1,34 @@
+breakdown,group,count,vendor_ids
+category,Cloud hosting,2,VEN-001;VEN-007
+category,Payment processing,2,VEN-002;VEN-004
+category,Payroll,2,VEN-003;VEN-008
+category,Technical support,2,VEN-005;VEN-006
+category,Collaboration SaaS,2,VEN-009;VEN-010
+criticality,Critical,4,VEN-001;VEN-002;VEN-003;VEN-004
+criticality,High,3,VEN-006;VEN-007;VEN-009
+criticality,Medium,2,VEN-005;VEN-008
+criticality,Low,1,VEN-010
+decision,Approved,4,VEN-001;VEN-006;VEN-007;VEN-008
+decision,Conditionally Approved,2,VEN-003;VEN-005
+decision,Rejected,1,VEN-009
+decision,Awaiting decision,3,VEN-002;VEN-004;VEN-010
+flag,Incomplete,5,VEN-002;VEN-004;VEN-005;VEN-006;VEN-010
+flag,Confirmed critical failure,2,VEN-003;VEN-009
+flag,Unresolved critical question,3,VEN-002;VEN-004;VEN-010
+flag,Overdue review,2,VEN-003;VEN-006
+flag,Expired approval,1,VEN-006
+flag,Overdue action,1,VEN-003
+flag,Expired evidence,1,VEN-006
+flag,Rejected evidence,1,VEN-005
+flag,Received evidence,1,VEN-004
+flag,Missing evidence,2,VEN-002;VEN-010
+flag,Unanswered,1,VEN-010
+service concentration,SVC-03,3,VEN-001;VEN-002;VEN-004
+service concentration,SVC-04,2,VEN-001;VEN-006
+service concentration,SVC-05,2,VEN-001;VEN-010
+service concentration,SVC-06,2,VEN-005;VEN-006
+service dependency,Business-critical vendor,4,VEN-001;VEN-002;VEN-003;VEN-004
+vendor concentration,Multiple services,2,VEN-001;VEN-006
+flag,Open finding,6,VEN-002;VEN-003;VEN-004;VEN-005;VEN-006;VEN-009
+flag,Open condition,2,VEN-003;VEN-005
+flag,Unexpired Approved outcome,3,VEN-001;VEN-007;VEN-008

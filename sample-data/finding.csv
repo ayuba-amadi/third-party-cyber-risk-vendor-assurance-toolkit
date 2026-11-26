@@ -1,0 +1,8 @@
+finding_id,assessment_id,question_id,severity,description,status
+FND-001,ASMT-002,AM-01,High,Privileged MFA evidence missing,Open
+FND-002,ASMT-002,DP-01,High,Encryption evidence missing,Open
+FND-003,ASMT-003,AM-01,High,Privileged account MFA gap; confirmed critical failure,Open
+FND-004,ASMT-005,IN-02,Medium,Incident-response exercise evidence rejected for age,Open
+FND-005,ASMT-006,GV-02,High,Independent assurance report expired,Open
+FND-006,ASMT-009,DP-01,Critical,Accepted configuration proves regulated data not encrypted,Open
+FND-007,ASMT-011,SC-01,High,New subcontractor register awaiting review,Open

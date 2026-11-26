@@ -4,7 +4,7 @@ Two-week internal completion target: **29 November 2026, 23:59 WAT**. See [submi
 
 | Phase | Planned handoff (WAT) | Deliverable version/commit | Submitted by | Checked by | Gate result | Open gaps, owner and due date |
 |---|---|---|---|---|---|---|
-| Research → Development | 18 Nov 2026, 23:59 | Pending | Pending | Team lead | Pending | Pending |
+| Research → Development | 18 Nov 2026, 23:59 | Day 3 v0.9.1; beeb1e0 | Olasubomi Olakunle | Team lead (pending) | Pending review | Day 1/2 rule differences and methodology approval pending; see research_handoff_draft.md |
 | Development → QA | 23 Nov 2026, 23:59 | Pending | Pending | QA lead | Pending | Pending |
 | QA → Documentation/team lead | 27 Nov 2026, 23:59 | Pending | Pending | Team lead | Pending | Pending |
 | Integrated package | 29 Nov 2026, 23:59 | Pending | Pending | Team lead | Pending | Pending |

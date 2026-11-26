@@ -1,0 +1,9 @@
+decision_id,assessment_id,calculated_rating,outcome,decision_maker_role,justification,conditions,condition_deadline,decision_date,expiry_date,review_date
+DEC-001,ASMT-001,Low,Approved,Head of Risk,Strong verified controls,,,2026-09-01,2027-03-01,2026-12-01
+DEC-002,ASMT-003,High,Conditionally Approved,Head of Risk,Written exception: payroll continuity with time-limited MFA remediation; restricted access and monitoring,Enforce privileged MFA,2026-10-31,2026-09-01,2027-03-01,2026-10-31
+DEC-003,ASMT-004,Low,Approved,Head of Risk,Prior scope and verified controls,,,2026-08-01,2027-02-01,2026-12-01
+DEC-004,ASMT-005,Incomplete,Conditionally Approved,Head of Risk,Non-critical evidence gap; current report required,Submit current IN-02 test report,2026-12-15,2026-11-10,2027-05-10,2026-12-15
+DEC-005,ASMT-006,Low,Approved,Head of Risk,Assurance valid at decision time; historical snapshot in decision record,,,2026-08-25,2026-10-31,2026-10-31
+DEC-006,ASMT-007,Low,Approved,Head of Risk,All required controls verified,,,2026-11-10,2027-11-10,2027-05-18
+DEC-007,ASMT-008,Low,Approved,Head of Risk,Verified controls; minor leaver process weakness,,,2026-11-10,2027-11-10,2027-05-18
+DEC-008,ASMT-009,High,Rejected,Head of Risk,Confirmed DP-01 encryption failure; do not onboard,,,2026-11-10,2027-05-18,2027-05-18

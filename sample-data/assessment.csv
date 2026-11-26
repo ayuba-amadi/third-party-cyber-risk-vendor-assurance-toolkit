@@ -1,0 +1,12 @@
+assessment_id,vendor_id,version_no,assessment_date,trigger,assessor_role,status,supersedes_id
+ASMT-001,VEN-001,1,2026-09-01,Initial,GRC analyst,Submitted,
+ASMT-002,VEN-002,1,2026-11-10,Initial,GRC analyst,Draft,
+ASMT-003,VEN-003,1,2026-09-01,Initial,GRC analyst,Submitted,
+ASMT-004,VEN-004,1,2026-08-01,Initial,GRC analyst,Superseded,
+ASMT-005,VEN-005,1,2026-11-10,Initial,GRC analyst,Submitted,
+ASMT-006,VEN-006,1,2026-08-25,Initial,GRC analyst,Submitted,
+ASMT-007,VEN-007,1,2026-11-10,Initial,GRC analyst,Submitted,
+ASMT-008,VEN-008,1,2026-11-10,Initial,GRC analyst,Submitted,
+ASMT-009,VEN-009,1,2026-11-10,Initial,GRC analyst,Submitted,
+ASMT-010,VEN-010,1,2026-11-12,Initial,GRC analyst,Draft,
+ASMT-011,VEN-004,2,2026-09-16,Material change,GRC analyst,Draft,ASMT-004

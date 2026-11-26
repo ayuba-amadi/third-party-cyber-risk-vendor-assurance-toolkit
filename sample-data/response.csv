@@ -1,0 +1,265 @@
+assessment_id,question_id,vendor_claim,reviewer_verified,verified_answer,reviewer_note
+ASMT-001,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-001,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-001,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-001,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-001,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-001,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-001,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-001,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-001,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-001,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-001,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-001,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-001,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-001,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-001,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-001,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-001,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-001,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-001,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-001,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-001,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-001,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-001,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-001,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-002,AM-01,All privileged accounts,Not reviewed,,Awaiting evidence
+ASMT-002,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-002,AM-03,"Within 1 business day, manual",Yes,"Within 1 business day, manual","Fictional reviewer record confirms Within 1 business day, manual"
+ASMT-002,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-002,DP-01,All data at rest encrypted,Not reviewed,,Awaiting evidence
+ASMT-002,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-002,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-002,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-002,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-002,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-002,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-002,IN-04,"Incident, notified on time, lessons recorded",Yes,"Incident, notified on time, lessons recorded","Fictional reviewer record confirms Incident, notified on time, lessons recorded"
+ASMT-002,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-002,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-002,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-002,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-002,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-002,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-002,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-002,SC-04,"Documented, untested",Yes,"Documented, untested","Fictional reviewer record confirms Documented, untested"
+ASMT-002,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-002,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-002,GV-03,80 to 94 percent,Yes,80 to 94 percent,Fictional reviewer record confirms 80 to 94 percent
+ASMT-002,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-003,AM-01,All privileged accounts,Yes,Some privileged accounts,Fictional reviewer record confirms Some privileged accounts
+ASMT-003,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-003,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-003,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-003,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-003,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-003,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-003,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-003,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-003,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-003,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-003,IN-04,"Incident, notified on time, lessons recorded",Yes,"Incident, notified on time, lessons recorded","Fictional reviewer record confirms Incident, notified on time, lessons recorded"
+ASMT-003,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-003,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-003,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-003,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-003,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-003,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-003,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-003,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-003,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-003,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-003,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-003,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-004,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-004,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-004,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-004,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-004,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-004,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-004,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-004,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-004,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-004,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-004,IN-03,Kept 12 months and monitored 24 hours a day,Yes,Kept 12 months and monitored 24 hours a day,Fictional reviewer record confirms Kept 12 months and monitored 24 hours a day
+ASMT-004,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-004,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-004,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-004,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-004,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-004,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-004,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-004,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-004,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-004,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-004,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-004,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-004,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-005,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-005,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-005,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-005,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-005,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-005,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-005,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-005,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-005,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-005,IN-02,Tested within 12 months with report,No,,Report outside required review window
+ASMT-005,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-005,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-005,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-005,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-005,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-005,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-005,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-005,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-005,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-005,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-005,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-005,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-005,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-005,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-006,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-006,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-006,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-006,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-006,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-006,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-006,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-006,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-006,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-006,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-006,IN-03,Kept 12 months and monitored 24 hours a day,Yes,Kept 12 months and monitored 24 hours a day,Fictional reviewer record confirms Kept 12 months and monitored 24 hours a day
+ASMT-006,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-006,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-006,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-006,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-006,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-006,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-006,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-006,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-006,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-006,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-006,GV-02,Current and covers our service,No,,Previously accepted report no longer current
+ASMT-006,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-006,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-007,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-007,AM-02,At least quarterly,Yes,At least quarterly,Fictional reviewer record confirms At least quarterly
+ASMT-007,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-007,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-007,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-007,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-007,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-007,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-007,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-007,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-007,IN-03,Kept 12 months and monitored 24 hours a day,Yes,Kept 12 months and monitored 24 hours a day,Fictional reviewer record confirms Kept 12 months and monitored 24 hours a day
+ASMT-007,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-007,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-007,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-007,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-007,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-007,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-007,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-007,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-007,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-007,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-007,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-007,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-007,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-008,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-008,AM-02,At least quarterly,Yes,At least quarterly,Fictional reviewer record confirms At least quarterly
+ASMT-008,AM-03,"Within 1 business day, manual",Yes,"Within 1 business day, manual","Fictional reviewer record confirms Within 1 business day, manual"
+ASMT-008,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-008,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-008,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-008,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-008,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-008,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-008,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-008,IN-03,Kept 12 months and monitored 24 hours a day,Yes,Kept 12 months and monitored 24 hours a day,Fictional reviewer record confirms Kept 12 months and monitored 24 hours a day
+ASMT-008,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-008,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-008,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-008,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-008,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-008,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-008,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-008,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-008,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-008,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-008,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-008,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-008,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-009,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-009,AM-02,At least quarterly,Yes,At least quarterly,Fictional reviewer record confirms At least quarterly
+ASMT-009,AM-03,"Within 1 business day, automated",Yes,"Within 1 business day, automated","Fictional reviewer record confirms Within 1 business day, automated"
+ASMT-009,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-009,DP-01,All data at rest encrypted,Yes,Not encrypted,Fictional reviewer record confirms Not encrypted
+ASMT-009,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-009,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-009,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-009,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-009,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-009,IN-03,Kept 12 months and monitored 24 hours a day,Yes,Kept 12 months and monitored 24 hours a day,Fictional reviewer record confirms Kept 12 months and monitored 24 hours a day
+ASMT-009,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-009,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-009,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-009,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-009,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-009,SC-01,Complete list and prior notice,Yes,Complete list and prior notice,Fictional reviewer record confirms Complete list and prior notice
+ASMT-009,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-009,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-009,SC-04,Documented and tested,Yes,Documented and tested,Fictional reviewer record confirms Documented and tested
+ASMT-009,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-009,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-009,GV-03,At least 95 percent completed,Yes,At least 95 percent completed,Fictional reviewer record confirms At least 95 percent completed
+ASMT-009,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
+ASMT-010,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-010,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-010,AM-03,"Within 1 business day, manual",Yes,"Within 1 business day, manual","Fictional reviewer record confirms Within 1 business day, manual"
+ASMT-010,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-010,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-010,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-010,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-010,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-010,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-010,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-010,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-010,IN-04,No incident,Yes,No incident,Fictional reviewer record confirms No incident
+ASMT-010,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-010,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-010,BC-03,Blank,Not reviewed,,Unanswered
+ASMT-010,BC-04,Blank,Not reviewed,,Unanswered
+ASMT-010,SC-01,Blank,Not reviewed,,Unanswered
+ASMT-010,SC-02,Blank,Not reviewed,,Unanswered
+ASMT-010,SC-03,Blank,Not reviewed,,Unanswered
+ASMT-010,SC-04,Blank,Not reviewed,,Unanswered
+ASMT-010,GV-01,Blank,Not reviewed,,Unanswered
+ASMT-010,GV-02,Blank,Not reviewed,,Unanswered
+ASMT-010,GV-03,Blank,Not reviewed,,Unanswered
+ASMT-010,GV-04,Blank,Not reviewed,,Unanswered
+ASMT-011,AM-01,All privileged accounts,Yes,All privileged accounts,Fictional reviewer record confirms All privileged accounts
+ASMT-011,AM-02,Twice yearly,Yes,Twice yearly,Fictional reviewer record confirms Twice yearly
+ASMT-011,AM-03,"Within 1 business day, manual",Yes,"Within 1 business day, manual","Fictional reviewer record confirms Within 1 business day, manual"
+ASMT-011,AM-04,Enforced and logged,Yes,Enforced and logged,Fictional reviewer record confirms Enforced and logged
+ASMT-011,DP-01,All data at rest encrypted,Yes,All data at rest encrypted,Fictional reviewer record confirms All data at rest encrypted
+ASMT-011,DP-02,TLS 1.2 or higher on all connections,Yes,TLS 1.2 or higher on all connections,Fictional reviewer record confirms TLS 1.2 or higher on all connections
+ASMT-011,DP-03,Defined and evidenced,Yes,Defined and evidenced,Fictional reviewer record confirms Defined and evidenced
+ASMT-011,DP-04,Agreed locations only,Yes,Agreed locations only,Fictional reviewer record confirms Agreed locations only
+ASMT-011,IN-01,Within 24 hours,Yes,Within 24 hours,Fictional reviewer record confirms Within 24 hours
+ASMT-011,IN-02,Tested within 12 months with report,Yes,Tested within 12 months with report,Fictional reviewer record confirms Tested within 12 months with report
+ASMT-011,IN-03,Kept and monitored in business hours,Yes,Kept and monitored in business hours,Fictional reviewer record confirms Kept and monitored in business hours
+ASMT-011,IN-04,"Incident, notified on time, lessons recorded",Yes,"Incident, notified on time, lessons recorded","Fictional reviewer record confirms Incident, notified on time, lessons recorded"
+ASMT-011,BC-01,"Tested, objectives met",Yes,"Tested, objectives met","Fictional reviewer record confirms Tested, objectives met"
+ASMT-011,BC-02,"Daily, encrypted, restore tested",Yes,"Daily, encrypted, restore tested","Fictional reviewer record confirms Daily, encrypted, restore tested"
+ASMT-011,BC-03,"Approved, reviewed in last 12 months",Yes,"Approved, reviewed in last 12 months","Fictional reviewer record confirms Approved, reviewed in last 12 months"
+ASMT-011,BC-04,"Multi-site, failover tested",Yes,"Multi-site, failover tested","Fictional reviewer record confirms Multi-site, failover tested"
+ASMT-011,SC-01,Complete list and prior notice,Not reviewed,,Review pending
+ASMT-011,SC-02,Required and verified,Yes,Required and verified,Fictional reviewer record confirms Required and verified
+ASMT-011,SC-03,Annual assessment,Yes,Annual assessment,Fictional reviewer record confirms Annual assessment
+ASMT-011,SC-04,"Documented, untested",Yes,"Documented, untested","Fictional reviewer record confirms Documented, untested"
+ASMT-011,GV-01,"Approved, owner named, reviewed in last 12 months",Yes,"Approved, owner named, reviewed in last 12 months","Fictional reviewer record confirms Approved, owner named, reviewed in last 12 months"
+ASMT-011,GV-02,Current and covers our service,Yes,Current and covers our service,Fictional reviewer record confirms Current and covers our service
+ASMT-011,GV-03,80 to 94 percent,Yes,80 to 94 percent,Fictional reviewer record confirms 80 to 94 percent
+ASMT-011,GV-04,"Annual test, high findings fixed",Yes,"Annual test, high findings fixed","Fictional reviewer record confirms Annual test, high findings fixed"
