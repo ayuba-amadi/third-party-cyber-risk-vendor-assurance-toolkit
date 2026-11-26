@@ -10,7 +10,13 @@ except ImportError:
 @unittest.skipIf(AppTest is None, "Install app/requirements.txt for GUI smoke tests")
 class GuiTests(unittest.TestCase):
     def setUp(self):
-        self.app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "app/streamlit_app.py")).run()
+        # Each run initializes the CSV-backed workspace and its validation and
+        # operational views. Allow for cold Python/Streamlit startup as well as
+        # the fixture load; AppTest's default three seconds is too short here.
+        self.app = AppTest.from_file(
+            str(Path(__file__).resolve().parents[1] / "app/streamlit_app.py"),
+            default_timeout=15,
+        ).run()
         self.assertFalse(self.app.exception)
 
     def page(self, file):

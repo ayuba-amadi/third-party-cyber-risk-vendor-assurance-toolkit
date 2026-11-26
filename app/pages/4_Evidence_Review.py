@@ -63,11 +63,13 @@ st.write(f"Acceptance criteria · {question['acceptance_criteria']}")
 st.write(f"Vendor claim · {response['vendor_claim'] or 'Unanswered'}")
 st.write(f"Reviewer answer · {response['verified_answer'] or 'Not recorded'}")
 st.write(f"Reviewer note · {response['reviewer_note'] or 'None'}")
-st.write(f"Effective status: **{score['effective_evidence_status']}**")
+st.write("Evidence status")
+from app.ui_helpers import evidence_badge
+evidence_badge(score["effective_evidence_status"])
 if (score["effective_evidence_status"] == "Expired" and old.get("expiry_date") and
         old["expiry_date"] < ws.report_date.isoformat()):
     st.warning("Reason: expiry date is earlier than the report date.")
-st.write(score["calculation_reason"])
+st.write(f"Effective status: **{score['effective_evidence_status']}** · {score['calculation_reason']}")
 if historical:
     st.info("Historical evidence is preserved. The historical assessment score uses its assessment date.")
     st.stop()
