@@ -27,6 +27,8 @@ All times are **WAT (UTC+1)**. These are internal working deadlines beginning Mo
 
 Follow the [submission rules](governance/SUBMISSION_RULES.md) for filenames, commits, review and reporting. The [handoff register](governance/HANDOFFS.md) records the commit, reviewer, acceptance result and gaps. [Contribution record](governance/CONTRIBUTIONS.md) tracks all project members. [Working templates](templates/REQUIREMENTS_AND_TESTS.md) give the required fields. Subgroup membership must be confirmed against the final roster; folder creation does not assign people or grant repository write access.
 
+Research calculations are documented in the [risk scoring method](01-research-and-risk-assessment/risk_scoring_method.md) and [worked research examples](01-research-and-risk-assessment/worked_examples.md). Research artefacts remain subject to team-lead review and approval before handoff; Toolkit Development has not been started.
+
 ## Upload access and instructions
 
 **Read [How to upload subgroup work](UPLOAD_GUIDE.md) before submitting.** Public visibility is read access, not permission to upload. Accept your GitHub collaborator invitation for direct upload, or submit from a fork with a pull request while access is arranged. Share your exact GitHub username and profile URL with the team lead if you have no invitation.

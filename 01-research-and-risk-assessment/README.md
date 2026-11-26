@@ -13,4 +13,6 @@ flowchart LR
 
 **Put here:** `requirements_matrix.md`, `data_dictionary.md`, `workflow.md`, `demo_scenarios.md`, `criticality_method.md`, `question_bank.csv`, `risk_scoring_method.md`, `evidence_and_decision_rules.md`, `worked_examples.md`, `acceptance_cases.md`. Put connected fictional records in `../sample-data/` when that folder is created.
 
+The [risk scoring method](risk_scoring_method.md) and [worked research examples](worked_examples.md) explain the calculations against the fictional records in [sample-data](../sample-data/README.md). The examples complete the outstanding research deliverable for review; methodology approval and team-lead handoff acceptance remain pending. Toolkit Development has not been started.
+
 **Done means:** 10 vendors, 5 categories, 24+ responses each, every required edge case, explicit arithmetic/thresholds, evidence treatment, expected results and team-lead acceptance. Submit direct file links and commit SHA in the [handoff register](../governance/HANDOFFS.md).
