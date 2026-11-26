@@ -32,6 +32,20 @@ class StreamlitPages(unittest.TestCase):
                 self.assertEqual(app.title[0].value.casefold(), title.casefold())
                 self.assertEqual(len(app.session_state.workspace.rows("vendor")), 10)
 
+    def test_dashboard_metrics_reconcile_and_badges_have_text_labels(self):
+        app = self.page("1_Dashboard")
+        management, _, _ = app.session_state.workspace.management()
+        groups = {(row["breakdown"], row["group"]): row["count"] for row in management}
+        metrics = {item.label: str(item.value) for item in app.metric}
+        self.assertEqual(metrics["Current vendors"], str(groups[("total", "Current vendors")]))
+        for band in ("Critical", "High", "Medium", "Low"):
+            self.assertEqual(metrics[f"{band} vendors"], str(groups[("criticality", band)]))
+        for outcome in ("Approved", "Conditionally Approved", "Rejected", "Awaiting decision"):
+            self.assertEqual(metrics[outcome], str(groups[("decision", outcome)]))
+        markdown = "\n".join(item.value for item in app.markdown)
+        self.assertIn('aria-label="Critical"', markdown)
+        self.assertIn(">Critical</span>", markdown)
+
     def test_vendor_search_filter_and_validation(self):
         app = self.page("2_Vendor_Register")
         app.text_input[0].set_value("VEN-003").run()

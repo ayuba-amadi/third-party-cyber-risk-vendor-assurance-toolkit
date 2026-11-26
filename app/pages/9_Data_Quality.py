@@ -2,7 +2,7 @@ from collections import Counter
 from dataclasses import asdict
 import streamlit as st
 
-from app.ui_helpers import filters, show_issues, show_rows, start
+from app.ui_helpers import filters, show_issues, show_rows, start, status_badge
 
 ws = start("Data quality", "Run validation to check the working CSV records. Use the issue filters to find the exact file, row and correction.")
 if st.button("Run validation"):
@@ -11,13 +11,25 @@ if st.button("Run validation"):
         st.success("Validation passed.")
     else:
         st.warning("Validation found issues. Review the records below.")
+passed = ws.validation.passed and not ws.decision_errors
+status_badge("Valid" if passed else "Invalid")
 st.write(f"Last validation (UTC) · {ws.validated_at}")
-st.write(f"Working data · **{'Passed' if ws.validation.passed and not ws.decision_errors else 'Issues found'}**")
+st.write("Working data is valid." if passed else "Working data needs correction before calculated results can be used.")
 issues_by_file = Counter(issue.file for issue in ws.validation.issues if issue.severity == "ERROR")
+error_count = sum(issues_by_file.values()) + len(ws.decision_errors)
+warning_count = sum(issue.severity != "ERROR" for issue in ws.validation.issues)
+cols = st.columns(3)
+for col, label, value, state in zip(cols, ("Errors", "Warnings", "Source tables"),
+                                   (error_count, warning_count, len(ws.tables)),
+                                   ("Invalid" if error_count else "Valid", "Incomplete" if warning_count else "Valid", "Valid")):
+    with col:
+        status_badge(state)
+        st.metric(label, value)
+st.subheader("Source table checks")
 show_rows([dict(file=table.path.name, source_rows=len(ws.source[name].rows),
                 working_rows=len(table.rows), loaded=table.loaded, errors=issues_by_file[str(table.path)])
            for name, table in ws.tables.items()])
-st.subheader("Validation issue counts")
+st.subheader("Validation findings")
 issues = ws.validation.issues
 categories = {
     "Duplicate records": lambda issue: issue.category == "duplicates",
@@ -39,5 +51,6 @@ for caption, matches in categories.items():
         if not relevant and not extra:
             st.write("No issues found.")
 st.subheader("All validation records")
+st.caption("Filter to duplicate identifiers, missing fields, invalid values and dates, or broken references. Each issue includes a row and correction guidance.")
 rows = filters([asdict(issue) for issue in issues], ("severity", "category"), "quality")
 show_rows(rows)

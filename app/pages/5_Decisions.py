@@ -3,7 +3,8 @@ import streamlit as st
 
 from app.state import audit, next_id, put
 from app.ui_helpers import (assessment_label, download_csv, label, question_label, save, select_assessment,
-                            select_vendor, show_issues, show_rows, start)
+                            select_vendor, show_issues, show_rows, start, decision_badge,
+                            severity_badge, status_badge)
 from src.config import ALLOWED_VALUES
 from src.decision_workflow import APPROVALS, evaluate_decision
 
@@ -18,7 +19,10 @@ vendors, assessments, _, risks, decisions, actions = ws.operations
 assessment = assessments[aid]
 result, scores, _ = risks[aid]
 bank = {row["question_id"]: row for row in ws.rows("question")}
-st.subheader("Calculated assessment result")
+st.subheader("Assessment summary")
+if result["final_rating"] in ("Critical", "High", "Medium", "Low"):
+    severity_badge(result["final_rating"])
+status_badge("Incomplete" if result["completeness"] == "Incomplete" else "Valid")
 st.write(f"{assessment_label(assessment)} · Rating **{result['final_rating']}** · Completeness **{result['completeness']}**")
 for reason in result["calculation_trace"]:
     st.write(reason)
@@ -31,14 +35,33 @@ if result["confirmed_critical_failures"]:
     st.warning("There is a confirmed critical failure. Ordinary approval is prohibited.")
 
 st.subheader("Authorised human decision")
-st.caption("Use only fictional names and roles. A saved record captures the decision entered by the user.")
+st.caption("A person with the required authority must review, enter and confirm the decision. No decision is made automatically.")
 records = [row for row in ws.rows("decision") if assessments[row["assessment_id"]]["vendor_id"] == vid]
 recorded = next((row for row in records if row["assessment_id"] == aid), {})
-st.write(f"Selected assessment decision · **{recorded.get('outcome', 'Awaiting decision')}**")
+outcome_label = recorded.get("outcome", "Awaiting decision")
+decision_badge(outcome_label)
+st.write(f"Selected assessment decision · **{outcome_label}**")
 if aid in decisions and decisions[aid]["expired_approval"]:
+    status_badge("Expired")
     st.warning("Expired approval")
 if recorded and recorded["decision_date"] > ws.report_date.isoformat():
     st.info("The recorded decision is dated after the selected report date.")
+if recorded:
+    audit = next((event for event in ws.rows("reviewer_audit_entry")
+                  if event["table_name"] == "decision" and event["record_id"] == recorded["decision_id"]
+                  and event["action"] == "Decided" and event["note"].startswith("Fictional decision-maker")), None)
+    decision_maker = audit["note"].split(". Selected actions:", 1)[0].removeprefix("Fictional decision-maker: ") if audit else "Name unavailable in source CSV"
+    st.markdown("**Decision record details**")
+    left, right = st.columns(2)
+    with left:
+        st.write(f"Decision-maker · {decision_maker}")
+        st.write(f"Role · {recorded['decision_maker_role']}")
+        st.write(f"Justification · {recorded['justification']}")
+    with right:
+        st.write(f"Conditions · {recorded['conditions'] or 'None recorded'}")
+        st.write(f"Condition deadline · {recorded['condition_deadline'] or 'Not applicable'}")
+        st.write(f"Review date · {recorded['review_date'] or 'Not recorded'}")
+        st.write(f"Expiry date · {recorded['expiry_date'] or 'Not recorded'}")
 with st.expander("Current and historical decision records", expanded=True):
     show_rows([dict(row, selection="Current" if row["assessment_id"] == vendors[vid]["current_assessment_id"]
                     else "Historical", decision_maker=next((event["note"] for event in ws.rows("reviewer_audit_entry")

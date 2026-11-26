@@ -3,12 +3,13 @@ import streamlit as st
 
 from app.state import audit, next_id, put
 from app.ui_helpers import (download_csv, label, question_label, save, select_assessment,
-                            select_vendor, show_rows, start, vendor_label)
+                            select_vendor, show_rows, start, vendor_label, evidence_badge,
+                            severity_badge)
 from src.config import ALLOWED_VALUES
 from src.risk_scoring import parse_options, score_question
 from src.schema import PHASE2_SCHEMAS
 
-ws = start("Evidence review", "Filter the records, check what each question requires, and record the reviewer’s conclusion for fictional evidence.")
+ws = start("Evidence review", "Compare the vendor’s claim with the reviewer’s answer and the effective evidence status. Record review changes for fictional evidence in this session.")
 if ws.operations is None:
     st.stop()
 vid = select_vendor(ws, "evidence")
@@ -18,10 +19,19 @@ if not aid:
 
 _, assessments, _, risks, _, _ = ws.operations
 historical = assessments[aid]["status"] == "Superseded"
+assessment_risk = risks[aid][0]["final_rating"]
+if assessment_risk in ("Critical", "High", "Medium", "Low"):
+    st.markdown("**Assessment risk rating**")
+    severity_badge(assessment_risk)
 bank = {row["question_id"]: row for row in ws.rows("question")}
 evidence = {row["question_id"]: row for row in ws.rows("evidence_item") if row["assessment_id"] == aid}
 responses = {row["question_id"]: row for row in ws.rows("response") if row["assessment_id"] == aid}
 statuses = ALLOWED_VALUES[("evidence_item", "status")]
+st.caption("Evidence status legend")
+legend = st.columns(5)
+for col, status_label in zip(legend, ("Missing", "Received", "Accepted", "Rejected", "Expired")):
+    with col:
+        evidence_badge(status_label)
 selected = st.multiselect("Evidence status", statuses, help="Filters by effective status on the report date.")
 search = st.text_input("Search question ID").strip().casefold()
 scores = {qid: score_question(question, responses.get(qid), evidence.get(qid), ws.report_date)
@@ -48,6 +58,7 @@ for qid in choices:
         **{field: item.get(field, "") for field in
            ("received_date", "expiry_date", "reviewer_role", "reference_path")},
     ))
+st.subheader("Evidence records")
 show_rows(summary)
 download_csv(ws, "evidence_item", list(evidence.values()), "Download updated evidence records")
 download_csv(ws, "reviewer_audit_entry", [row for row in audit_rows if row["record_id"] in
@@ -60,11 +71,17 @@ question, old, response = bank[qid], evidence.get(qid, {}), responses[qid]
 score = scores[qid]
 st.write(f"Evidence required · {question['evidence_description']}")
 st.write(f"Acceptance criteria · {question['acceptance_criteria']}")
-st.write(f"Vendor claim · {response['vendor_claim'] or 'Unanswered'}")
-st.write(f"Reviewer answer · {response['verified_answer'] or 'Not recorded'}")
-st.write(f"Reviewer note · {response['reviewer_note'] or 'None'}")
-st.write("Evidence status")
-from app.ui_helpers import evidence_badge
+st.subheader("Claim and reviewer assessment")
+claim_col, review_col = st.columns(2)
+with claim_col:
+    st.markdown("**Vendor claim**")
+    st.info(response["vendor_claim"] or "No vendor claim recorded")
+with review_col:
+    st.markdown("**Reviewer verification**")
+    st.write(f"Verification · {response['reviewer_verified']}")
+    st.write(f"Reviewer answer · {response['verified_answer'] or 'Not recorded'}")
+    st.write(f"Reviewer note · {response['reviewer_note'] or 'None'}")
+st.markdown("**Effective evidence status**")
 evidence_badge(score["effective_evidence_status"])
 if (score["effective_evidence_status"] == "Expired" and old.get("expiry_date") and
         old["expiry_date"] < ws.report_date.isoformat()):

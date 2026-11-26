@@ -1,4 +1,6 @@
 """Shared navigation, selection, messages and display components."""
+from html import escape
+
 import streamlit as st
 
 from app.export_helpers import table_csv
@@ -12,6 +14,84 @@ PAGES = (
     ("Reassessment", "7_Reassessment"), ("Reports", "8_Reports"),
     ("Data Quality", "9_Data_Quality"),
 )
+
+PALETTE = {
+    "Critical": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "High": ("#7C2D12", "#FFEDD5", "#C2410C"),
+    "Medium": ("#713F12", "#FEF3C7", "#A16207"),
+    "Low": ("#14532D", "#DCFCE7", "#15803D"),
+    "Approved": ("#14532D", "#DCFCE7", "#15803D"),
+    "Conditionally Approved": ("#713F12", "#FEF3C7", "#A16207"),
+    "Rejected": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Awaiting decision": ("#1E3A8A", "#DBEAFE", "#1D4ED8"),
+    "Awaiting Decision": ("#1E3A8A", "#DBEAFE", "#1D4ED8"),
+    "Overdue": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Expired": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Missing": ("#7C2D12", "#FFEDD5", "#C2410C"),
+    "Missing Evidence": ("#7C2D12", "#FFEDD5", "#C2410C"),
+    "Received": ("#1E3A8A", "#DBEAFE", "#1D4ED8"),
+    "Accepted": ("#14532D", "#DCFCE7", "#15803D"),
+    "Accepted Evidence": ("#14532D", "#DCFCE7", "#15803D"),
+    "Rejected Evidence": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Incomplete": ("#713F12", "#FEF3C7", "#A16207"),
+    "Valid": ("#14532D", "#DCFCE7", "#15803D"),
+    "Invalid": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Reassessment due": ("#713F12", "#FEF3C7", "#A16207"),
+    "In progress": ("#1E3A8A", "#DBEAFE", "#1D4ED8"),
+    "Assessed": ("#14532D", "#DCFCE7", "#15803D"),
+    "PASS": ("#14532D", "#DCFCE7", "#15803D"),
+    "WARNING": ("#713F12", "#FEF3C7", "#A16207"),
+    "ERROR": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "Warning": ("#713F12", "#FEF3C7", "#A16207"),
+    "Error": ("#7F1D1D", "#FEE2E2", "#B91C1C"),
+    "INCOMPLETE": ("#713F12", "#FEF3C7", "#A16207"),
+}
+
+
+def _badge(label, default=("#1F2937", "#F3F4F6", "#9CA3AF")):
+    value = str(label)
+    text, bg, border = PALETTE.get(value, default)
+    st.markdown(
+        f'<span class="status-badge" aria-label="{escape(value)}" '
+        f'style="--badge-text:{text};--badge-bg:{bg};--badge-border:{border}">'
+        f'{escape(value)}</span>', unsafe_allow_html=True,
+    )
+
+
+def severity_badge(label):
+    return _badge(label)
+
+
+def decision_badge(label):
+    return _badge(label)
+
+
+def evidence_badge(label):
+    aliases = {"Missing": "Missing Evidence", "Accepted": "Accepted Evidence",
+               "Rejected": "Rejected Evidence"}
+    return _badge(aliases.get(str(label), label))
+
+
+def status_badge(label):
+    return _badge(label)
+
+def metric_card(label, value, help_text=None):
+    st.metric(label, value, help=help_text)
+
+def section_header(title, description=None):
+    st.subheader(title)
+    if description: st.caption(description)
+
+def show_validation_message(result):
+    passed = getattr(result, "passed", bool(result))
+    (st.success if passed else st.error)("Valid · Validation passed" if passed else "Invalid · Validation issues found")
+
+def show_source_ids(ids):
+    ids = list(ids)
+    if ids: st.caption("Source records · " + ", ".join(ids))
+
+def show_calculation_explanation(lines):
+    for line in lines: st.write(line)
 
 HELP = {
     "Criticality": "How much the organisation depends on the vendor and what the vendor can access.",
@@ -35,7 +115,7 @@ def start(title, instructions):
                                          help="Changes overdue and expiry flags for this session."))
         st.caption(f"Fictional data directory · {DEFAULT_DATA_DIR.name}")
         st.write(f"Selected vendor · {vendor_label(ws, ws.vendor_id)}")
-        st.write(f"Validation · {'Passed' if ws.validation.passed and not ws.decision_errors else 'Issues found'}")
+        status_badge("Valid" if ws.validation.passed and not ws.decision_errors else "Invalid")
         st.caption("Use the page list to move between tasks.")
         if st.button("Reset session", help="Clears your unsaved edits and reloads the fictional fixtures."):
             st.session_state.clear()
@@ -43,9 +123,6 @@ def start(title, instructions):
     st.title(title)
     with st.expander("How to use this page"):
         st.write(instructions)
-        with st.container():
-            for term, meaning in HELP.items():
-                st.markdown(f"**{term}** · {meaning}")
     for message in ws.messages:
         st.success(message)
     ws.messages.clear()
@@ -107,8 +184,10 @@ def select_assessment(ws, vid, key):
 def show_issues(issues):
     for issue in issues:
         display = st.error if issue.severity == "ERROR" else st.warning
+        severity_badge(issue.severity.title())
+        status_badge("Invalid" if issue.severity == "ERROR" else "Incomplete")
         display(f"{issue.file.rsplit('/', 1)[-1]}, row {issue.row}, {label(issue.field)} "
-                f"({issue.value or 'blank'}) · {issue.rule}. {issue.correction}")
+                f"({issue.value or 'blank'}) · {issue.rule}. Correction: {issue.correction}")
 
 
 def save(ws, candidate, message):
@@ -131,10 +210,13 @@ def show_rows(rows):
 
 def filters(rows, fields, prefix, formatters=None):
     formatters = formatters or {}
-    for field in fields:
+    column_count = min(4, len(fields))
+    columns = st.columns(column_count) if column_count else []
+    for index, field in enumerate(fields):
         choices = sorted({row[field] for row in rows if row.get(field) not in (None, "")})
-        selected = st.multiselect(label(field), choices, key=f"{prefix}_{field}",
-                                  format_func=formatters.get(field, str))
+        with columns[index % column_count]:
+            selected = st.multiselect(label(field), choices, key=f"{prefix}_{field}",
+                                      format_func=formatters.get(field, str))
         if selected:
             rows = [row for row in rows if row.get(field) in selected]
     return rows
@@ -145,7 +227,9 @@ def download_csv(ws, name, rows, caption, key=None):
 
 
 def show_criticality(result):
-    st.write(f"Final classification · **{result.final_band}**")
+    st.markdown("**Criticality classification**")
+    severity_badge(result.final_band)
+    st.write(f"Final classification · **{result.final_band}** · {result.total_points} points")
     for item in result.calculation_trace[2:]:
         st.write(item)
     for error in result.errors:

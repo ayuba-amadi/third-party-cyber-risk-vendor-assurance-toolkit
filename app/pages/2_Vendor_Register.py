@@ -2,30 +2,48 @@ import csv
 from io import StringIO
 import streamlit as st
 
-from app.ui_helpers import download_csv, filters, label, save, select_vendor, show_criticality, show_issues, show_rows, start, vendor_label
+from app.ui_helpers import (download_csv, label, save, select_vendor, severity_badge,
+                            show_criticality, show_issues, show_rows, start, status_badge, vendor_label)
 from src.config import ALLOWED_VALUES
 from src.criticality import FACTORS
 from src.schema import PHASE2_SCHEMAS
 
-ws = start("Vendor register", "Search the register or select a vendor. Enter fictional details, validate the record, and review its criticality before saving it in this session.")
-search = st.text_input("Search by vendor ID or name").strip().casefold()
-register = [dict(row, criticality=ws.criticality_preview(row).final_band) for row in ws.rows("vendor")
-            if search in f"{row['vendor_id']} {row['vendor_name']}".casefold()]
-register = filters(register, ("category", "criticality", "assessment_status"), "register")
+ws = start("Vendor register", "Search and filter the fictional supplier list. Select a vendor to review records or edit its details in this session.")
+search_col, category_col, criticality_col, status_col = st.columns((2, 1, 1, 1))
+with search_col: search = st.text_input("Search vendors", placeholder="Vendor ID or name").strip().casefold()
+all_vendors = [dict(row, criticality=ws.criticality_preview(row).final_band) for row in ws.rows("vendor")]
+with category_col:
+    selected_category = st.multiselect("Category", sorted({row["category"] for row in all_vendors}), key="register_category")
+with criticality_col:
+    selected_criticality = st.multiselect("Criticality", ("Critical", "High", "Medium", "Low"), key="register_criticality")
+with status_col:
+    selected_status = st.multiselect("Assessment status", sorted({row["assessment_status"] for row in all_vendors}), key="register_assessment_status")
+register = [row for row in all_vendors
+            if search in f"{row['vendor_id']} {row['vendor_name']}".casefold()
+            and (not selected_category or row["category"] in selected_category)
+            and (not selected_criticality or row["criticality"] in selected_criticality)
+            and (not selected_status or row["assessment_status"] in selected_status)]
 show_rows([{key: row[key] for key in ("vendor_id", "vendor_name", "category", "criticality", "assessment_status")}
            for row in register])
+download_csv(ws, "vendor", [next(row for row in ws.rows("vendor") if row["vendor_id"] == item["vendor_id"])
+                             for item in register], "Download filtered vendor list", "filtered_vendor_export")
 vid = select_vendor(ws, "register", [row["vendor_id"] for row in register])
 selected = next((row for row in ws.rows("vendor") if row["vendor_id"] == vid), {})
 if selected:
+    current_criticality = ws.criticality_preview(selected)
+    severity_badge(current_criticality.final_band)
+    status_badge(selected["assessment_status"])
+    st.caption(f"{selected['vendor_name']} · {selected['category']} · Current assessment {selected['current_assessment_id'] or 'not started'}")
     st.page_link("pages/3_Assessment.py", label="Open selected vendor for assessment")
     with st.expander("Linked business services"):
         service_ids = {row["service_id"] for row in ws.rows("vendor_service_link") if row["vendor_id"] == vid}
         show_rows([row for row in ws.rows("business_service") if row["service_id"] in service_ids])
     with st.expander("Why this criticality?"):
-        show_criticality(ws.criticality_preview(selected))
+        show_criticality(current_criticality)
     download_csv(ws, "vendor", [selected], "Download vendor record", "selected_vendor_export")
 
-st.subheader("Add or edit a fictional vendor")
+st.subheader("Vendor details")
+st.caption("Add a fictional supplier, import one complete vendor row, or edit the selected record. Changes stay in this session until downloaded.")
 modes = ["Add vendor", "Import one CSV record"] + (["Edit selected vendor"] if selected else [])
 mode = st.radio("Record entry", modes)
 schema = PHASE2_SCHEMAS["vendor"]

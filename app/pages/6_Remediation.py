@@ -2,9 +2,9 @@ from copy import deepcopy
 from datetime import timedelta
 import streamlit as st
 
-from app.state import put
+from app.state import next_id, put
 from app.ui_helpers import (assessment_label, download_csv, filters, label, question_label, save, show_rows, start,
-                            vendor_label)
+                            vendor_label, severity_badge, status_badge)
 from src.config import ALLOWED_VALUES
 from src.loader import load_report_date
 
@@ -14,6 +14,19 @@ if ws.operations is None:
 _, assessments, _, _, decisions, actions = ws.operations
 bank = {row["question_id"]: row for row in ws.rows("question")}
 records = [dict(row, overdue="Yes" if row["action_overdue"] else "No") for row in actions]
+st.subheader("Action overview")
+summary_cols = st.columns(4)
+summary_data = (
+    ("Open actions", sum(bool(row["action_id"]) and row["action_status"] != "Closed" for row in records), None),
+    ("Closed actions", sum(row["action_status"] == "Closed" for row in records), "Valid"),
+    ("Overdue actions", sum(bool(row["action_overdue"]) for row in records), "Overdue"),
+    ("Open findings", sum(row["finding_status"] == "Open" for row in records), "Incomplete"),
+)
+for col, (title, value, badge) in zip(summary_cols, summary_data):
+    with col:
+        if badge:
+            status_badge(badge)
+        st.metric(title, value)
 records = filters(records, ("vendor_id", "severity", "finding_status", "action_status", "overdue",
                             "assessment_id", "responsible_party"), "remediation",
                   {"vendor_id": lambda vid: vendor_label(ws, vid),
@@ -21,6 +34,7 @@ records = filters(records, ("vendor_id", "severity", "finding_status", "action_s
 view = st.radio("Show records", ("All findings and actions", "Open findings", "Overdue actions",
                                 "Actions due soon", "Closed actions", "Unresolved conditions"))
 if view == "Unresolved conditions":
+    st.subheader("Conditions linked to decisions")
     filtered_aids = {row["assessment_id"] for row in records}
     show_rows([dict(row, vendor=vendor_label(ws, row["vendor_id"])) for row in decisions.values()
                if row["open_condition"] and row["assessment_id"] in filtered_aids])
@@ -36,6 +50,9 @@ elif view == "Actions due soon":
 elif view == "Closed actions":
     records = [row for row in records if row["action_status"] == "Closed"]
 
+st.subheader(view)
+if view == "Overdue actions":
+    status_badge("Overdue")
 show_rows([dict(vendor=vendor_label(ws, row["vendor_id"]),
                 question=question_label(bank[row["question_id"]]) if row["question_id"] in bank else "Assessment-wide",
                 **{field: row[field] for field in ("finding_id", "assessment_id", "severity", "description",
@@ -68,6 +85,10 @@ if not findings:
     st.stop()
 fid = st.selectbox("Finding", list(findings), format_func=lambda key: f"{key} · {findings[key]['description']}")
 finding = findings[fid]
+st.subheader("Finding and corrective action details")
+severity_badge(finding["severity"])
+status_badge("Valid" if finding["status"] == "Closed" else "Incomplete")
+st.write(f"Finding · {finding['finding_id']} · {finding['description']}")
 if assessments[finding["assessment_id"]]["status"] == "Superseded":
     st.info("This historical finding remains available for reference.")
     st.stop()
