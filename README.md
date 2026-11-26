@@ -12,7 +12,7 @@ Supplier assurance often spans several spreadsheets and email threads. That make
 |---|---|
 | GRC analyst | Register suppliers, assess criticality, review evidence and track follow-up. |
 | Data protection officer | Review data access, sensitive information and evidence gaps. |
-| QA tester | Run the regression suite, independently reproduce scenarios and record evidence. |
+| QA tester | Run the browser test matrix and record evidence. Use regression checks as supplementary evidence. |
 | Developer | Run the Python engine and Streamlit interface, then verify changes against the fixtures. |
 | Presenter | Rehearse the ten required demonstrations with the fictional baseline. |
 | Supervisor or public visitor | Review the methodology, tested results, limitations and contribution record. |
@@ -31,7 +31,7 @@ Python 3.12 is the documented local environment. Streamlit provides the browser 
 
 ## Live application
 
-- [Open the fictional-data Streamlit demo](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+- [Open the Streamlit toolkit](https://icdfa-vendor-assurance-toolkit.streamlit.app)
 
 ## GitHub repository
 
@@ -47,10 +47,10 @@ cd third-party-cyber-risk-vendor-assurance-toolkit
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8501
+python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8502
 ```
 
-Open `http://localhost:8501`. Use the sidebar report date **18 November 2026** to reproduce the baseline. Use **Reset session** before switching to another independent scenario. Stop Streamlit with Ctrl+C. [User guide](docs/user_guide.md)
+Open `http://127.0.0.1:8502`. Use the sidebar report date **18 November 2026** to reproduce the baseline. Use **Reset session** before switching to another independent scenario. Stop Streamlit with Ctrl+C. [User guide](docs/user_guide.md)
 
 ## Project architecture
 
@@ -106,21 +106,15 @@ flowchart LR
 
 ## Testing instructions
 
-Run the checks from the repository root in a clean QA checkout. The management-report command writes generated files under `reports/phase4/`. Keep the original checkout and historical evidence intact.
+The Streamlit web application is the primary operational toolkit and the mandatory surface for manual QA. Use the browser to navigate, enter or import fictional vendors, validate inputs, review criticality, process questionnaire responses, review evidence, inspect risk, record decisions, track remediation, compare reassessments, generate reports, review data quality, and test responsiveness and usability. Use the application controls first. Browser QA requires no CSV editing.
 
-```bash
-source .venv/bin/activate
-./.venv/bin/python -m unittest discover -s tests -v
-./.venv/bin/python sample-data/validate_fixture.py
-./.venv/bin/python -m src.cli management-report --as-of 2026-11-18
-git diff --check
-```
+Start with the hosted toolkit. If unavailable, use the local Streamlit application at `http://127.0.0.1:8502` and record the outage and fallback URL. Capture observable browser evidence before marking PASS. Terminal and Python commands are supplementary regression and integrity checks only. A passing terminal result cannot establish that the corresponding browser workflow works. [Hosted toolkit](https://icdfa-vendor-assurance-toolkit.streamlit.app)
 
-Group 3 coordinates testing. Every project member is encouraged to test and report observations. Record evidence before marking a case PASS. Run all nine pages and the ten demonstrations, review downloads and reconcile the totals. The linked QA records describe the revisions identified in those files. Record fresh results for the release candidate. [Testing index](tests/README.md) · [Test execution guide](03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md) · [Test register](tests/TEST_REGISTER.md) · [QA sign-off](tests/QA_SIGNOFF.md)
+Group 3 coordinates testing. Run UI-001 through UI-016 on the candidate version and log each run. [Browser test matrix](03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md#browser-test-matrix) · [Execution log](reports/qa/TEST_EXECUTION_LOG.csv) · [Supplementary checks](tests/README.md)
 
 ## Reporting defects
 
-Use the defect template with the tested commit, fictional record IDs, exact steps, expected and actual results, impact and evidence. Log the defect and link it to the case. Retest each correction. Release requires no unresolved Critical or High defects, documented acceptance of Medium defects and sign-off against the tested commit. [Defect report template](03-testing-and-quality-assurance/DEFECT_REPORT_TEMPLATE.md) · [Defect register](tests/DEFECT_REGISTER.md)
+Use the defect template with the tested commit, fictional record IDs, exact steps, expected and actual results, impact and evidence. Record every failure in the current defect register and link it to the case. Chat can alert the team. The register is the required record. Retest each correction. Release requires no unresolved Critical or High defects, documented acceptance of Medium defects and sign-off against the tested commit. [Defect report template](03-testing-and-quality-assurance/DEFECT_REPORT_TEMPLATE.md) · [Current defect register](reports/qa/DEFECT_REGISTER.md)
 
 ## Contribution rules
 
@@ -128,7 +122,7 @@ Agree on a named owner and reviewer. Use a descriptive commit and the assigned p
 
 ## Fictional-data and privacy controls
 
-Use fictional names, records and evidence references in GitHub, the hosted demo, screenshots, exports and defect reports. Keep credentials, tokens, personal information and real vendor evidence out of all public materials. Session edits stay in the working copy. Download any fictional work you need before resetting the session. Use an access-restricted organisational system for real supplier records.
+Use fictional names, records and evidence references in GitHub, the hosted toolkit, screenshots, exports and defect reports. Keep credentials, tokens, personal information and real vendor evidence out of all public materials. Session edits stay in the working copy. Download any fictional work you need before resetting the session. Use an access-restricted organisational system for real supplier records.
 
 ## Deployment and rollback overview
 
@@ -136,7 +130,7 @@ Use Streamlit Community Cloud with the reviewed revision and `app/streamlit_app.
 
 ## Limitations
 
-The toolkit is a fictional-data demonstration with session-local edits, user-entered role names and metadata-only evidence references. It does not enforce production identity or access controls. Creating a new reassessment version requires controlled CSV entry, and historical reconstruction is limited to retained inputs. Team-defined scoring supports reviewer judgement. It carries no certification or compliance determination.
+The working vendor-assurance toolkit uses fictional data, session-local edits, user-entered role names and metadata-only evidence references. It does not enforce production identity or access controls. Creating a new reassessment version requires controlled CSV entry, and historical reconstruction is limited to retained inputs. Team-defined scoring supports reviewer judgement. It carries no certification or compliance determination.
 
 ## Expected deliverables
 

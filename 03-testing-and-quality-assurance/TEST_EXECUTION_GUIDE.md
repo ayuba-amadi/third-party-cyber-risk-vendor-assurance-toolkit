@@ -1,25 +1,215 @@
-# QA test execution guide
+# Browser QA execution guide
 
-**27 November–1 December 2026, inclusive. Deadline 1 December 2026, 23:59 WAT (UTC+1).** Group 3 coordinates testing and independent review. Every project member is encouraged to test and report observations.
+**27 November–1 December 2026, inclusive. Deadline 1 December 2026, 23:59 WAT (UTC+1).**
 
-Choose a candidate SHA and assign case IDs, testers and reviewers before running checks. Use the [QA workplan](WORKPLAN.md), [test case template](TEST_CASE_TEMPLATE.md) and [defect report template](DEFECT_REPORT_TEMPLATE.md). Set the report date to **18 November 2026** unless a case calls for a different date. Reset the session between independent cases. Record browser, viewport, OS, Python and Streamlit versions so reviewers can reproduce the run.
+The Streamlit web application is the primary operational toolkit and the mandatory surface for manual QA. It is the working vendor-assurance toolkit using fictional data. Use the browser to navigate, enter or import fictional vendor records, validate inputs, review criticality, process questionnaire responses, review evidence, inspect risk, record decisions, track remediation, compare reassessments, generate reports, review data quality and test responsive behaviour and usability.
 
-## A. Environment and startup
+## Getting started
 
-1. Use a clean checkout of the candidate SHA. Follow the [quick start](../README.md#quick-start) to create or activate `.venv` and install dependencies. Record `git rev-parse HEAD`, `git status --short` and the interpreter version. Use a disposable checkout for commands that write under `reports/`. Keep evidence outside that checkout until it is reviewed.
-2. Run `./.venv/bin/python -c 'import streamlit; import app.streamlit_app; import src.cli'`. Expect exit status 0.
-3. Start the app with `./.venv/bin/python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8501`. In a separate Bash terminal, run the following. Expect HTTP success and an exact body of `ok`.
+1. Group 3 assigns a tester and reviewer and identifies the candidate commit. Ask the deployment owner which revision is hosted if the interface does not show it. Record an unknown version explicitly and establish the exact commit before sign-off.
+2. Open the hosted toolkit at `https://icdfa-vendor-assurance-toolkit.streamlit.app`. If unavailable, save what the browser shows, record the time and reason, and open `http://127.0.0.1:8502` after starting the local app. UI-016 requires the hosted URL. [Hosted toolkit](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+3. Ask the QA coordinator to start the local app for you, or follow the [quick start](../README.md#quick-start). From the candidate checkout with dependencies installed, run `./.venv/bin/python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8502`, then open the local URL in your browser.
+4. Use the sidebar **Report date** of **18 November 2026** for baseline scenarios. Use **Reset session** between independent cases. Use the application controls first. You do not need to edit CSV files for browser QA. Use an approved fictional input file when testing the import control.
+5. Use fictional data only. Keep real supplier evidence, credentials, personal data and confidential screenshots out of uploads, logs, downloads and attachments.
 
-   ```bash
-   set -o pipefail
-   curl -fsS http://127.0.0.1:8501/_stcore/health | cmp - <(printf 'ok')
-   ```
+## Recording results
 
-4. Open the local URL. Confirm that the app starts with the bundled CSVs and no secrets or configured external service. The dependency installation and hosted demo separately use network access. Complete the privacy checks in L.
+Use the [test case template](TEST_CASE_TEMPLATE.md) and append a row to the [execution log](../reports/qa/TEST_EXECUTION_LOG.csv) for every attempt. Include the test ID, tester name or role, WAT date and time, browser and device size, URL used, commit or deployment version, preconditions, exact browser steps, expected and actual results, status, screenshot or downloaded evidence path, defect ID if applicable, and retest result. Include both URLs and the reason if you switch to local.
 
-## B. Automated regression
+Save screenshots as `QA-<TEST-ID>-<short-description>.png`. Save downloads with their original extension. Keep the original capture when retesting. [Evidence folders and examples](../reports/qa/evidence/)
 
-From the repository root, run the following commands. Capture stdout, stderr and each exit status separately. Use `TZ=Africa/Lagos date '+%Y-%m-%d %H:%M:%S %Z'` to timestamp the run.
+- **PASS** requires observable browser evidence that the expected result occurred.
+- **FAIL** means an observed result differs from the expected result. Record every failure in the current defect register and link its ID from the execution row.
+- **BLOCKED** means a prerequisite prevents execution. Record the reason and any evidence, and identify who can unblock it.
+- **NOT APPLICABLE** requires a specific reason the check does not apply.
+
+Chat can alert the team. The defect register is the required record. Retest every correction in the browser and append a new execution row with its evidence and tested commit. Release requires zero unresolved Critical or High defects and documented acceptance of Medium defects. Independent sign-off must identify the exact tested commit. Preserve previous QA and completed phase records. [Current defect register](../reports/qa/DEFECT_REGISTER.md) · [Defect template](DEFECT_REPORT_TEMPLATE.md) · [QA handoff](../governance/HANDOFFS.md)
+
+## Browser test matrix
+
+Each case follows the same eight steps. Use the controls available in the candidate. If required coverage needs a prepared fictional record, ask the QA coordinator for one and record any blocked coverage.
+
+### UI-001 — Open the toolkit
+
+1. **What this test checks**. The application opens and shows its starting page.
+2. **Where to go**. Open the hosted toolkit first. If it is unavailable, record the attempt, start the local app using Getting started and open the fallback URL.
+3. **What to select**. Wait for **Dashboard**. Find the project title, sidebar and fictional-data notice.
+4. **What to enter**. No values are needed.
+5. **What should happen**. The Dashboard loads without a traceback. The title, sidebar and fictional-data notice are visible.
+6. **What screenshot or file to save**. Save `QA-UI-001-dashboard-loaded.png`. If you used the fallback, also capture the hosted error.
+7. **How to record the result**. Log the URL, version, load result, and the outage and fallback details if applicable.
+8. **What to do if it fails**. Capture the failed page, record the result and link the startup or display defect.
+
+### UI-002 — Navigate all pages
+
+1. **What this test checks**. Each sidebar page opens.
+2. **Where to go**. Start on **Dashboard** with the sidebar open.
+3. **What to select**. Open these pages in order and wait for each heading and main content: **Dashboard**, **Vendor Register**, **Assessment**, **Evidence Review**, **Decisions**, **Remediation**, **Reassessment**, **Reports**, then **Data Quality**.
+4. **What to enter**. No values are needed. If a page needs a vendor, use a fictional baseline record.
+5. **What should happen**. All nine pages load without an application error.
+6. **What screenshot or file to save**. Save one screenshot per page, such as `QA-UI-002-vendor-register-loaded.png`.
+7. **How to record the result**. List all nine page results and evidence paths in UI-002.
+8. **What to do if it fails**. Record the affected page and the preceding navigation step in the defect register.
+
+### UI-003 — Vendor search and filtering
+
+1. **What this test checks**. Search and filters narrow the vendor table.
+2. **Where to go**. Open **Vendor Register**.
+3. **What to select**. Use **Search vendors** first. Clear search before testing **Category**, **Criticality** and **Assessment status** separately. Then apply them together.
+4. **What to enter**. Search for `VEN-003`, then `SalaryBridge`. Choose **Payroll**, the criticality shown for VEN-003 and **Reassessment due**. Try an incompatible combination too.
+5. **What should happen**. Each result matches the search and active filters. Excluding all rows shows an empty result.
+6. **What screenshot or file to save**. Save `QA-UI-003-filtered-table.png` and captures of the separate searches and filters.
+7. **How to record the result**. Log search text, filter choices and returned vendor IDs.
+8. **What to do if it fails**. Record the unexpected or missing rows and the exact filter combination.
+
+### UI-004 — New vendor validation
+
+1. **What this test checks**. The toolkit rejects missing required fields and duplicate vendor IDs.
+2. **Where to go**. Open **Vendor Register**.
+3. **What to select**. Choose **Add vendor** under **Record entry**. Complete the other required fields, leave the vendor name blank and select **Validate vendor**. Then try **Save vendor to session** and check the table. Fill in the name, replace the ID with an existing one, validate and repeat the save check.
+4. **What to enter**. Use `VEN-011` first, then duplicate `VEN-001`. Use fictional information for all other fields.
+5. **What should happen**. Both invalid entries show an error and are rejected. The vendor table and source data remain unchanged.
+6. **What screenshot or file to save**. Save `QA-UI-004-required-field-rejected.png` and `QA-UI-004-duplicate-vendor-rejected.png`.
+7. **How to record the result**. Log the exact errors and verify a search shows zero copies of VEN-011 and one unchanged VEN-001.
+8. **What to do if it fails**. Record any missing message, accepted invalid save or unexpected row.
+
+### UI-005 — Criticality recalculation
+
+1. **What this test checks**. A change in vendor access or dependency changes criticality when the scoring warrants it.
+2. **Where to go**. Open **Vendor Register**.
+3. **What to select**. Choose **Add vendor** and select **Calculate criticality**. Record the first result and explanation. Change access and dependency one at a time and calculate after each change.
+4. **What to enter**. Use fictional VEN-011 with **Internal** sensitivity, **None** access, dependency **2** and **Moderate** replaceability. Change access to **Privileged**, then dependency to **4**.
+5. **What should happen**. The classification changes only when a threshold is crossed. The explanation identifies the changed factor. The baseline is 5 points (Medium) and the final combination is 9 points (High).
+6. **What screenshot or file to save**. Save `QA-UI-005-criticality-before.png` and `QA-UI-005-criticality-explanation.png`.
+7. **How to record the result**. Log each input change, score, band and explanation.
+8. **What to do if it fails**. Record the settings and the unexpected score, band or explanation.
+
+### UI-006 — Questionnaire and completeness
+
+1. **What this test checks**. Missing and unverified questionnaire responses remain visible.
+2. **Where to go**. Open **Assessment** and select VEN-002 / ASMT-002.
+3. **What to select**. Use **Question domain** and **Question results** to review responses. Open **Questions needing completion or review** and **Domain counts**. Inspect AM-01 and DP-01 and the overall completeness result.
+4. **What to enter**. Use the baseline responses. If testing entry, select a fictional vendor claim and choose **Save answer to session**, then review its verification status.
+5. **What should happen**. Missing, incomplete and unverified responses remain visible and do not count as favourable evidence. ASMT-002 shows Incomplete with AM-01 and DP-01 needing attention.
+6. **What screenshot or file to save**. Save `QA-UI-006-incomplete-responses.png` with the completeness and review details.
+7. **How to record the result**. Log the assessment, questions, verification state and displayed completeness.
+8. **What to do if it fails**. Record which question or count was missing or incorrectly credited.
+
+### UI-007 — Evidence review
+
+1. **What this test checks**. Vendor claims, reviewer answers and effective evidence status are distinct.
+2. **Where to go**. Open **Evidence Review**, then select a vendor and assessment.
+3. **What to select**. Select an **Evidence question** and review the vendor claim, reviewer-verified answer and reviewer note. Use **Evidence status** to show **Missing**, **Accepted**, **Rejected** and **Expired** one at a time. Check each row's effective status. Switch among fictional assessments as needed.
+4. **What to enter**. Use baseline entries or a prepared fictional assessment. To check effective expiry, move **Report date** past the recorded expiry and restore it afterward.
+5. **What should happen**. The display separates what the vendor said from what the reviewer verified. Each filter returns only its effective status at the selected date.
+6. **What screenshot or file to save**. Save at least two different states, such as `QA-UI-007-missing-evidence.png` and `QA-UI-007-expired-evidence.png`.
+7. **How to record the result**. Log all four filter results and the claims, reviewer values and effective statuses you observed.
+8. **What to do if it fails**. Record the assessment, question, report date and incorrect status or unclear display.
+
+### UI-008 — Critical weakness protection
+
+1. **What this test checks**. A confirmed critical failure sets a minimum risk rating.
+2. **Where to go**. Open **Assessment** and choose VEN-009 and its current assessment.
+3. **What to select**. Open **Why this assessment result?** and find the confirmed critical weakness. Review other question results with strong responses and compare the calculated and final ratings.
+4. **What to enter**. Use the baseline at 18 November 2026 and inspect DP-01.
+5. **What should happen**. DP-01 is listed in the explanation and imposes at least High even when unrelated responses are strong.
+6. **What screenshot or file to save**. Save `QA-UI-008-critical-weakness-floor.png`.
+7. **How to record the result**. Log the question, raw and final ratings, and displayed reason.
+8. **What to do if it fails**. Record any missing weakness or rating below the required floor as a defect.
+
+### UI-009 — Human decision workflow
+
+1. **What this test checks**. A human must confirm a decision, and conditional approval requires conditions and a deadline.
+2. **Where to go**. Open **Decisions** and choose a current assessment awaiting a decision, such as VEN-004 / ASMT-011 with linked corrective action ACT-004.
+3. **What to select**. Review the calculated result and existing decision state. Choose **Conditionally Approved** to exercise the required fields. Select **Review decision summary** with conditions blank, then try with a deadline missing. Complete the valid preview and verify no decision exists yet. Select **Confirm decision in session** and review the record. Inspect the **Approved** and **Rejected** choices without replacing the baseline.
+4. **What to enter**. For ASMT-011, enter **Fictional Approver**, role **Risk director**, and justification **Fictional exception pending review of the subcontractor register**. Set decision date to `2026-11-18`, expiry date to `2027-01-01` and review date to `2026-12-01`. Select ACT-004. For the valid preview, enter **Review the subcontractor register and notification clause** as the condition and `2026-12-15` as the deadline.
+5. **What should happen**. Calculation and preview create no decision. The form rejects missing conditions or deadline. Explicit confirmation records the valid decision.
+6. **What screenshot or file to save**. Save `QA-UI-009-conditional-validation.png` and `QA-UI-009-confirmed-decision.png`, plus the preview state.
+7. **How to record the result**. Log the selected assessment, missing-field results, preview state and confirmed outcome.
+8. **What to do if it fails**. Record any automatic decision, missing validation or failure to save the confirmed decision.
+
+### UI-010 — Remediation tracking
+
+1. **What this test checks**. Open findings, overdue actions, closed actions and unresolved conditions are visible.
+2. **Where to go**. Open **Remediation**.
+3. **What to select**. Under **Show records**, choose **Open findings**, **Overdue actions**, **Closed actions** and **Unresolved conditions** in turn. Read each action's responsible party and deadline.
+4. **What to enter**. Use 18 November 2026 and look for overdue action ACT-001.
+5. **What should happen**. The filters show matching records. ACT-001 is overdue, and unresolved conditions are clearly identified.
+6. **What screenshot or file to save**. Save `QA-UI-010-overdue-action-visible.png` and capture unresolved conditions.
+7. **How to record the result**. Log each filter result and the relevant action IDs, parties and deadlines.
+8. **What to do if it fails**. Record any incorrectly included or omitted record, with the report date.
+
+### UI-011 — Reassessment and history
+
+1. **What this test checks**. A new assessment version preserves the previous assessment.
+2. **Where to go**. Open **Reassessment**.
+3. **What to select**. Select VEN-004. Find **Assessment version comparison** and **Criticality factors and evidence differences**. Compare the current and previous versions, risk, criticality, history and material-change triggers.
+4. **What to enter**. Use ASMT-004 and ASMT-011 and inspect CHG-001 and CHG-002.
+5. **What should happen**. Both versions remain available with their own results and decision history. The current version has a distinct ID. The browser displays saved versions and comparisons.
+6. **What screenshot or file to save**. Save `QA-UI-011-version-comparison.png` and the material-change details.
+7. **How to record the result**. Log both assessment IDs, their results and the associated event IDs.
+8. **What to do if it fails**. Record any missing version, mistaken change or overwritten historical result.
+
+### UI-012 — Report generation
+
+1. **What this test checks**. Reports show traceable tables and consistent downloads.
+2. **Where to go**. Open **Reports**.
+3. **What to select**. Choose **Individual vendor assessment**, select a vendor and assessment and choose **Generate report**. Review metadata, risk, findings, actions and decisions. Download CSV, JSON, Markdown and HTML and inspect them. Repeat for **Management summary** with **Include all vendors** selected. Trace management totals to their listed record IDs. Change **Report date** and regenerate to check the date and time-sensitive results.
+4. **What to enter**. Use VEN-003 and the baseline date first, then choose a different report date.
+5. **What should happen**. The tables and downloads agree on record IDs and report date. Management totals reconcile to the listed records without double-counting.
+6. **What screenshot or file to save**. Save `QA-UI-012-individual-report.png`, `QA-UI-012-management-report.png` and all four formats for both reports.
+7. **How to record the result**. Log the dates, vendor and assessment IDs, reconciled totals and download paths.
+8. **What to do if it fails**. Record the report type, date, format and exact mismatching rows or IDs.
+
+### UI-013 — Data quality
+
+1. **What this test checks**. Validation shows source-table checks and actionable error and warning details.
+2. **Where to go**. Open **Data Quality**.
+3. **What to select**. Choose **Run validation**. Review **Source table checks**, summary counts and **Validation findings**. Use the severity and category filters. Open issue groups and read the field, record and correction. Repeat using a coordinator-prepared fictional dataset with an invalid record if the valid baseline has no errors.
+4. **What to enter**. Start with the baseline. Use prepared fictional error or warning states where needed. Record any state you cannot reach.
+5. **What should happen**. The page distinguishes Valid, Invalid, Incomplete and warnings and gives actionable correction guidance for issues.
+6. **What screenshot or file to save**. Save `QA-UI-013-validation-result.png` and captures of each available issue state.
+7. **How to record the result**. Log the counts, affected source tables and exact correction guidance. Mark unavailable required coverage BLOCKED.
+8. **What to do if it fails**. Record missing or misleading guidance or incorrect states, including the record and field.
+
+### UI-014 — Session isolation
+
+1. **What this test checks**. Session edits clear when the session resets.
+2. **Where to go**. Open **Vendor Register** and start with a reset session.
+3. **What to select**. Choose **Add vendor**, validate and choose **Save vendor to session**. Search for the new ID and download the vendor record if available. Choose **Reset session**, reload **Vendor Register** and search again. Clear the search and compare the table with its starting state. If you downloaded a single-record CSV, choose **Import one CSV record**, upload it under **Fictional vendor CSV**, choose **Validate vendor**, and save it to the session. Confirm the record reappears, then reset again.
+4. **What to enter**. Use a new fictional ID such as VEN-011 and complete the required fields.
+5. **What should happen**. The fictional edit is visible before reset and absent afterward. The browser returns to the baseline. When a download is available, the exported one-record CSV can be imported through the browser and remains session-local.
+6. **What screenshot or file to save**. Save `QA-UI-014-vendor-before-reset.png`, `QA-UI-014-vendor-after-reset.png` and the available export.
+7. **How to record the result**. Log the ID, the results before and after reset, and the import and second reset if exercised. Source hashes can supplement the browser observations.
+8. **What to do if it fails**. Record any lost edit before reset or surviving edit afterward.
+
+### UI-015 — Mobile and accessibility review
+
+1. **What this test checks**. The toolkit works at mobile width and communicates statuses with readable labels.
+2. **Where to go**. Open the toolkit on a phone or set your browser to a viewport about 375 CSS pixels wide.
+3. **What to select**. Open the sidebar, navigate to **Vendor Register** and **Remediation**, and scroll the page and wide tables. Check readable labels, status text, wrapping and clipping. On a keyboard, use Tab, Shift+Tab, Enter and Space to check focus and controls.
+4. **What to enter**. Use a 375 px viewport and pick a view with status text and a wide table.
+5. **What should happen**. Critical content stays reachable, tables scroll horizontally, focus is visible and statuses are understandable without relying on colour alone.
+6. **What screenshot or file to save**. Save `QA-UI-015-mobile-layout.png` and any evidence of focus or clipping.
+7. **How to record the result**. Log the viewport dimensions, browser, pages checked and what worked with keyboard and touch or pointer.
+8. **What to do if it fails**. Record the size, page and exact control or content that becomes inaccessible.
+
+### UI-016 — Public deployment smoke test
+
+1. **What this test checks**. The public deployment serves the working toolkit.
+2. **Where to go**. Open `https://icdfa-vendor-assurance-toolkit.streamlit.app`.
+3. **What to select**. Load **Dashboard**, then open **Vendor Register**, **Evidence Review** and **Reports**. Check that each page renders its main controls and fictional data. Record the deployed version and any displayed deployment time.
+4. **What to enter**. Use baseline records. Record the WAT time you observed the deployment and the exact hosted URL.
+5. **What should happen**. The public toolkit renders all four pages without a traceback.
+6. **What screenshot or file to save**. Save page captures, including `QA-UI-016-hosted-dashboard.png`. Capture any hosted error.
+7. **How to record the result**. Log the observation time, page results, URL and deployed revision. Record separately if the deployment time is unavailable.
+8. **What to do if it fails**. Record an observed hosted error as FAIL or a missing prerequisite that prevents execution as BLOCKED. The local fallback cannot pass UI-016.
+
+## Supplementary terminal verification
+
+Terminal and Python commands provide regression and integrity evidence only. A passing terminal test does not replace the required browser test for the same workflow.
+
+Run the management report in a disposable copy of the tested revision because the command writes to `reports/phase4/`. Run the local health check with Streamlit running on port 8502.
 
 ```bash
 source .venv/bin/activate
@@ -27,114 +217,14 @@ source .venv/bin/activate
 ./.venv/bin/python sample-data/validate_fixture.py
 ./.venv/bin/python -m src.cli management-report --as-of 2026-11-18
 git diff --check
+curl http://127.0.0.1:8502/_stcore/health
 ```
 
-| Command | Expected result |
-|---|---|
-| unittest discovery | Exit 0, no failures or errors. Record totals and explain skips. |
-| Fixture validator | Exit 0 and PASS for structural checks and independent fixture comparisons. |
-| Dated management report | Exit 0 and PASS for 33 expected rows. Retain outputs from `reports/phase4/` as evidence for this run. |
-| Git diff check | Exit 0 with no whitespace errors. Inspect the diff separately for expected changes. |
-
-For each command record the **command, date and time in WAT, commit SHA, expected result, actual result, pass/fail status and evidence path**. Log missing dependencies or blocked environments and retest after correction.
-
-## C. Page loads
-
-Open every page from the sidebar. For each page verify the heading, sidebar, fictional data and absence of tracebacks or secrets. Set a filter or selection and check it survives ordinary reruns where supported. Verify the shared vendor and report date carry over on relevant pages. Revisit pages to confirm selections behave as documented for the session. Check the relevant download when offered and mark the download check NOT APPLICABLE with a reason on pages without one.
-
-| Page | Quick check |
-|---|---|
-| Dashboard | Verify portfolio metrics and attention flags against the baseline. |
-| Vendor Register | Find VEN-003 by search and filter, then open the vendor CSV. |
-| Assessment | Select a current assessment and view the question and domain results. |
-| Evidence Review | Open a missing or rejected item and check effective status. |
-| Decisions | Check recorded outcomes and the current assessment selection. |
-| Remediation | Filter overdue actions and open the corrective-action CSV. |
-| Reassessment | Compare ASMT-004 and ASMT-011 for VEN-004. |
-| Reports | Generate an individual and a management report. Open the exports. |
-| Data Quality | Open source table checks and review correction guidance for any issue. |
-
-Run all ten actions in the [demonstration script](../docs/demonstration_script.md) and the invalid-input demonstration in D and K. Map the observed results to the requirements in the [acceptance matrix](../reports/phase6/final_acceptance_matrix.md).
-
-## D. Vendor Register
-
-1. Search by existing vendor ID or name. Exercise category, criticality and assessment-status filters individually and together. Confirm matching IDs and the empty result when filters exclude all rows.
-2. Add fictional VEN-011 with Internal sensitivity, None access, dependency 2 and Moderate replaceability. Expect 5 points and Medium. Change access and dependency separately, observing the factor points after each change. With Privileged access and dependency 4, expect 9 points and High under the demonstration setup.
-3. Validate duplicate VEN-001 and a row with a missing required field. Expect rejection with a correction message and no new record. Exercise invalid options with the [invalid vendor cases](../sample-data/invalid_vendor_cases.csv) in a disposable fixture copy when the form restricts inputs to allowed choices.
-4. Save a valid new vendor and check the record is available in the same session and vendor export. Open a fresh session or reset to confirm that the bundled baseline remains unchanged.
-
-## E. Assessment and risk
-
-1. Select a questionnaire domain and question. Save a valid response. Try an invalid response in a disposable copy if the selector prevents invalid entry. Verify rejection. Remove a response only in a disposable copy and verify missing-response detection.
-2. Compare evidence completeness, verified question counts by domain, risk percentage, raw band and final rating with [expected risk](../sample-data/expected_risk.csv), [question scores](../sample-data/expected_question_scores.csv) and [domain completeness](../sample-data/expected_domain_completeness.csv).
-3. Verify ASMT-002 remains Incomplete with missing AM-01 and DP-01. Use VEN-009 to confirm that a DP-01 critical failure produces at least High even when unrelated scores are strong. Record the displayed calculation and override reason.
-
-## F. Evidence
-
-1. Test Missing, Received, Accepted, Rejected and Expired. Use baseline records or isolated session edits. Confirm each effective status and its impact on verification at the selected report date.
-2. Compare a vendor claim with a different reviewer answer. Check that the claim alone cannot verify a response. Try saving without the required reviewer note or required evidence reference. Expect an actionable rejection when the applicable rule requires either.
-3. Try invalid expiry dates and date ordering. Move the report date past a valid expiry to check effective Expired status. Capture the underlying recorded state and the effective display.
-
-## G. Decisions
-
-1. Inspect Approved, Conditionally Approved and Rejected baseline outcomes. For new entry use a current assessment awaiting decision. Check required fictional decision-maker and justification fields, date validity, conditional deadline and corrective-action linkage.
-2. Preview a valid decision. Verify that preview leaves the outcome unrecorded until explicit confirmation. Confirm and verify the decision record and the linked action where applicable.
-3. Change a questionnaire or calculate a favourable rating. Verify the calculation does not grant approval. Attempt ordinary approval for a confirmed critical failure and verify the workflow rejects it.
-
-## H. Remediation
-
-1. Filter open findings, open and closed actions, overdue actions, actions due soon and unresolved conditions. Verify ACT-001 is overdue on the baseline report date. Due soon covers the report date through the next 30 days.
-2. Enter or edit a fictional action in a session. Check responsible party and deadline, then attempt closure without a closure date. Record the corrective message, enter a valid closure date and verify the closed status.
-3. Download corrective actions and match the action ID, linked finding, responsible party, due date, closure date and status to the selected record.
-
-## I. Reassessment
-
-1. Select VEN-004 and compare ASMT-004 and ASMT-011. Check CHG-001 and CHG-002, changed criticality/risk, prior assessment details and the historical decision.
-2. Exercise a material-change trigger and reassessment due status. Use the existing events or a disposable fictional dataset for controlled version creation. Verify that the new current version links to the previous version, keeps its own result and leaves the earlier assessment and decision intact. Follow the controlled-entry steps in the [user guide](../docs/user_guide.md).
-
-## J. Reporting
-
-1. Generate an individual vendor report and a consolidated management report. Compare critical suppliers, unresolved weaknesses, overdue assessments and outstanding conditions to their source IDs. Check concentration for a supplier linked to multiple important services and reconcile each relevant total or distinct vendor set without double-counting.
-2. Compare management totals and IDs with [expected management results](../sample-data/expected_management.csv) and the [management reconciliation](../reports/phase6/reconciliation_report.md). Record the exact IDs behind any difference.
-3. Open CSV, JSON, Markdown and HTML downloads. Compare IDs, narrative and report dates across formats. Change the date and regenerate the report to verify overdue and expiry recalculation. Reset the date before comparing the baseline.
-
-## K. Data quality
-
-In a disposable copy, run one invalid case at a time. Check duplicate IDs, missing required values, invalid dates, invalid allowed values, broken foreign keys, incomplete assessments and invalid evidence states. Use the [validation and CLI guide](../src/README.md) and the bundled negative fixtures. Verify that error or warning messages identify the field or record, explain the issue and offer a correction.
-
-To exercise management-report mismatch, alter one expected comparison value in the disposable copy and rerun the dated report command. Expect a failed comparison and identify the mismatching row. Keep the mismatch evidence separate from baseline output.
-
-## L. Security and privacy
-
-Review the candidate source, configuration, fixture references, logs, screenshots and downloads for fictional data only. Confirm there are no committed credentials or tokens, personal details or real vendor evidence. Review the app's inputs and storage. Confirm it uses local CSVs and session state, with no hidden database or network write required for the core workflow. Validate hosted content separately using the public demo and record whether the deployed revision could be identified.
-
-Before running cases, capture hashes from the candidate checkout. Re-run the check afterward, including after a save, export and reset. Run both commands from the same repository root.
+Record the WAT time, tested commit, exit status, test count and relevant output. Expect 33 passing management comparisons. To check that browser sessions preserve source data, run the following from the candidate checkout before and after testing.
 
 ```bash
 hash_manifest=$(mktemp /tmp/toolkit-qa-csv.XXXXXX)
-git ls-files -z -- '*.csv' | xargs -0 sha256sum > "$hash_manifest"
-# Run the QA scenarios, then verify.
+git ls-files -z -- '*.csv' ':!reports/**' | xargs -0 sha256sum > "$hash_manifest"
+# Run the browser cases, then verify using the same manifest.
 sha256sum -c "$hash_manifest"
 ```
-
-The management command generates report CSVs. To test source immutability inside the disposable checkout, use the same manifest procedure there with `git ls-files -z -- '*.csv' ':!reports/**'`. The all-CSV manifest for the original checkout should still match. If a secret is suspected, report through the team's private channel and keep the value out of the public artifact.
-
-## M. Accessibility and usability
-
-Use a desktop viewport and a mobile viewport, such as 375 px wide. Verify the light-grey background, readable contrast, clear project title, navigation groups and understandable instructions. Navigate with Tab, Shift+Tab, Enter and Space. Check visible focus and written labels alongside colour cues. Confirm cards align on desktop and stack or wrap on mobile, including Remediation badges. Confirm the page stays within its viewport and wide tables can be scrolled horizontally without clipping. Check consistent table-column alignment, centred headings and left-aligned long descriptions, questions and mixed report Value columns.
-
-## Evidence, defects and sign-off
-
-1. Keep evidence in a new run location named for the candidate SHA and WAT date. Use the case ID in filenames and link the log, screenshot or export. Keep the expected result and initial observation when adding retest results. The existing [test register](../tests/TEST_REGISTER.md), [defect register](../tests/DEFECT_REGISTER.md) and [QA sign-off](../tests/QA_SIGNOFF.md) remain evidence for their recorded versions.
-2. Use PASS only with observed evidence. Use FAIL for a mismatch, BLOCKED when a prerequisite prevents execution, and NOT APPLICABLE with a reason when a check is outside the case. Record defects with impact and severity. Retest every correction on its correction SHA and repeat related checks on the release candidate.
-3. Obtain independent sign-off against the tested commit SHA. Record the run environment, case totals, defects, retest evidence, limitations, reviewer and recommendation. Release requires no unresolved Critical or High defects and documented reviewer acceptance of Medium defects.
-4. Send Group 4 and the team lead the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**. Link the evidence through the [handoff register](../governance/HANDOFFS.md).
-
-## Project links
-
-- [GitHub repository](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit) · [Live Streamlit application](https://icdfa-vendor-assurance-toolkit.streamlit.app)
-- [User guide](../docs/user_guide.md) · [Project documentation](../docs/project_documentation.md) · [Deployment guide](../docs/deployment_guide.md)
-- [Test register](../tests/TEST_REGISTER.md) · [Defect register](../tests/DEFECT_REGISTER.md) · [QA sign-off](../tests/QA_SIGNOFF.md)
-- [Acceptance matrix](../reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](../reports/phase6/reconciliation_report.md)
-- [Presentation outline](../docs/presentation_outline.md) · [Demonstration script](../docs/demonstration_script.md)
-- [Contribution record](../governance/FINAL_CONTRIBUTIONS.md) · [Submission rules](../governance/SUBMISSION_RULES.md)

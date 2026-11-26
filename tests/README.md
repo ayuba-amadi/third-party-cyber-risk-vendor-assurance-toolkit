@@ -2,7 +2,11 @@
 
 The QA window is **27 November–1 December 2026, inclusive**, with a deadline of **1 December 2026, 23:59 WAT (UTC+1)**. Group 3 coordinates testing. Every project member is encouraged to test and report observations.
 
-## Run the checks
+The Streamlit web application is the primary operational toolkit and mandatory surface for manual QA. Run the [browser test matrix](../03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md#browser-test-matrix) and record observable browser evidence for every PASS. Start on the hosted toolkit. If it is unavailable, record the outage and test in the local browser at `http://127.0.0.1:8502`. [Hosted toolkit](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+
+## Supplementary terminal checks
+
+Terminal and Python commands provide regression and integrity evidence only. A passing terminal test does not replace the required browser test for the same workflow.
 
 Use Python 3.12 and the repository's `.venv`. Install dependencies using the [quick start](../README.md#quick-start). Run from the root of a clean QA checkout. The management report writes generated files under `reports/phase4/`. Use a disposable checkout of the tested SHA so that historical results and unrelated local edits are preserved.
 
@@ -12,15 +16,16 @@ source .venv/bin/activate
 ./.venv/bin/python sample-data/validate_fixture.py
 ./.venv/bin/python -m src.cli management-report --as-of 2026-11-18
 git diff --check
+curl http://127.0.0.1:8502/_stcore/health
 ```
 
-The suite covers loader and validation rules, criticality and risk calculations, workflow and history, reporting and exports, and Streamlit page behaviour. Record the actual test count and exit status. The fixture validator independently compares the fictional inputs and expected results. The dated management report should report a PASS for all 33 comparison rows. Inspect the report's source IDs as part of manual reconciliation.
+The suite covers loader and validation rules, criticality and risk calculations, workflow and history, reporting and exports, and Streamlit page behaviour. Record the actual test count and exit status. The fixture validator independently compares the fictional inputs and expected results. The dated management report should report a PASS for all 33 comparison rows. Reconcile source IDs in the Streamlit Reports page during UI-012. Run the health check when the local app is running.
 
 ## Complete the independent checks
 
-- Follow the [execution guide](../03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md) for setup, all nine pages, the ten demonstrations, edge cases, downloads, accessibility, privacy checks and source CSV hashes.
+- Follow the [execution guide](../03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md) for setup, all nine pages, edge cases, downloads, accessibility, privacy and source CSV hashes. Use the linked presentation script for the browser rehearsal.
 - Use the [test case template](../03-testing-and-quality-assurance/TEST_CASE_TEMPLATE.md) and [defect report template](../03-testing-and-quality-assurance/DEFECT_REPORT_TEMPLATE.md). Link observed evidence before marking PASS and retest every correction.
-- Treat existing test, defect and sign-off records as historical evidence for the versions they identify. Record new runs separately and link the candidate evidence in the handoff.
+- Treat existing test, defect and sign-off records as historical evidence for the versions they identify. Use the [current QA records](../reports/qa/) for new execution logs, defects and evidence. Link the candidate evidence in the handoff.
 
 Release requires no unresolved Critical or High defects and documented acceptance of Medium defects. The sign-off must name the tested commit. Every handoff includes the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**.
 

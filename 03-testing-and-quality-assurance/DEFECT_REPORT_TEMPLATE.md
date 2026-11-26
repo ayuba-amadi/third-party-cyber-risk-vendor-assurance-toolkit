@@ -1,44 +1,32 @@
-# Defect report template
+# Browser defect report template
 
-Create one record per independently reproducible defect. Link it to the test case. Use only fictional data in the report and its attachments.
+Record every failure in the [current defect register](../reports/qa/DEFECT_REGISTER.md). Link duplicate observations to the existing defect ID. Chat can alert the team. The register is the required record. Use fictional data only.
 
 | Field | Entry |
 |---|---|
 | Defect ID | Unique ID, such as DEF-001 |
-| Date discovered | Date and time in WAT (UTC+1) |
-| Reporter | Name or role |
-| Commit SHA | Exact affected version |
-| Page or command | Page name or full command |
+| Test ID | Linked browser case and execution attempt |
+| Page or workflow | |
+| Tester name or role | |
+| Date and time in WAT (UTC+1) | |
+| URL and commit or deployment version | |
+| Browser and device size | |
+| Preconditions | Report date, session state and fictional IDs |
+| Reproduction steps | Numbered browser actions and input values |
+| Expected result | |
+| Actual result | Include the exact error or incorrect display |
+| Screenshot or download evidence | Repository-relative path |
 | Severity | Critical, High, Medium or Low |
-| Preconditions | Environment, report date, session state and fictional IDs |
-| Reproduction steps | Numbered actions from a clean or specified session |
-| Expected result | Required outcome |
-| Actual result | Observed outcome and exact error, if any |
-| Evidence | Sanitised screenshot, log or export path |
-| Impact | Affected workflow, records, results or demonstration |
-| Proposed correction | Suggested change or investigation |
-| Owner | Person responsible for the correction |
-| Correction commit | SHA containing the fix |
-| Retest date | Date and time in WAT |
-| Retest result | Actual result, tested SHA and evidence for original and related cases |
-| Closure decision | Open, reopened, closed or accepted with limitation, with reviewer and rationale |
+| Suggested correction | |
+| Owner and correction commit | |
+| Retest result | Status, WAT time, tested commit, observations and evidence path |
+| Closure or acceptance | State, reviewer and rationale |
 
-## Severity and release rules
+## Severity
 
-- **Critical** blocks use, causes data loss or invalidates risk results.
-- **High** breaks a required workflow or required demonstration.
-- **Medium** materially affects usability or reporting.
-- **Low** is cosmetic or a minor documentation issue.
+- **Critical** means the toolkit cannot start, data is corrupted or risk results are invalid.
+- **High** means a required workflow or demonstration is unusable.
+- **Medium** means a material usability or reporting problem.
+- **Low** means a cosmetic or minor wording issue.
 
-Release requires no unresolved Critical or High defects. Medium defects must be documented and accepted by the reviewer. Retest every corrected defect and link the evidence. QA sign-off must reference the tested commit SHA.
-
-Every handoff includes the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**.
-
-## Project links
-
-- [GitHub repository](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit) · [Live Streamlit application](https://icdfa-vendor-assurance-toolkit.streamlit.app)
-- [User guide](../docs/user_guide.md) · [Project documentation](../docs/project_documentation.md) · [Deployment guide](../docs/deployment_guide.md)
-- [Test register](../tests/TEST_REGISTER.md) · [Defect register](../tests/DEFECT_REGISTER.md) · [QA sign-off](../tests/QA_SIGNOFF.md)
-- [Acceptance matrix](../reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](../reports/phase6/reconciliation_report.md)
-- [Presentation outline](../docs/presentation_outline.md) · [Demonstration script](../docs/demonstration_script.md)
-- [Contribution record](../governance/FINAL_CONTRIBUTIONS.md) · [Submission rules](../governance/SUBMISSION_RULES.md)
+Release requires zero unresolved Critical or High defects and documented reviewer acceptance of Medium defects. Retest every correction in the browser. QA sign-off must identify the exact tested commit.

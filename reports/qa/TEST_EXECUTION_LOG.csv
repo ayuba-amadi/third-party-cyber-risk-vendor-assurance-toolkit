@@ -1,0 +1,1 @@
+test_id,tester_name_or_role,date_time_wat,browser,device_or_viewport,url_used,commit_or_deployment_version,preconditions,exact_browser_steps,expected_result,actual_result,status,screenshot_or_download_paths,defect_id,retest_result
