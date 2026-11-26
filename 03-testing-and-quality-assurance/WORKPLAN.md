@@ -1,45 +1,26 @@
-# 🧪 Testing and Quality Assurance — 4 days
+# QA workplan
 
-**Window:** Tuesday 24 to Friday 27 November 2026, **23:59 WAT**. Test the development candidate independently. Start at [folder guide](README.md) and follow [submission rules](../governance/SUBMISSION_RULES.md).
+**27 November–1 December 2026, inclusive. Deadline 1 December 2026, 23:59 WAT (UTC+1).**
 
-```mermaid
-flowchart LR
-  A["Clean install"] --> B["Run cases"] --> C["Log defects"] --> D["Retest fixes"] --> E["Reconcile + sign off"]
-```
+Group 3 coordinates assignments and independent review. Every project member is encouraged to run cases and report observations. Assign an owner and reviewer to each case before starting. Use the [execution guide](TEST_EXECUTION_GUIDE.md) and the [test case](TEST_CASE_TEMPLATE.md) and [defect](DEFECT_REPORT_TEMPLATE.md) templates.
 
-## Tuesday 24 — independent setup and data checks
+| Date | Work | Required output |
+|---|---|---|
+| 27 Nov | Pin the candidate SHA. Install from a clean checkout, run automated checks, verify hashes and load all nine pages. | Environment record, command logs, baseline hashes and page-load evidence |
+| 28 Nov | Exercise vendor registration, criticality, questionnaires, evidence and human decision outcomes. | Expected and actual results, screenshots and defect IDs |
+| 29 Nov | Test remediation, reassessment, invalid input, reporting, exports and source-ID reconciliation. | Edge-case records, export samples and reconciled totals |
+| 30 Nov | Run all ten demonstrations and review desktop, mobile, keyboard and fictional-data controls. Retest fixes and related workflows. | Demo coverage, privacy and accessibility findings, and retest evidence |
+| 1 Dec | Close or escalate defects, repeat checks for changed code and review the exact candidate SHA. | Completed test and defect registers, retest evidence and QA recommendation |
 
-1. Download a clean copy; follow only the supplied guide. Record versions, commands, actual results and setup defects.
-2. Confirm 10 unique vendors, five categories, three critical services and every questionnaire row.
-3. Check duplicate IDs, missing values, bad dates/options and orphan links. Independently calculate sample criticality classifications.
+Release requires no unresolved Critical or High defects. Document and obtain reviewer acceptance for Medium defects. Retest every corrected defect and record the correction SHA and result. If evidence is missing, record the case as BLOCKED and identify the owner and next action. The sign-off must identify the tested commit. Preserve the prior evidence and its original dates and results.
 
-**Output:** `tests/TEST_REGISTER.md` started with requirement ID, input, expected, actual, pass/fail, evidence, defect and retest columns.
+Send the team lead and Group 4 the completed [handoff entry](../governance/HANDOFFS.md) with the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**.
 
-## Wednesday 25 — evidence, scoring and approvals
+## Project links
 
-1. Exercise Missing, Received, Accepted, Rejected and Expired evidence; distinguish claim from reviewer verification.
-2. Prove a critical failure cannot be hidden by favourable unrelated answers.
-3. Verify the three decision outcomes, human reviewer and justification; score alone cannot grant approval.
-4. Test overdue conditions/actions, expired approval and overdue review.
-
-**Output:** reproducible test cases, screenshots/output paths and defect entries.
-
-## Thursday 26 — change, history and reporting
-
-1. Change access/dependency and verify criticality and reasons change.
-2. Reassess after material service change; confirm previous assessment remains readable.
-3. Reconcile management counts to distinct vendor, action and condition IDs. Verify multi-service concentration without double-counting vendors.
-4. Retest fixed defects against the original reproduction steps.
-
-**Output:** `tests/DEFECT_REGISTER.md` and reconciled report evidence.
-
-## Friday 27 — full demo and release gate
-
-1. Run all ten live demo actions in main README from a clean state.
-2. Record expected, actual, correction, retest and evidence for every case. Do not mark an unrun case Pass.
-3. Publish `tests/QA_SIGNOFF.md`: tested commit, environment, pass/fail totals, unresolved defects with severity, limitations, reviewer and date.
-4. Hand the tested version to Documentation and team lead by **23:59 WAT**.
-
-## Strict acceptance
-
-No open Blocker or High defect in ID integrity, criticality, evidence treatment, critical flags, decision authority, history or report totals. Any unmet demo action is visible in sign-off with owner and correction date. QA submits file links, tested commit and a completed [handoff entry](../governance/HANDOFFS.md). Severity: Blocker (cannot use), High (misleading assurance), Medium (workflow impaired), Low (cosmetic).
+- [GitHub repository](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit) · [Live Streamlit application](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+- [User guide](../docs/user_guide.md) · [Project documentation](../docs/project_documentation.md) · [Deployment guide](../docs/deployment_guide.md)
+- [Test register](../tests/TEST_REGISTER.md) · [Defect register](../tests/DEFECT_REGISTER.md) · [QA sign-off](../tests/QA_SIGNOFF.md)
+- [Acceptance matrix](../reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](../reports/phase6/reconciliation_report.md)
+- [Presentation outline](../docs/presentation_outline.md) · [Demonstration script](../docs/demonstration_script.md)
+- [Contribution record](../governance/FINAL_CONTRIBUTIONS.md) · [Submission rules](../governance/SUBMISSION_RULES.md)

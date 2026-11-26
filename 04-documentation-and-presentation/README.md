@@ -1,19 +1,32 @@
-# 📝 You are in Documentation and Presentation
+# Documentation and Presentation
 
-**Upload blocked?** Read the [upload and access guide](../UPLOAD_GUIDE.md); an unaccepted invitation or missing collaborator access prevents direct upload. A fork and pull request works while access is arranged.
+**2–5 December 2026, inclusive. Final internal deadline 5 December 2026, 23:59 WAT (UTC+1).** The official E-Campus deadline takes precedence.
 
-**16–29 November 2026 · final package Sunday 23:59 WAT**
+Group 4 assembles the final package from accepted research, the tested toolkit and the independent QA handoff. Follow the [daily workplan](WORKPLAN.md) and use the [documentation index](../docs/README.md) to find the editable sources and existing artifacts.
 
 ```mermaid
-flowchart LR
-  A["Research facts"] --> D["Guide + PDF"]
-  B["Build screenshots"] --> D
-  C["QA results"] --> D
-  D --> E["Demo rehearsal"]
+flowchart TD
+    A[Collect accepted research and build outputs] --> B[Collect QA results]
+    B --> C[Map requirements to evidence]
+    C --> D[Prepare abstract and project PDF]
+    D --> E[Prepare user guide and screenshots]
+    E --> F[Prepare presentation and demonstration]
+    F --> G[Peer review and corrections]
+    G --> H[Confirm contribution record]
+    H --> I[Final submission package]
 ```
 
-Read the [daily guide](WORKPLAN.md), [project brief](../README.md) and [submission rules](../governance/SUBMISSION_RULES.md). Work alongside other groups, then replace drafts with the tested release's real screenshots and results.
+Download the official template from E-Campus. Use that template and align the PDF and approximately 200–300-word abstract with the official requirements. Do not invent or substitute an unofficial template. Use screenshots and results from the tested commit only. Identify its SHA in the submission package.
 
-**Put here:** coordination notes and storyboard. Put the abstract, PDF, user guide, slides/script and labelled screenshots in `../docs/` when created, with a README there.
+Include requirements mapping, toolkit design, scoring rules, workflow diagrams, testing and defect results, screenshots, limitations, operating instructions, deployment and rollback, accessible GitHub and live-toolkit links, presentation slides, demonstration script, contribution record and final submission checklist.
 
-**Done means:** 200–300-word abstract; PDF with required sections and screenshots; reproducible guide; all ten actions rehearsed; accessible download link; test corrections and limitations; complete contributions. Submit tested version and exact file links.
+Record only verified contributions as completed. List only members who actually contributed and keep evidence for each contribution. Every handoff includes the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**. Follow the [upload guide](../UPLOAD_GUIDE.md) if repository access is missing.
+
+## Project links
+
+- [GitHub repository](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit) · [Live Streamlit application](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+- [User guide](../docs/user_guide.md) · [Project documentation](../docs/project_documentation.md) · [Deployment guide](../docs/deployment_guide.md)
+- [Test register](../tests/TEST_REGISTER.md) · [Defect register](../tests/DEFECT_REGISTER.md) · [QA sign-off](../tests/QA_SIGNOFF.md)
+- [Acceptance matrix](../reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](../reports/phase6/reconciliation_report.md)
+- [Presentation outline](../docs/presentation_outline.md) · [Demonstration script](../docs/demonstration_script.md)
+- [Contribution record](../governance/FINAL_CONTRIBUTIONS.md) · [Submission rules](../governance/SUBMISSION_RULES.md)

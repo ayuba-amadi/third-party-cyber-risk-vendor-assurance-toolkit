@@ -1,46 +1,49 @@
-# 📝 Documentation and Presentation — continuous, 16–29 November
+# Documentation and presentation workplan
 
-**Final integrated target:** Sunday 29 November 2026, **23:59 WAT**. Work alongside Research, Development and QA. Use [folder guide](README.md) and [submission rules](../governance/SUBMISSION_RULES.md). Confirm the official E-Campus deadline separately.
+**2–5 December 2026, inclusive. Final internal deadline 5 December 2026, 23:59 WAT (UTC+1).** The official E-Campus deadline takes precedence.
 
-```mermaid
-flowchart LR
-  S["Research rules"] --> P["PDF + guide"]
-  B["Working build"] --> P
-  T["QA evidence"] --> P
-  P --> D["Rehearsed final demo"]
-```
+| Date | Activity | Required output |
+|---|---|---|
+| 2 Dec | Collect accepted artefacts | Version-matched source links, screenshots and QA results |
+| 3 Dec | Assemble documentation | Draft abstract, PDF and user guide |
+| 4 Dec | Review and rehearse | Corrected PDF, presentation and demonstration script |
+| 5 Dec | Finalise submission package | Final files, links, contribution record and submission checklist |
 
-## 16–18 Nov — structure and research content
+## 2 Dec — Confirm source and evidence
 
-1. Outline the PDF: 200–300 word abstract; problem/objectives; requirements; architecture and data model; scoring; evidence and decision workflows; testing; limitations; storage/access/versioning; operating steps.
-2. Draft the user-guide steps and slide/demo storyboard. Link each of the ten live demonstration actions in the root README to an operator, input, expected screen and screenshot to capture.
-3. Copy only accepted research rules into the PDF. Record sources and decisions. Mark absent build screenshots as pending.
+- Obtain the accepted research and build handoffs and Group 3's QA recommendation. Check SHA, environment, reviewer, known limitations and open defects.
+- Map requirements and demonstrations to observed results and evidence. Use screenshots and results from the tested commit only. Keep earlier phase artifacts intact.
+- Download the official template from E-Campus and confirm its requirements, required upload files and deadline. Do not create or substitute an unofficial template.
 
-**Output:** `docs/PROJECT_OUTLINE.md`, draft abstract, guide outline and demo storyboard.
+## 3 Dec — Assemble the drafts
 
-## 19–23 Nov — document the running toolkit
+- Write an approximately 200–300-word abstract and assemble the PDF in the official E-Campus template. Align both with the official requirements.
+- Include requirements mapping, toolkit design, scoring rules, workflow diagrams, tested screenshots, testing and defect results, limitations, operating instructions, and deployment and rollback instructions.
+- Prepare the user guide so a new analyst can reproduce the workflow. Check the public GitHub and live-toolkit links from a reader's session.
 
-1. Follow the implementation each day. Write exact setup, inputs, version requirements, commands or workbook instructions and output paths.
-2. Capture actual screenshots using fictional data with a caption, tested build version and scenario ID. Explain formulas and report fields in plain language.
-3. Explain how real assessment files would be stored with restricted access, who records reviewer decisions, and how previous versions are retained.
-4. Draft an individual assessment narrative and management report explanation from generated outputs.
+## 4 Dec — Peer review and rehearsal
 
-**Output:** draft `docs/USER_GUIDE.md`, PDF draft and screenshot inventory.
+- Compare the draft PDF, screenshots and report totals against the tested SHA and reconciled source IDs. Close editorial corrections and carry forward QA limitations.
+- Prepare the presentation slides and rehearse the ten demonstration actions. Assign presenter and operator, timing, fictional IDs, expected screens and fallback screenshots from the tested commit.
+- Ask a reviewer to follow the user guide from setup to reports and record the result.
 
-## 24–27 Nov — align to QA evidence
+## 5 Dec — Final submission checklist
 
-1. Replace draft numbers and screenshots with the QA-tested version. Include expected/actual test results, fixes, retests and limitations.
-2. Check each management total against QA's source-ID reconciliation.
-3. Finish slides/script for all ten actions, assigning presenter, operator, timing, exact input, expected output and fallback screenshot.
+- [ ] Official E-Campus template, format and deadline verified.
+- [ ] Abstract, final project PDF, user guide and deployment instructions complete.
+- [ ] Requirements mapping and current QA evidence included. Screenshots, results, links and demo inputs match the tested commit.
+- [ ] GitHub and live-toolkit links open for the intended audience. Presentation slides and demo script are ready.
+- [ ] Contribution record lists only members who contributed. Completed entries have verified evidence.
+- [ ] Known limitations and accepted gaps are recorded. The team lead reviews the version-matched package before submission.
+- [ ] Submission files and confirmation are retained according to E-Campus instructions.
 
-**Output:** review-ready PDF, abstract and demo deck/script linked to tested commit.
+Use the [handoff register](../governance/HANDOFFS.md). Every handoff includes the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**.
 
-## 28–29 Nov — final review and rehearsal
+## Project links
 
-1. Deliver `docs/PROJECT_DOCUMENTATION.pdf`, `docs/USER_GUIDE.md`, the 200–300-word E-Campus abstract, deck/script, accessible implementation link and complete contribution record.
-2. Run a full rehearsal from a clean download. Confirm all links, screenshots, fictional labels and reports match QA sign-off.
-3. Submit file links and final commit/version in [handoff register](../governance/HANDOFFS.md). Obtain team-lead review by **29 Nov, 23:59 WAT**.
-
-## Strict acceptance
-
-A new GRC analyst can follow the guide and reproduce the demo. The PDF contains every E-Campus section and real screenshots; scoring claims match implementation; totals reconcile; limitations are honest; abstract is 200–300 words; all members have contribution entries. State any missing item and owner explicitly.
+- [GitHub repository](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit) · [Live Streamlit application](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+- [User guide](../docs/user_guide.md) · [Project documentation](../docs/project_documentation.md) · [Deployment guide](../docs/deployment_guide.md)
+- [Test register](../tests/TEST_REGISTER.md) · [Defect register](../tests/DEFECT_REGISTER.md) · [QA sign-off](../tests/QA_SIGNOFF.md)
+- [Acceptance matrix](../reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](../reports/phase6/reconciliation_report.md)
+- [Presentation outline](../docs/presentation_outline.md) · [Demonstration script](../docs/demonstration_script.md)
+- [Contribution record](../governance/FINAL_CONTRIBUTIONS.md) · [Submission rules](../governance/SUBMISSION_RULES.md)

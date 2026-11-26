@@ -1,93 +1,153 @@
-# Third Party Cyber Risk Assessment and Vendor Assurance Toolkit
+# Third-Party Cyber Risk Assessment and Vendor Assurance Toolkit
 
-ICSDF Certified GRC Engineering Group 3 capstone. This public repository is the team's working hub. **Status: fictional-data toolkit prepared for final review.** All public examples must use fictional data.
+This ICSDF Certified GRC Engineering capstone gives teams a repeatable way to assess fictional suppliers, explain cyber risk results, record human decisions and track corrective actions. The toolkit brings the vendor register, questionnaire, evidence review, reassessment history and management reporting into one Streamlit application.
 
-## Toolkit and final review
+## Problem being addressed
 
-- [User guide](docs/user_guide.md) and [deployment instructions](docs/deployment_guide.md)
-- [Project documentation PDF](docs/project_documentation.pdf) and [abstract](docs/abstract.md)
-- [QA sign-off](tests/QA_SIGNOFF.md), [acceptance matrix](reports/phase6/final_acceptance_matrix.md) and [management reconciliation](reports/phase6/reconciliation_report.md)
-- [Presentation outline](docs/presentation_outline.md), [demonstration script](docs/demonstration_script.md) and [contribution record](governance/FINAL_CONTRIBUTIONS.md)
+Supplier assurance often spans several spreadsheets and email threads. That makes it hard to tell which claims were verified, why a supplier received a rating, who accepted the risk, and whether actions are overdue. The toolkit links those steps by record ID so a reviewer can trace a management total back to the supplier, assessment or action behind it.
 
-## Two-week delivery map
+## Toolkit users
 
-**Target:** finish the integrated capstone package by **Sunday 29 November 2026, 23:59 WAT**. Monday 16 November begins the first work block. This is an internal target; verify the official E-Campus submission date separately.
+| User | What to do here |
+|---|---|
+| GRC analyst | Register suppliers, assess criticality, review evidence and track follow-up. |
+| Data protection officer | Review data access, sensitive information and evidence gaps. |
+| QA tester | Run the regression suite, independently reproduce scenarios and record evidence. |
+| Developer | Run the Python engine and Streamlit interface, then verify changes against the fixtures. |
+| Presenter | Rehearse the ten required demonstrations with the fictional baseline. |
+| Supervisor or public visitor | Review the methodology, tested results, limitations and contribution record. |
+
+## Key capabilities
+
+- Register vendors and link them to business services. Classify criticality using data sensitivity, access, dependency and replaceability.
+- Assess 24 questionnaire items per assessment and distinguish supplier claims from verified answers. Track Missing, Received, Accepted, Rejected and Expired evidence.
+- Calculate risk and completeness with reasons. Keep confirmed critical failures visible even when unrelated answers score well.
+- Record Approved, Conditionally Approved or Rejected outcomes with an explicit human decision. Track findings, owners, due dates and closure.
+- Compare assessment versions and report material changes. Generate individual and portfolio reports, including overdue items and concentration, with source IDs for reconciliation.
+
+## Technology stack
+
+Python 3.12 is the documented local environment. Streamlit provides the browser interface, and Python modules provide validation, calculations and a command-line interface. CSV files supply the fictional inputs. Regression tests use `unittest` and Streamlit's app test utilities. Reports support CSV, JSON, Markdown and HTML downloads.
+
+## Live application
+
+- [Open the fictional-data Streamlit demo](https://icdfa-vendor-assurance-toolkit.streamlit.app)
+
+## GitHub repository
+
+- [Browse source, commit history and issues on GitHub](https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit)
+
+## Quick start
+
+Install Git and Python 3.12. Run these commands in a Bash-compatible shell. If `.venv` already exists, start with activation after entering the repository.
+
+```bash
+git clone https://github.com/ayuba-amadi/third-party-cyber-risk-vendor-assurance-toolkit.git
+cd third-party-cyber-risk-vendor-assurance-toolkit
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m streamlit run app/streamlit_app.py --server.headless true --server.port 8501
+```
+
+Open `http://localhost:8501`. Use the sidebar report date **18 November 2026** to reproduce the baseline. Use **Reset session** before switching to another independent scenario. Stop Streamlit with Ctrl+C. [User guide](docs/user_guide.md)
+
+## Project architecture
+
+The loader reads bundled CSVs, and validation checks required values, allowed options and relationships. The Streamlit workspace keeps session-local edits in a working copy. The Python engine calculates criticality, risk, remediation and reassessment results from validated inputs. Reporting combines those outputs with recorded human decisions. The CLI can regenerate fixture-based checks and reports independently of the interface. [Project documentation](docs/project_documentation.md) · [Engine and CLI guide](src/README.md)
+
+## Repository structure
+
+| Path | Contents |
+|---|---|
+| [app/](app/) | Streamlit entry point, nine pages, session state and exports |
+| [src/](src/) | Validation, risk engine, workflows and CLI |
+| [sample-data/](sample-data/) | Fictional source tables, invalid cases and expected results |
+| [tests/](tests/) | Automated tests and recorded QA evidence |
+| [reports/](reports/) | Generated reports and historical verification evidence |
+| [docs/](docs/) | User, deployment and final submission materials |
+| [01-research-and-risk-assessment/](01-research-and-risk-assessment/) · [02-toolkit-development/](02-toolkit-development/) | Research specifications and build records |
+| [03-testing-and-quality-assurance/](03-testing-and-quality-assurance/) · [04-documentation-and-presentation/](04-documentation-and-presentation/) | Current QA and finalisation workplans |
+| [governance/](governance/) · [templates/](templates/) | Submission rules, handoffs, contributions and working templates |
+
+## End-to-end workflow
+
+```mermaid
+flowchart TD
+    A[Register vendor] --> B[Assess criticality]
+    B --> C[Complete questionnaire]
+    C --> D[Review evidence]
+    D --> E[Calculate risk]
+    E --> F[Record human decision]
+    F --> G[Track remediation]
+    G --> H[Reassess when required]
+    H --> I[Generate management report]
+```
+
+The demonstration follows this path using the baseline of ten fictional vendors, five categories and eleven assessment versions. Rehearse new vendor entry, access or dependency change, missing evidence, critical failure, an individual report, conditional approval, overdue and expired records, material-change reassessment, invalid input rejection and management reconciliation. The script provides fixture IDs for the live workflow. [Demonstration script](docs/demonstration_script.md) · [Presentation outline](docs/presentation_outline.md)
+
+## Current QA and documentation schedule
+
+| Workstream | Dates | Required result |
+|---|---|---|
+| Testing and Quality Assurance | 27 Nov–1 Dec 2026 | Completed test register, defect register, retest evidence and QA recommendation |
+| Documentation and Presentation | 2–5 Dec 2026 | Final PDF, abstract, user guide, presentation, demo script, screenshots and contribution record |
+| Internal final package | 5 Dec 2026, 23:59 WAT | Version-matched final submission package |
+
+QA closes on **1 December 2026 at 23:59 WAT**. WAT is UTC+1. The **official E-Campus deadline takes precedence** over the internal target. Check E-Campus for the official template, requirements and submission deadline.
 
 ```mermaid
 flowchart LR
-  R["🔎 Research: 16–18 Nov"] --> D["🛠️ Build: 19–23 Nov"] --> Q["🧪 QA: 24–27 Nov"] --> F["📦 Final review: 28–29 Nov"]
-  P["📝 Documentation: 16–29 Nov"] --> F
+    R[Research and risk rules] --> B[Toolkit development]
+    B --> Q[Independent QA]
+    Q --> D[Documentation and presentation]
+    D --> F[Final submission package]
 ```
 
-Each arrow is a reviewed handoff with named files, a commit/version, test evidence and a team-lead decision. Documentation runs alongside all phases.
+## Testing instructions
 
-## Work packages and handoffs
+Run the checks from the repository root in a clean QA checkout. The management-report command writes generated files under `reports/phase4/`. Keep the original checkout and historical evidence intact.
 
-All times are **WAT (UTC+1)**. These are internal working deadlines beginning Monday 16 November 2026. Work is measured by accepted outputs, not elapsed time alone. Documentation runs alongside the sequential technical handoffs.
+```bash
+source .venv/bin/activate
+./.venv/bin/python -m unittest discover -s tests -v
+./.venv/bin/python sample-data/validate_fixture.py
+./.venv/bin/python -m src.cli management-report --as-of 2026-11-18
+git diff --check
+```
 
-| Group | Dates and deadline | Work package | Strict handoff |
-|---|---|---|---|
-| [1. Research and Risk Assessment](01-research-and-risk-assessment/WORKPLAN.md) | Mon 16–Wed 18 Nov; 18 Nov 23:59 | Requirements, schema, 24+ question bank, criticality/risk rules, fictional data and expected test results | Approved `research-spec-v1.0` and ten-vendor source dataset |
-| [2. Toolkit Development](02-toolkit-development/WORKPLAN.md) | Thu 19–Mon 23 Nov; 23 Nov 23:59 | Validated import, working calculations, evidence/decision/action workflow, reports and examples | Reproducible `dev-candidate-v1`, code/workbook and run guide |
-| [3. Testing and Quality Assurance](03-testing-and-quality-assurance/WORKPLAN.md) | Tue 24–Fri 27 Nov; 27 Nov 23:59 | Independent functional, edge-case, regression and reconciliation testing | Test/defect registers, retest evidence and QA sign-off |
-| [4. Documentation and Presentation](04-documentation-and-presentation/WORKPLAN.md) | Mon 16–Sun 29 Nov; integrated package 29 Nov 23:59 | PDF, guide, abstract, presentation/demo and contribution record | Version-matched submission and rehearsed demonstration |
+Group 3 coordinates testing. Every project member is encouraged to test and report observations. Record evidence before marking a case PASS. Run all nine pages and the ten demonstrations, review downloads and reconcile the totals. The linked QA records describe the revisions identified in those files. Record fresh results for the release candidate. [Testing index](tests/README.md) · [Test execution guide](03-testing-and-quality-assurance/TEST_EXECUTION_GUIDE.md) · [Test register](tests/TEST_REGISTER.md) · [QA sign-off](tests/QA_SIGNOFF.md)
 
-Follow the [submission rules](governance/SUBMISSION_RULES.md) for filenames, commits, review and reporting. The [handoff register](governance/HANDOFFS.md) records the commit, reviewer, acceptance result and gaps. [Contribution record](governance/CONTRIBUTIONS.md) tracks all project members. [Working templates](templates/REQUIREMENTS_AND_TESTS.md) give the required fields. Subgroup membership must be confirmed against the final roster; folder creation does not assign people or grant repository write access.
+## Reporting defects
 
-Research calculations are documented in the [risk scoring method](01-research-and-risk-assessment/risk_scoring_method.md) and [worked research examples](01-research-and-risk-assessment/worked_examples.md). Research artefacts remain subject to team-lead review and approval before handoff; Toolkit Development has not been started.
+Use the defect template with the tested commit, fictional record IDs, exact steps, expected and actual results, impact and evidence. Log the defect and link it to the case. Retest each correction. Release requires no unresolved Critical or High defects, documented acceptance of Medium defects and sign-off against the tested commit. [Defect report template](03-testing-and-quality-assurance/DEFECT_REPORT_TEMPLATE.md) · [Defect register](tests/DEFECT_REGISTER.md)
 
-## Upload access and instructions
+## Contribution rules
 
-**Read [How to upload subgroup work](UPLOAD_GUIDE.md) before submitting.** Public visibility is read access, not permission to upload. Accept your GitHub collaborator invitation for direct upload, or submit from a fork with a pull request while access is arranged. Share your exact GitHub username and profile URL with the team lead if you have no invitation.
+Agree on a named owner and reviewer. Use a descriptive commit and the assigned project directory. Contributors without write access can submit a pull request from a fork or work with the nominated uploader. Each handoff includes the **file path, commit SHA, test result, reviewer, acceptance status and known limitations**. Record completed contributions only when supported by evidence and list only people who contributed. [Upload guide](UPLOAD_GUIDE.md) · [Submission rules](governance/SUBMISSION_RULES.md) · [Handoff register](governance/HANDOFFS.md) · [Final contribution record](governance/FINAL_CONTRIBUTIONS.md)
 
-## How each member works
+## Fictional-data and privacy controls
 
-1. Open your subgroup folder README, then follow its daily work plan.
-2. Claim a specific output with your name in the subgroup chat and record the owner in the handoff/contribution record.
-3. Save editable source files in the named folder, commit them or send them to a nominated GitHub contributor, and report the file link plus commit SHA in the chat.
-4. Ask for review using the [submission format](governance/SUBMISSION_RULES.md). A chat message alone is not a deliverable.
-5. Correct review comments and record the final accepted version before the next group builds on it.
+Use fictional names, records and evidence references in GitHub, the hosted demo, screenshots, exports and defect reports. Keep credentials, tokens, personal information and real vendor evidence out of all public materials. Session edits stay in the working copy. Download any fictional work you need before resetting the session. Use an access-restricted organisational system for real supplier records.
 
-## Scope and required outputs
+## Deployment and rollback overview
 
-1. **Vendor register:** unique vendor IDs, service/category, business owner, data/system access, dependency, subcontractors, assessment status and multiple business-service links.
-2. **Criticality:** explainable Low/Medium/High/Critical method covering sensitive information, privileged access, disruption and replacement difficulty, with rules, thresholds and worked examples.
-3. **Due diligence:** at least 20 questions covering access, data protection, incident reporting, continuity, subcontractors and governance, with important evidence requirements. The internal research target is 24 or more.
-4. **Evidence:** separate supplier claim from reviewer-verified answer; Missing, Received, Accepted, Rejected and Expired states. Missing or unverified evidence cannot earn an automatic favourable verified score.
-5. **Automated analysis:** validation, reproducible scores and reasons, critical weakness flags, incomplete assessments, overdue reviews and material changes.
-6. **Decisions:** Approved, Conditionally Approved and Rejected with authorised decision-maker, justification, conditions, deadlines and review dates. Human decision is separate from calculation.
-7. **Remediation and reassessment:** findings, actions, responsible parties, deadlines, expired approvals/conditions, previous assessment versions and material-change comparison.
-8. **Management reporting:** critical suppliers, unresolved weaknesses, overdue assessments/conditions and concentration from service dependencies, with totals reconciled to source IDs.
+Use Streamlit Community Cloud with the reviewed revision and `app/streamlit_app.py` as the entry point. Verify the health endpoint, page loads, exports and fictional-data baseline after deployment. Record the deployed commit. If a release fails, redeploy a branch at the last verified commit or revert the release through review, then repeat the smoke checks. [Deployment and rollback guide](docs/deployment_guide.md)
 
-Expected deliverables include the functioning toolkit, vendor register and completed questionnaire, scoring methodology, evidence/action registers, all three decision outcomes, individual and consolidated reports, test cases with expected/actual/corrections, user guide and contribution record. The E-Campus abstract must be approximately 200–300 words; its PDF must cover requirements, design, scoring, workflow, screenshots, tests, limits and operating instructions with an accessible toolkit download link.
+## Limitations
 
-## Minimum fictional demonstration data
+The toolkit is a fictional-data demonstration with session-local edits, user-entered role names and metadata-only evidence references. It does not enforce production identity or access controls. Creating a new reassessment version requires controlled CSV entry, and historical reconstruction is limited to retained inputs. Team-defined scoring supports reviewer judgement. It carries no certification or compliance determination.
 
-At least ten vendors in five service categories; at least three supporting business-critical services; a critical vendor missing evidence; rejected or expired evidence; a conditionally approved vendor with an overdue action; one vendor supporting several important business services; and a material-change reassessment retaining the previous version. Complete the questionnaire for every vendor with favourable, unfavourable and incomplete responses.
+## Expected deliverables
 
-## Ten live demonstration actions
-
-1. Import or enter a new vendor and calculate criticality.
-2. Change access or dependency and show why classification changes.
-3. Process questionnaire responses and flag missing evidence.
-4. Show that a critical weakness remains visible despite strong unrelated scores.
-5. Generate a reasoned individual assessment report.
-6. Record conditional approval and assigned corrective actions.
-7. Display overdue actions and an expired assessment/approval.
-8. Reassess after material change while preserving the prior assessment.
-9. Reject invalid inputs, missing values and duplicate vendor IDs clearly.
-10. Reconcile management report totals to underlying records.
-
-## Working rules
-
-- Commit work to the correct subgroup directory or agreed implementation directory, with readable changes and file references in the [handoff register](governance/HANDOFFS.md). The team lead reviews phase gates; a pending gate is not an accepted handoff.
-- Use **fictional data only** in this public repository and any public deployment. Keep real assessments and evidence in an access-restricted organisational location with version retention and authorised reviewer decisions.
-- If Excel is chosen, separate inputs/calculations/reports, validate inputs, protect formulas and document them; worksheet protection is not access control. If scripts are chosen, include source, sample inputs, dependencies and exact execution instructions.
-- The scoring methodology is a team-defined design to be documented and tested. NIST resources below inform it; the project does not claim NIST certification.
+- Working toolkit with vendor register, completed questionnaires, scoring method, evidence and action registers, three decision outcomes, and individual and consolidated reports. [Project documentation](docs/project_documentation.md)
+- Completed tests, defects, retests and independent QA recommendation linked to the tested commit. [Final acceptance matrix](reports/phase6/final_acceptance_matrix.md) · [Management reconciliation](reports/phase6/reconciliation_report.md)
+- A 200–300-word abstract, project PDF, requirements mapping, user guide, deployment and rollback instructions, tested screenshots, slides, demo script, verified contribution record and submission checklist. Download the official E-Campus template and align the PDF and abstract with its requirements. [Abstract](docs/abstract.md) · [Project PDF](docs/project_documentation.pdf) · [Documentation workplan](04-documentation-and-presentation/WORKPLAN.md)
 
 ## Official design references
 
 - [NIST SP 800-161 Rev. 1 Update 1 — Cybersecurity Supply Chain Risk Management](https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final)
-- [NIST SP 1305 — CSF 2.0 supply chain quick-start](https://csrc.nist.gov/pubs/sp/1305/final)
+- [NIST SP 1305 — CSF 2.0 supply chain quick-start guide](https://csrc.nist.gov/pubs/sp/1305/final)
 - [NIST Cybersecurity Framework 2.0](https://www.nist.gov/publications/nist-cybersecurity-framework-csf-20)
-- [NIST SP 800-53 Rev. 5](https://csrc.nist.gov/pubs/sp/800/53/r5/final)
+- [NIST SP 800-53 Rev. 5 — Security and Privacy Controls](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final)
+- [Toolkit scoring method](01-research-and-risk-assessment/risk_scoring_method.md) · [Worked research examples](01-research-and-risk-assessment/worked_examples.md)
