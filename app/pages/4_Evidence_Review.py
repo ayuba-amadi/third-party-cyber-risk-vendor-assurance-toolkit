@@ -59,7 +59,7 @@ for qid in choices:
            ("received_date", "expiry_date", "reviewer_role", "reference_path")},
     ))
 st.subheader("Evidence records")
-show_rows(summary)
+show_rows(summary, name="Evidence records")
 download_csv(ws, "evidence_item", list(evidence.values()), "Download updated evidence records")
 download_csv(ws, "reviewer_audit_entry", [row for row in audit_rows if row["record_id"] in
              {item["evidence_id"] for item in evidence.values()}], "Download evidence audit records")

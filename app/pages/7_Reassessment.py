@@ -1,6 +1,6 @@
 import streamlit as st
 
-from app.ui_helpers import select_vendor, show_rows, start, severity_badge, status_badge
+from app.ui_helpers import select_vendor, show_rows, start, status_badge
 
 ws = start("Reassessment", "Select a vendor and compare the saved versions, material changes, evidence and decision records.")
 if ws.operations is None:
@@ -14,20 +14,6 @@ except ValueError as exc:
 
 st.info("The previous assessment has been preserved. A reassessment creates a new version and never overwrites historical records.")
 st.subheader("Assessment version comparison")
-for version in history["versions"]:
-    with st.container(border=True):
-        st.markdown(f"**{version['selection']} assessment · {version['assessment_id']} · Version {version['version_no']}**")
-        cols = st.columns(4)
-        for col, label, value in zip(cols, ("Assessment date", "Criticality", "Risk", "Completeness"),
-                                     (version["assessment_date"],
-                                      f"{version['criticality_score']} · {version['criticality_band']}",
-                                      f"{version['risk_percent']}%", version["completeness"])):
-            with col:
-                st.metric(label, value)
-        if version["criticality_band"] in ("Critical", "High", "Medium", "Low"):
-            severity_badge(version["criticality_band"])
-        status_badge("Incomplete" if version["completeness"] == "Incomplete" else "Valid")
-        st.write(f"Decision · {version['decision_status']} · {version['decision_id'] or 'No recorded decision'}")
 if len(history["versions"]) > 1:
     previous, current = history["versions"][-2], history["versions"][-1]
     st.subheader("Change since previous assessment")
@@ -35,10 +21,10 @@ if len(history["versions"]) > 1:
     change_cols[0].metric("Criticality change", f"{previous['criticality_band']} → {current['criticality_band']}")
     change_cols[1].metric("Risk change", f"{previous['risk_percent']}% → {current['risk_percent']}%")
     change_cols[2].metric("Version", f"{previous['version_no']} → {current['version_no']}")
-st.caption("Assessment record details")
 show_rows([{field: row[field] for field in ("selection", "assessment_id", "version_no", "assessment_date",
            "criticality_score", "criticality_band", "risk_percent", "completeness", "decision_status", "decision_id")}
-           for row in history["versions"]])
+           | {"risk_rating": ws.operations[3][row["assessment_id"]][0]["final_rating"]}
+           for row in history["versions"]], name="Assessment version comparison")
 eligibility = ws.decision_errors.get(history["current_assessment_id"])
 if eligibility:
     st.warning(f"The current recorded decision requires review. {eligibility}")

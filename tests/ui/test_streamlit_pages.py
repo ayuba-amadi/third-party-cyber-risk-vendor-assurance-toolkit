@@ -5,6 +5,8 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
+from tests.ui import table_rows
+
 try:
     from streamlit.testing.v1 import AppTest
 except ImportError:
@@ -49,9 +51,9 @@ class StreamlitPages(unittest.TestCase):
     def test_vendor_search_filter_and_validation(self):
         app = self.page("2_Vendor_Register")
         app.text_input[0].set_value("VEN-003").run()
-        self.assertEqual(app.dataframe[0].value.vendor_id.tolist(), ["VEN-003"])
+        self.assertEqual([row["Vendor ID"] for row in table_rows(app)], ["VEN-003"])
         app.multiselect(key="register_category").set_value(["Payroll"]).run()
-        self.assertEqual(len(app.dataframe[0].value), 1)
+        self.assertEqual(len(table_rows(app)), 1)
         next(button for button in app.button if button.label == "Validate vendor").click().run()
         self.assertTrue(any("vendor.csv" in issue.value for issue in app.error))
         self.assertFalse(app.exception)
@@ -95,7 +97,7 @@ class StreamlitPages(unittest.TestCase):
         next(button for button in app.button if button.label == "Calculate criticality").click().run()
         self.assertFalse(app.exception)
         self.assertTrue(any("5 (Medium) → 9 (High) · +4 points" in item.value for item in app.markdown))
-        self.assertEqual(app.dataframe[-1].value.previous.tolist(), ["None", "2"])
+        self.assertEqual([row["Previous"] for row in table_rows(app, -1)], ["None", "2"])
 
     def test_conditional_approval_requires_explicit_confirmation(self):
         from copy import deepcopy

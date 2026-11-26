@@ -8,13 +8,12 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from app.ui_helpers import PAGES
-from src.config import APPLICATION_NAME
+from app.ui_helpers import PAGES, PROJECT_TITLE
 
 
 def main():
-    st.set_page_config(page_title="Third-Party Cyber Risk Vendor Assurance Toolkit", page_icon=None,
-                       layout="wide", initial_sidebar_state="expanded")
+    st.set_page_config(page_title=PROJECT_TITLE, page_icon=None,
+                       layout="wide", initial_sidebar_state="auto")
     st.markdown("""<style>
     :root { color-scheme: light; }
     .stApp { background:#F3F4F6; color:#1F2937; }
@@ -30,7 +29,18 @@ def main():
       padding:.75rem .9rem; box-shadow:0 1px 2px rgb(15 23 42 / 4%);
     }
     [data-testid="stMetricLabel"] { color:#374151; font-weight:600; }
-    [data-testid="stDataFrame"] { border:1px solid #D1D5DB; border-radius:8px; background:#FFFFFF; }
+    .project-title { font-size:clamp(1.6rem, 3.4vw, 2.7rem); line-height:1.15; padding:0; }
+    .project-subtitle {
+      color:#374151; padding:.4rem 0 .8rem; margin:0; border-bottom:1px solid #CBD5E1;
+    }
+    .workflow-steps {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));
+      gap:.4rem; padding:0; margin:0; list-style-position:inside;
+    }
+    .workflow-steps li {
+      background:#FFF; border:1px solid #CBD5E1; border-radius:6px; padding:.45rem .55rem;
+      font-size:.9rem;
+    }
     [data-testid="stExpander"] { border-color:#D1D5DB; border-radius:8px; background:#FFFFFF; }
     .status-badge {
       display:inline-flex; align-items:center; min-height:1.5rem; margin:.12rem .15rem .35rem 0;
@@ -50,10 +60,16 @@ def main():
       *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; }
     }
     </style>""", unsafe_allow_html=True)
-    navigation = st.navigation([
+    pages = [
         st.Page(f"pages/{filename}.py", title=title, default=index == 0)
         for index, (title, filename) in enumerate(PAGES)
-    ])
+    ]
+    navigation = st.navigation({
+        "Overview": pages[:2],
+        "Assessment": pages[2:4],
+        "Decisions and Actions": pages[4:7],
+        "Reports and Quality": pages[7:],
+    })
     navigation.run()
 
 

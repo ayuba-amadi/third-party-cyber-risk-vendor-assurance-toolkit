@@ -52,16 +52,11 @@ if recorded:
                   and event["action"] == "Decided" and event["note"].startswith("Fictional decision-maker")), None)
     decision_maker = audit["note"].split(". Selected actions:", 1)[0].removeprefix("Fictional decision-maker: ") if audit else "Name unavailable in source CSV"
     st.markdown("**Decision record details**")
-    left, right = st.columns(2)
-    with left:
-        st.write(f"Decision-maker · {decision_maker}")
-        st.write(f"Role · {recorded['decision_maker_role']}")
-        st.write(f"Justification · {recorded['justification']}")
-    with right:
-        st.write(f"Conditions · {recorded['conditions'] or 'None recorded'}")
-        st.write(f"Condition deadline · {recorded['condition_deadline'] or 'Not applicable'}")
-        st.write(f"Review date · {recorded['review_date'] or 'Not recorded'}")
-        st.write(f"Expiry date · {recorded['expiry_date'] or 'Not recorded'}")
+    show_rows([dict(decision_maker=decision_maker, role=recorded["decision_maker_role"],
+                    justification=recorded["justification"], conditions=recorded["conditions"] or "None recorded",
+                    condition_deadline=recorded["condition_deadline"] or "Not applicable",
+                    review_date=recorded["review_date"] or "Not recorded",
+                    expiry_date=recorded["expiry_date"] or "Not recorded")], name="Decision record details")
 with st.expander("Current and historical decision records", expanded=True):
     show_rows([dict(row, selection="Current" if row["assessment_id"] == vendors[vid]["current_assessment_id"]
                     else "Historical", decision_maker=next((event["note"] for event in ws.rows("reviewer_audit_entry")

@@ -55,9 +55,10 @@ if missing:
 with st.expander("Why this assessment result?", expanded=True):
     for reason in result["calculation_trace"]:
         st.write(reason)
-    for question in questions:
-        if question["flags"]:
-            st.warning(f"{question_label(bank[question['question_id']])} · {', '.join(question['flags']).title()}")
+    flagged = [dict(question_id=row["question_id"], question=bank[row["question_id"]]["question_text"],
+                    flags=", ".join(row["flags"]).title()) for row in questions if row["flags"]]
+    if flagged:
+        show_rows(flagged, name="Flagged question results")
 st.subheader("Completeness by domain")
 domain_rows = []
 for row in domains:
@@ -74,6 +75,13 @@ search = st.text_input("Search question wording or ID").strip().casefold()
 choices = [qid for qid, question in bank.items()
            if domain in ("All domains", question["domain"]) and search in question_label(question).casefold()]
 if choices:
+    with st.expander("Question results"):
+        show_rows([
+            dict(question_id=row["question_id"], question=bank[row["question_id"]]["question_text"],
+                 reviewer_verified=row["reviewer_verified"], verified_answer=row["verified_answer"],
+                 effective_evidence_status=row["effective_evidence_status"], risk_value=row["risk_value"])
+            for row in questions if row["question_id"] in choices
+        ], name="Question results")
     qid = st.selectbox("Question", choices, format_func=lambda key: question_label(bank[key]))
     question = bank[qid]
     score = next(row for row in questions if row["question_id"] == qid)
@@ -92,7 +100,6 @@ if choices:
         evidence_badge(score["effective_evidence_status"])
         st.write(score["effective_evidence_status"])
     with st.expander("Why this result?", expanded=True):
-        st.write(f"Risk value: {score['risk_value']} of 4")
         st.write(score["calculation_reason"])
     responses = [row for row in ws.rows("response") if row["assessment_id"] == aid]
     old = next(row for row in responses if row["question_id"] == qid)

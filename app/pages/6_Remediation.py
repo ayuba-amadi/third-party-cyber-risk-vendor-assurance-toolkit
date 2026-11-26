@@ -57,7 +57,8 @@ show_rows([dict(vendor=vendor_label(ws, row["vendor_id"]),
                 question=question_label(bank[row["question_id"]]) if row["question_id"] in bank else "Assessment-wide",
                 **{field: row[field] for field in ("finding_id", "assessment_id", "severity", "description",
                    "finding_status", "action_id", "action_text", "responsible_party", "due_date", "action_status",
-                   "closed_date", "overdue")}) for row in records])
+                   "closed_date")}, overdue="Overdue" if row["action_overdue"] else "No")
+           for row in records], name="Findings and corrective actions")
 finding_ids = {row["finding_id"] for row in records}
 action_ids = {row["action_id"] for row in records if row["action_id"]}
 findings = {row["finding_id"]: row for row in ws.rows("finding") if row["finding_id"] in finding_ids}

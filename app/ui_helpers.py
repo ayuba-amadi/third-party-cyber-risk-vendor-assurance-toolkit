@@ -1,11 +1,15 @@
 """Shared navigation, selection, messages and display components."""
+from datetime import date
 from html import escape
+from numbers import Number
+import re
 
 import streamlit as st
 
-from app.export_helpers import table_csv
 from app.state import Workspace
-from src.config import APPLICATION_NAME, DEFAULT_DATA_DIR
+from src.config import DEFAULT_DATA_DIR
+
+PROJECT_TITLE = "Third-Party Cyber Risk Assessment and Vendor Assurance Toolkit"
 
 PAGES = (
     ("Dashboard", "1_Dashboard"), ("Vendor Register", "2_Vendor_Register"),
@@ -105,12 +109,19 @@ HELP = {
 }
 
 
-def start(title, instructions):
+def dashboard_intro():
+    st.html(
+        f'<h1 class="project-title">{PROJECT_TITLE}</h1>'
+        '<p class="project-subtitle">Operational supplier assurance, evidence review, risk decisions and remediation tracking.</p>'
+    )
+
+
+def start(title, instructions, *, before_title=None):
     if "workspace" not in st.session_state:
         st.session_state.workspace = Workspace.load()
     ws = st.session_state.workspace
     with st.sidebar:
-        st.header(APPLICATION_NAME)
+        st.header(PROJECT_TITLE)
         ws.set_report_date(st.date_input("Report date", ws.report_date, key="report_date",
                                          help="Changes overdue and expiry flags for this session."))
         st.caption(f"Fictional data directory · {DEFAULT_DATA_DIR.name}")
@@ -120,6 +131,8 @@ def start(title, instructions):
         if st.button("Reset session", help="Clears your unsaved edits and reloads the fictional fixtures."):
             st.session_state.clear()
             st.rerun()
+    if before_title:
+        before_title()
     st.title(title)
     with st.expander("How to use this page"):
         st.write(instructions)
@@ -135,7 +148,8 @@ def start(title, instructions):
 
 
 def label(field):
-    return field.replace("_", " ").capitalize().replace(" id", " ID")
+    return " ".join("ID" if word.lower() == "id" else word for word in
+                    field.replace("_", " ").capitalize().split())
 
 
 def vendor_label(ws, vid):
@@ -199,11 +213,72 @@ def save(ws, candidate, message):
         st.rerun()
 
 
-def show_rows(rows):
-    if rows:
-        st.dataframe(rows, hide_index=True, column_config={
-            name: label(name) for row in rows for name in row
-        })
+TABLE_CSS = """
+.assurance-table-scroll { width:100%; overflow-x:auto; }
+.assurance-table { width:100%; border-collapse:collapse; font:15px/1.45 sans-serif; color:#1F2937; }
+.assurance-table th, .assurance-table td {
+    border:1px solid #9CA3AF; padding:.5rem .65rem; vertical-align:top; overflow-wrap:anywhere;
+}
+.assurance-table th { background:#E5E7EB; text-align:center; font-weight:700; white-space:nowrap; }
+.assurance-table td { background:#FFF; text-align:left; }
+.assurance-table tr:nth-child(even) td { background:#F3F4F6; }
+.assurance-table td.center { text-align:center; white-space:nowrap; }
+.assurance-table td.long { min-width:15rem; }
+.assurance-table .table-status {
+    display:inline-block; padding:.1rem .45rem; border:1px solid; border-radius:.45rem;
+    font-weight:600; white-space:nowrap;
+}
+"""
+
+
+def table_value(value):
+    if value is None:
+        return ""
+    if isinstance(value, dict):
+        return " · ".join(f"{label(key)}: {table_value(item)}" for key, item in value.items())
+    if isinstance(value, (list, tuple)):
+        return ", ".join(map(table_value, value))
+    return str(value)
+
+
+def table_html(rows, *, columns=None, name="Records"):
+    columns = columns if columns is not None else list(dict.fromkeys(key for row in rows for key in row))
+    if not rows and not columns:
+        return "<p>No matching records.</p>"
+    headings = "".join(f'<th scope="col">{escape(label(field))}</th>' for field in columns)
+    body = []
+    for row in rows:
+        cells = []
+        for field in columns:
+            value = row.get(field)
+            display = table_value(value)
+            content = escape(display)
+            centered = (
+                isinstance(value, (Number, date)) or field == "id"
+                or field.endswith(("_id", "_date", "_deadline", "_percent"))
+                or field in ("deadline", "review_period_end", "percentage", "version", "version_no")
+                or (isinstance(value, str) and re.fullmatch(
+                    r"[-+]?\d+(?:\.\d+)?%?|\d{4}-\d{2}-\d{2}(?:T\S+)?|[A-Z]+(?:-[A-Z]+)*-\d+",
+                    value))
+            )
+            style = (' class="center"' if centered else ' class="long"'
+                     if len(display) > 65 or field == "vendor" else "")
+            if isinstance(value, str) and value in PALETTE:
+                color, background, border = PALETTE[value]
+                content = (f'<span class="table-status" style="color:{color};background:{background};'
+                           f'border-color:{border}">{content}</span>')
+            cells.append(f"<td{style}>{content}</td>")
+        body.append("<tr>" + "".join(cells) + "</tr>")
+    if not body:
+        body.append(f'<tr><td colspan="{len(columns)}">No matching records.</td></tr>')
+    return (f'<div class="assurance-table-scroll" role="region" aria-label="{escape(name)}" tabindex="0">'
+            f'<table class="assurance-table" aria-label="{escape(name)}"><thead><tr>{headings}</tr></thead>'
+            f'<tbody>{"".join(body)}</tbody></table></div>')
+
+
+def show_rows(rows, *, columns=None, name="Records"):
+    if rows or columns:
+        st.html(f"<style>{TABLE_CSS}</style>" + table_html(rows, columns=columns, name=name))
     else:
         st.info("No matching records.")
 
@@ -223,6 +298,8 @@ def filters(rows, fields, prefix, formatters=None):
 
 
 def download_csv(ws, name, rows, caption, key=None):
+    from app.export_helpers import table_csv
+
     st.download_button(caption, table_csv(ws, name, rows), f"{name}.csv", "text/csv", key=key)
 
 

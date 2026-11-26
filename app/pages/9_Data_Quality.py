@@ -28,7 +28,7 @@ for col, label, value, state in zip(cols, ("Errors", "Warnings", "Source tables"
 st.subheader("Source table checks")
 show_rows([dict(file=table.path.name, source_rows=len(ws.source[name].rows),
                 working_rows=len(table.rows), loaded=table.loaded, errors=issues_by_file[str(table.path)])
-           for name, table in ws.tables.items()])
+           for name, table in ws.tables.items()], name="Source table checks")
 st.subheader("Validation findings")
 issues = ws.validation.issues
 categories = {

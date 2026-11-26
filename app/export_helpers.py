@@ -1,4 +1,5 @@
 """Serialize CSV records and reports without touching the source directory."""
+from collections import Counter
 import csv
 from dataclasses import asdict
 from datetime import datetime, timezone
@@ -7,6 +8,7 @@ from io import BytesIO, StringIO
 import json
 from zipfile import ZIP_DEFLATED, ZipFile
 
+from app.ui_helpers import TABLE_CSS, label, table_html
 from src.config import APPLICATION_VERSION
 from src.operational_reports import LIMITATION, markdown_fields
 
@@ -117,17 +119,193 @@ def report_payload(workspace, kind, vendor_id="", assessment_id=""):
     return metadata, rows
 
 
-def render_report(metadata, rows):
+SOURCE_PURPOSES = {
+    "vendor": "Supplier profiles and review dates",
+    "business_service": "Business services and service tiers",
+    "vendor_service_link": "Supplier-to-service relationships",
+    "assessment": "Assessment dates, versions and status",
+    "assessment_criticality_snapshot": "Criticality inputs by assessment version",
+    "question": "Questionnaire, weights and evidence criteria",
+    "response": "Vendor claims and reviewer answers",
+    "evidence_item": "Evidence records and review status",
+    "finding": "Assessment findings",
+    "corrective_action": "Action owners, deadlines and closure",
+    "decision": "Human approvals, rejections and conditions",
+    "change_event": "Material changes and reassessment links",
+    "reviewer_audit_entry": "Review and editing history",
+}
+
+EVIDENCE_NOTES = {
+    "Missing": "Evidence is unavailable.",
+    "Received": "Evidence is awaiting review.",
+    "Accepted": "The reviewer accepted the evidence.",
+    "Rejected": "The evidence failed review.",
+    "Expired": "The evidence is out of date.",
+}
+
+
+def field_rows(fields):
+    return [dict(field=label(key), value=value) for key, value in fields.items()]
+
+
+def finding_rows(rows):
+    return [
+        dict(finding_id=row["finding_id"], vendor_id=row["vendor_id"], assessment_id=row["assessment_id"],
+             severity=row["severity"], description=row["description"], action=row["action_text"],
+             responsible_party=row["responsible_party"], deadline=row["due_date"],
+             status=row["action_status"] or row["finding_status"],
+             overdue="Overdue" if row["action_overdue"] else "No")
+        for row in rows
+    ]
+
+
+def decision_rows(rows, *, include_ids=False):
+    result = []
+    for row in rows:
+        recorded = row.get("recorded_decision", row)
+        details = dict(decision=row.get("outcome", row.get("status")),
+                       decision_maker=recorded.get("decision_maker_role"),
+                       justification=recorded.get("justification"), conditions=recorded.get("conditions"),
+                       deadline=recorded.get("condition_deadline"), review_date=recorded.get("review_date"))
+        if include_ids:
+            details = dict(vendor_id=row["vendor_id"], assessment_id=row["assessment_id"], **details)
+        result.append(details)
+    return result
+
+
+def reassessment_rows(history, risks, *, include_ids=False):
+    result = []
+    previous = ""
+    for version in history["versions"]:
+        aid = version["assessment_id"]
+        current = risks[aid][0]["final_rating"] if aid in risks else ""
+        changes = [event["change_type"] for event in history["change_events"]
+                   if event["reassessment_assessment_id"] == aid]
+        pending = version["selection"] == "Current" and history["reassessment_required"]
+        details = dict(version=version["version_no"], assessment_date=version["assessment_date"],
+                       material_change=changes or (version["trigger"] if version["trigger"] == "Material change" else "None linked"),
+                       previous_rating=previous, current_rating=current,
+                       reassessment_status="Reassessment due" if pending else version["status"])
+        if include_ids:
+            details = dict(vendor_id=history["vendor_id"], assessment_id=aid, **details)
+        result.append(details)
+        previous = current
+    return result
+
+
+def report_sections(metadata, rows, *, workspace=None, vendor_id="", assessment_id=""):
+    """Project an existing report payload into display tables without altering its exports."""
+    kind = metadata["report"]
+    individual = rows[0] if kind == "Individual vendor assessment" and rows else None
+    vendor = (individual["vendor"] if individual else
+              next((row for row in workspace.rows("vendor") if row["vendor_id"] == vendor_id), {})
+              if workspace and vendor_id else {})
+    vendor_scope = f"{vendor['vendor_name']} ({vendor['vendor_id']})" if vendor else vendor_id or "Portfolio-wide"
+    assessment_scope = individual["assessment"]["assessment_id"] if individual else assessment_id or "All in scope"
+    risks = workspace.operations[3] if workspace and workspace.operations else {}
+
+    sections = []
+
+    def add(title, records, columns=None):
+        sections.append((title, records, columns))
+
+    add("Report metadata", [dict(report_item=key, value=value) for key, value in (
+        ("Report type", kind), ("Vendor", vendor_scope), ("Assessment", assessment_scope),
+        ("Report date", metadata["report_date"]), ("Fictional-data status", "Fictional data"),
+        ("Source commit", metadata["source_commit"] or "Unavailable"), ("Toolkit version", metadata["version"]),
+    )])
+    if vendor:
+        add("Vendor profile", field_rows(vendor))
+
+    findings_columns = ("finding_id", "vendor_id", "assessment_id", "severity", "description",
+                        "action", "responsible_party", "deadline", "status", "overdue")
+    reassessment_columns = ("version", "assessment_date", "material_change", "previous_rating",
+                            "current_rating", "reassessment_status")
+    if individual:
+        criticality, risk, questions = (individual[key] for key in ("criticality", "risk", "questions"))
+        counts = Counter(row["effective_evidence_status"] for row in questions)
+        total = len(questions)
+        failures = risk["confirmed_critical_failures"]
+        add("Risk and assessment summary", [dict(measure=key, result=value, explanation=note)
+            for key, value, note in (
+                ("Criticality score", criticality["total_points"], "Total points across the criticality factors."),
+                ("Criticality band", criticality["final_band"], criticality["override_reasons"] or "Based on the total points."),
+                ("Risk percentage", f"{float(risk['risk_percent']):.2f}%", risk["calculation_trace"][0]),
+                ("Risk rating", risk["final_rating"], risk["score_label"]),
+                ("Completeness", risk["completeness"], f"{risk['verified_count']} of {total} questions verified."),
+                ("Verified responses", risk["verified_count"], "Reviewer-verified answers supported by accepted evidence."),
+                ("Accepted evidence", counts["Accepted"], f"Effective status on {risk['evidence_as_of']}."),
+                ("Confirmed critical failures", len(failures), failures or "No confirmed failures."),
+            )])
+        add("Evidence summary", [dict(evidence_status=status, count=counts[status],
+                                      percentage=f"{counts[status] / total:.1%}" if total else "0.0%", notes=note)
+                                 for status, note in EVIDENCE_NOTES.items()])
+        add("Findings and corrective actions", finding_rows(individual["findings_and_actions"]), findings_columns)
+        add("Decision record", decision_rows([individual["authorised_decision"]]))
+        if workspace:
+            try:
+                history = workspace.history(vendor["vendor_id"])
+            except ValueError as exc:
+                add("Reassessment information", [dict(reassessment_status=str(exc))], reassessment_columns)
+            else:
+                add("Reassessment information", reassessment_rows(history, risks), reassessment_columns)
+                if history["change_events"]:
+                    add("Material changes and review triggers", history["change_events"])
+                if history["pending_triggers"]:
+                    add("Outstanding review triggers", [dict(trigger=value) for value in history["pending_triggers"]])
+        add("Domain completeness", individual["domain_progress"])
+        add("Question results", [{key: row[key] for key in (
+            "question_id", "question_text", "vendor_claim", "verified_answer", "effective_evidence_status",
+            "risk_value", "calculation_reason")} for row in questions])
+        add("Linked services", individual["linked_services"])
+        add("Source records", [dict(record_ids=individual["source_ids"])])
+    elif kind == "Decision report":
+        add("Decision record", decision_rows(rows, include_ids=True))
+    elif kind == "Remediation report":
+        add("Findings and corrective actions", finding_rows([row for row in rows if "finding_id" in row]), findings_columns)
+        add("Conditional decisions", decision_rows([row for row in rows if "outcome" in row], include_ids=True))
+    elif kind == "Reassessment comparison":
+        add("Reassessment information", [record for history in rows
+                                         for record in reassessment_rows(history, risks, include_ids=True)],
+            ("vendor_id", "assessment_id", *reassessment_columns))
+        add("Material changes", [event for history in rows for event in history["change_events"]])
+        add("Outstanding review triggers", [dict(vendor_id=history["vendor_id"], trigger=trigger)
+                                            for history in rows for trigger in history["pending_triggers"]])
+    else:
+        add(kind if kind != "Data quality" else "Source table checks", rows)
+        if kind == "Management summary":
+            add("Overdue reviews", metadata["overdue_reviews"])
+
+    counts = {table.path.name: len(table.rows) for table in workspace.tables.values()} if workspace else {}
+    add("Source files", [dict(file=file, rows=counts.get(file), purpose=SOURCE_PURPOSES.get(file.removesuffix(".csv"), ""))
+                         for file in metadata["source_files"]])
+    if metadata["warnings"]:
+        add("Warnings", [warning if isinstance(warning, dict) else dict(warning=warning)
+                         for warning in metadata["warnings"]])
+    return sections
+
+
+def render_report(metadata, rows, *, sections=None):
     title = metadata["report"]
     markdown = "\n".join([f"# {title}", "", *markdown_fields(metadata), "", "## Records", "",
                            *markdown_fields(rows), "" if rows else "No matching records."])
+    if sections is None:
+        sections = report_sections(metadata, rows)
+    tables = "".join(f"<h2>{escape(heading)}</h2>{table_html(records, columns=columns, name=heading)}"
+                     for heading, records, columns in sections)
+    notes = "".join(f"<p>{escape(metadata[key])}</p>" for key in ("limitations", "scope", "calculation_reason")
+                    if metadata.get(key))
     return {
         "csv": csv_text([{**metadata, **row} for row in rows] or [metadata]),
         "json": json_text(dict(metadata, results=rows)),
         "md": markdown,
-        "html": ("<!doctype html><html lang='en'><meta charset='utf-8'>"
-                 f"<title>{escape(title)}</title><h1>{escape(title)}</h1>"
-                 f"<pre style='white-space:pre-wrap'>{escape(markdown)}</pre></html>"),
+        "html": ("<!doctype html><html lang='en'><head><meta charset='utf-8'>"
+                 "<meta name='viewport' content='width=device-width, initial-scale=1'>"
+                 f"<title>{escape(title)}</title><style>{TABLE_CSS}"
+                 "body { max-width:90rem; margin:1.5rem auto; padding:0 1rem; color:#1F2937;"
+                 "font:15px/1.45 sans-serif; } h1,h2 { color:#123B5D; }"
+                 "aside { background:#F3F4F6; border-left:3px solid #64748B; padding:.2rem .8rem; }"
+                 f"</style></head><body><h1>{escape(title)}</h1><aside>{notes}</aside>{tables}</body></html>"),
     }
 
 

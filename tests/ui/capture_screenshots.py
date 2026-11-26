@@ -62,7 +62,7 @@ with sync_playwright() as p:
     capture("overdue-action")
     go("Reassessment")
     vendor("VEN-004")
-    page.get_by_text("Current · ASMT-011", exact=False).first.wait_for(timeout=6000)
+    page.get_by_role("table", name="Assessment version comparison").get_by_text("ASMT-011", exact=True).wait_for(timeout=6000)
     capture("reassessment")
     go("Reports")
     page.get_by_role("combobox", name="Report type").click()

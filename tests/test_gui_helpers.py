@@ -1,6 +1,8 @@
 from pathlib import Path
 import unittest
 
+from tests.ui import table_rows
+
 try:
     from streamlit.testing.v1 import AppTest
 except ImportError:
@@ -62,12 +64,12 @@ class GuiTests(unittest.TestCase):
         self.assertIn("Conditionally Approved", self.visible())
         self.page("6_Remediation")
         self.control("radio", "Show records").set_value("Overdue actions").run()
-        self.assertTrue(self.app.dataframe)
+        self.assertTrue(table_rows(self.app))
         self.page("7_Reassessment")
         self.control("selectbox", "Vendor").select("VEN-004").run()
         self.assertIn("The previous assessment has been preserved", self.visible())
-        self.assertEqual(self.app.dataframe[0].value["assessment_id"].tolist(), ["ASMT-004", "ASMT-011"])
-        self.assertEqual(self.app.dataframe[1].value["change_id"].tolist(), ["CHG-001", "CHG-002"])
+        self.assertEqual([row["Assessment ID"] for row in table_rows(self.app)], ["ASMT-004", "ASMT-011"])
+        self.assertEqual([row["Change ID"] for row in table_rows(self.app, 1)], ["CHG-001", "CHG-002"])
 
     def test_reports_and_validation(self):
         self.page("8_Reports")

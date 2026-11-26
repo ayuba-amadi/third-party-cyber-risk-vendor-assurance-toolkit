@@ -24,7 +24,7 @@ register = [row for row in all_vendors
             and (not selected_criticality or row["criticality"] in selected_criticality)
             and (not selected_status or row["assessment_status"] in selected_status)]
 show_rows([{key: row[key] for key in ("vendor_id", "vendor_name", "category", "criticality", "assessment_status")}
-           for row in register])
+           for row in register], name="Vendor register")
 download_csv(ws, "vendor", [next(row for row in ws.rows("vendor") if row["vendor_id"] == item["vendor_id"])
                              for item in register], "Download filtered vendor list", "filtered_vendor_export")
 vid = select_vendor(ws, "register", [row["vendor_id"] for row in register])

@@ -1,9 +1,15 @@
+import altair as alt
 import streamlit as st
 
-from app.ui_helpers import (decision_badge, metric_card, section_header, severity_badge,
+from app.ui_helpers import (dashboard_intro, decision_badge, metric_card, section_header, severity_badge,
                             show_rows, start, status_badge, vendor_label)
 
-ws = start("Dashboard", "Open a count to see the records behind it. Use the page list to review or update individual records.")
+ws = start("Dashboard", "Open a count to see the records behind it. Use the page list to review or update individual records.",
+           before_title=dashboard_intro)
+st.html("""<ol class="workflow-steps" aria-label="Assurance workflow">
+    <li>Register vendor</li><li>Assess criticality and risk</li><li>Review evidence</li>
+    <li>Record decision</li><li>Track remediation</li><li>Report and reassess</li>
+</ol>""")
 if ws.operations is None:
     st.stop()
 
@@ -52,9 +58,14 @@ for col, band in zip(st.columns(4), ("Critical", "High", "Medium", "Low")):
         severity_badge(band)
         metric_card(f"{band} vendors", criticality_counts[band])
 with st.expander("Risk distribution", expanded=True):
-    st.bar_chart({"Criticality": list(criticality_counts),
-                  "Current vendors": list(criticality_counts.values())},
-                 x="Criticality", y="Current vendors", color="#C2410C")
+    chart = alt.Chart(alt.Data(values=[
+        {"Criticality": band, "Current vendors": count} for band, count in criticality_counts.items()
+    ])).mark_bar(color="#C2410C").encode(
+        x=alt.X("Criticality:N", sort=list(criticality_counts), axis=alt.Axis(labelAngle=0)),
+        y=alt.Y("Current vendors:Q", axis=alt.Axis(tickMinStep=1)),
+        tooltip=["Criticality:N", "Current vendors:Q"],
+    )
+    st.altair_chart(chart, width="stretch")
 for col, outcome in zip(st.columns(4), ("Approved", "Conditionally Approved", "Rejected", "Awaiting decision")):
     with col:
         decision_badge(outcome)
