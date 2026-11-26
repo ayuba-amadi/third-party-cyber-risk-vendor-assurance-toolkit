@@ -22,6 +22,10 @@ def main():
       max-width:1480px; padding-top:1rem; padding-bottom:2rem;
     }
     [data-testid="stSidebar"] { background:#FFFFFF; border-right:1px solid #E5E7EB; }
+    [data-testid="stSidebarHeader"] { height:2.75rem; margin-bottom:0; }
+    [data-testid="stSidebarNavItems"] > :first-child > [data-testid="stNavSectionHeader"] p {
+      color:#123B5D; font-size:1.05rem; font-weight:700;
+    }
     h1 { color:#123B5D; margin:.15rem 0 .25rem; }
     h2, h3 { color:#17324D; }
     [data-testid="stMetric"] {
@@ -29,7 +33,10 @@ def main():
       padding:.75rem .9rem; box-shadow:0 1px 2px rgb(15 23 42 / 4%);
     }
     [data-testid="stMetricLabel"] { color:#374151; font-weight:600; }
-    .project-title { font-size:clamp(1.6rem, 3.4vw, 2.7rem); line-height:1.15; padding:0; }
+    .project-title {
+      width:100%; font-size:clamp(1.6rem, 3.4vw, 2.7rem); line-height:1.15; padding:0;
+      text-align:justify; text-justify:inter-word;
+    }
     .project-subtitle {
       color:#374151; padding:.4rem 0 .8rem; margin:0; border-bottom:1px solid #CBD5E1;
     }
