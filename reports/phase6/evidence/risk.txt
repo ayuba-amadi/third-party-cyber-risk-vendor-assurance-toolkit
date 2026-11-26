@@ -1,0 +1,58 @@
+ASMT-001 / VEN-001
+6/344 × 100 = 1.74%. Raw band Low.
+24/24 verified. Complete. Final rating Low.
+ASMT-002 / VEN-002
+59/344 × 100 = 17.15%. Raw band Low.
+22/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.
+Unresolved critical questions: AM-01, DP-01
+AM-01: MISSING EVIDENCE, UNRESOLVED CRITICAL QUESTION Effective evidence status is Missing. Awaiting evidence. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 5 = 20 points.
+DP-01: MISSING EVIDENCE, UNRESOLVED CRITICAL QUESTION Effective evidence status is Missing. Awaiting evidence. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 5 = 20 points.
+ASMT-003 / VEN-003
+28/344 × 100 = 8.14%. Raw band Low.
+24/24 verified. Complete. Final rating High.
+Confirmed critical failures impose a High minimum on completed ratings: AM-01
+AM-01: CONFIRMED CRITICAL FAILURE Confirmed critical failure receives risk value 4. 4 × 5 = 20 points.
+ASMT-004 / VEN-004
+3/344 × 100 = 0.87%. Raw band Low.
+24/24 verified. Complete. Final rating Low.
+ASMT-005 / VEN-005
+22/344 × 100 = 6.40%. Raw band Low.
+23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.
+IN-02: REJECTED EVIDENCE Effective evidence status is Rejected. Report outside required review window. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 4 = 16 points.
+ASMT-006 / VEN-006
+19/344 × 100 = 5.52%. Raw band Low.
+23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.
+GV-02: EXPIRED EVIDENCE Effective evidence status is Expired. Previously accepted report no longer current. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 4 = 16 points.
+ASMT-007 / VEN-007
+0/344 × 100 = 0.00%. Raw band Low.
+24/24 verified. Complete. Final rating Low.
+ASMT-008 / VEN-008
+3/344 × 100 = 0.87%. Raw band Low.
+24/24 verified. Complete. Final rating Low.
+ASMT-009 / VEN-009
+20/344 × 100 = 5.81%. Raw band Low.
+24/24 verified. Complete. Final rating High.
+Confirmed critical failures impose a High minimum on completed ratings: DP-01
+DP-01: CONFIRMED CRITICAL FAILURE Confirmed critical failure receives risk value 4. 4 × 5 = 20 points.
+ASMT-010 / VEN-010
+141/344 × 100 = 40.99%. Raw band High.
+14/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.
+Unresolved critical questions: SC-01
+BC-03: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 3 = 12 points.
+BC-04: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 3 = 12 points.
+GV-01: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 4 = 16 points.
+GV-02: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 4 = 16 points.
+GV-03: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 2 = 8 points.
+GV-04: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 3 = 12 points.
+SC-01: MISSING EVIDENCE, UNANSWERED, UNRESOLVED CRITICAL QUESTION Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 5 = 20 points.
+SC-02: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 4 = 16 points.
+SC-03: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 3 = 12 points.
+SC-04: MISSING EVIDENCE, UNANSWERED Effective evidence status is Missing. Unanswered. Vendor claim is unanswered. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 2 = 8 points.
+ASMT-011 / VEN-004
+39/344 × 100 = 11.34%. Raw band Low.
+23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.
+Unresolved critical questions: SC-01
+SC-01: RECEIVED EVIDENCE, UNRESOLVED CRITICAL QUESTION Effective evidence status is Received. Review pending. Reviewer verification or verified answer is outstanding. Worst-risk treatment applies. 4 × 5 = 20 points.
+risk_results: PASS (11 oracle rows)
+question_scores: PASS (264 oracle rows)
+domain_completeness: PASS (66 oracle rows)

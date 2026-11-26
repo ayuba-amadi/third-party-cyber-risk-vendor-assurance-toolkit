@@ -1,0 +1,126 @@
+test_criticality_preview_recalculates_without_rewriting_snapshot (test_app_state.WorkspaceTests.test_criticality_preview_recalculates_without_rewriting_snapshot) ... ok
+test_defaults_and_source_isolation (test_app_state.WorkspaceTests.test_defaults_and_source_isolation) ... ok
+test_duplicate_and_invalid_vendor_never_save (test_app_state.WorkspaceTests.test_duplicate_and_invalid_vendor_never_save) ... ok
+test_report_date_recalculates_expiry (test_app_state.WorkspaceTests.test_report_date_recalculates_expiry) ... ok
+test_all_results_are_sorted_and_have_analyst_trace (test_criticality.CriticalityFixtureTests.test_all_results_are_sorted_and_have_analyst_trace) ... ok
+test_fixture_rows_match_approved_scores_bands_and_override_reasons (test_criticality.CriticalityFixtureTests.test_fixture_rows_match_approved_scores_bands_and_override_reasons) ... ok
+test_historical_assessment_uses_its_own_snapshot (test_criticality.CriticalityFixtureTests.test_historical_assessment_uses_its_own_snapshot) ... ok
+test_business_critical_service_floor_and_highest_service_tier (test_criticality_boundaries.CriticalityBoundaryTests.test_business_critical_service_floor_and_highest_service_tier) ... ok
+test_current_snapshot_conflict_blocks_final_band (test_criticality_boundaries.CriticalityBoundaryTests.test_current_snapshot_conflict_blocks_final_band) ... ok
+test_duplicate_snapshot_is_rejected (test_criticality_boundaries.CriticalityBoundaryTests.test_duplicate_snapshot_is_rejected) ... ok
+test_exact_base_band_boundaries (test_criticality_boundaries.CriticalityBoundaryTests.test_exact_base_band_boundaries) ... ok
+test_historical_values_are_not_replaced_by_current_vendor_values (test_criticality_boundaries.CriticalityBoundaryTests.test_historical_values_are_not_replaced_by_current_vendor_values) ... ok
+test_missing_or_invalid_factor_never_defaults_to_a_favourable_value (test_criticality_boundaries.CriticalityBoundaryTests.test_missing_or_invalid_factor_never_defaults_to_a_favourable_value) ... ok
+test_regulated_privileged_and_severe_dependency_overrides (test_criticality_boundaries.CriticalityBoundaryTests.test_regulated_privileged_and_severe_dependency_overrides) ... ok
+test_invalid_fields_and_dates (test_decision_workflow.DecisionTests.test_invalid_fields_and_dates) ... ok
+test_ordinary_approval_cannot_bypass_risk_flags (test_decision_workflow.DecisionTests.test_ordinary_approval_cannot_bypass_risk_flags) ... ok
+test_recorded_outcomes (test_decision_workflow.DecisionTests.test_recorded_outcomes) ... ok
+test_six_domains_and_counts_reconcile (test_domain_completeness.DomainTests.test_six_domains_and_counts_reconcile) ... ok
+test_accepted_evidence_needs_reviewer (test_evidence_rules.EvidenceTests.test_accepted_evidence_needs_reviewer) ... ok
+test_accepted_expiring_today_is_valid (test_evidence_rules.EvidenceTests.test_accepted_expiring_today_is_valid) ... ok
+test_better_answer_requires_note (test_evidence_rules.EvidenceTests.test_better_answer_requires_note) ... ok
+test_blank_and_invalid_claims (test_evidence_rules.EvidenceTests.test_blank_and_invalid_claims) ... ok
+test_expiry_before_report_date (test_evidence_rules.EvidenceTests.test_expiry_before_report_date) ... ok
+test_non_accepted_evidence_receives_worst_risk_even_with_yes (test_evidence_rules.EvidenceTests.test_non_accepted_evidence_receives_worst_risk_even_with_yes) ... ok
+test_all_report_formats (test_export_helpers.ExportTests.test_all_report_formats) ... ok
+test_changed_records_and_manifest (test_export_helpers.ExportTests.test_changed_records_and_manifest) ... ok
+test_csv_record_roundtrip (test_export_helpers.ExportTests.test_csv_record_roundtrip) ... ok
+test_assessment_and_evidence_fixtures (test_gui_helpers.GuiTests.test_assessment_and_evidence_fixtures) ... 2026-11-26 14:47:00.175 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_dashboard_and_all_pages (test_gui_helpers.GuiTests.test_dashboard_and_all_pages) ... 2026-11-26 14:47:01.401 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_human_decision_requires_confirmation (test_gui_helpers.GuiTests.test_human_decision_requires_confirmation) ... 2026-11-26 14:47:01.970 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_missing_evidence_blocks_verification (test_gui_helpers.GuiTests.test_missing_evidence_blocks_verification) ... 2026-11-26 14:47:02.666 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_operations_fixtures (test_gui_helpers.GuiTests.test_operations_fixtures) ... 2026-11-26 14:47:03.149 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_reports_and_validation (test_gui_helpers.GuiTests.test_reports_and_validation) ... 2026-11-26 14:47:03.864 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_vendor_entry_validation_and_recalculation (test_gui_helpers.GuiTests.test_vendor_entry_validation_and_recalculation) ... 2026-11-26 14:47:04.362 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_all_approved_sources_load_with_original_headers (test_loader.LoaderTests.test_all_approved_sources_load_with_original_headers) ... ok
+test_default_and_custom_dates (test_loader.LoaderTests.test_default_and_custom_dates) ... ok
+test_fixture_counts (test_loader.LoaderTests.test_fixture_counts) ... ok
+test_header_and_csv_shape_errors (test_loader.LoaderTests.test_header_and_csv_shape_errors) ... ok
+test_inventory_separates_references (test_loader.LoaderTests.test_inventory_separates_references) ... ok
+test_missing_required_header_is_reported (test_loader.LoaderTests.test_missing_required_header_is_reported) ... ok
+test_missing_unreadable_and_invalid_utf8_files (test_loader.LoaderTests.test_missing_unreadable_and_invalid_utf8_files) ... ok
+test_preserves_columns_empty_cells_and_unicode (test_loader.LoaderTests.test_preserves_columns_empty_cells_and_unicode) ... ok
+test_all_fixture_counts_and_vendor_ids (test_management_reconciliation.ReconciliationTests.test_all_fixture_counts_and_vendor_ids) ... ok
+test_duplicate_source_ids_fail (test_management_reconciliation.ReconciliationTests.test_duplicate_source_ids_fail) ... ok
+test_current_population_and_concentration (test_management_reporting.ManagementTests.test_current_population_and_concentration) ... ok
+test_bad_report_date_is_actionable (test_phase1_smoke.Phase1SmokeTests.test_bad_report_date_is_actionable) ... ok
+test_cli_rejects_duplicate_and_retains_baseline_rows (test_phase1_smoke.Phase1SmokeTests.test_cli_rejects_duplicate_and_retains_baseline_rows) ... ok
+test_help_and_inventory (test_phase1_smoke.Phase1SmokeTests.test_help_and_inventory) ... ok
+test_missing_sources_report_errors_without_traceback (test_phase1_smoke.Phase1SmokeTests.test_missing_sources_report_errors_without_traceback) ... ok
+test_report_round_trip_default_and_custom_dates (test_phase1_smoke.Phase1SmokeTests.test_report_round_trip_default_and_custom_dates) ... ok
+test_reports_cannot_be_written_into_source_data (test_phase1_smoke.Phase1SmokeTests.test_reports_cannot_be_written_into_source_data) ... ok
+test_sample_data_unchanged_after_loading_validation_and_reports (test_phase1_smoke.Phase1SmokeTests.test_sample_data_unchanged_after_loading_validation_and_reports) ... ok
+test_invalid_candidates_do_not_change_workspace (test_phase6_acceptance.Phase6Acceptance.test_invalid_candidates_do_not_change_workspace) ... ok
+test_management_matches_research_fixture (test_phase6_acceptance.Phase6Acceptance.test_management_matches_research_fixture) ... ok
+test_missing_evidence_and_confirmed_critical_failure (test_phase6_acceptance.Phase6Acceptance.test_missing_evidence_and_confirmed_critical_failure) ... ok
+test_linked_and_pending_changes_preserve_versions (test_reassessment.ReassessmentTests.test_linked_and_pending_changes_preserve_versions) ... ok
+test_action_and_condition_boundaries (test_remediation.RemediationTests.test_action_and_condition_boundaries) ... ok
+test_invalid_closure_and_vendor_links (test_remediation.RemediationTests.test_invalid_closure_and_vendor_links) ... ok
+test_all_oracle_fields (test_risk_fixture_comparison.FixtureTests.test_all_oracle_fields) ... ok
+test_demonstration_cases (test_risk_fixture_comparison.FixtureTests.test_demonstration_cases) ... ok
+test_invalid_options (test_risk_scoring.RiskTests.test_invalid_options) ... ok
+test_missing_response_retains_denominator (test_risk_scoring.RiskTests.test_missing_response_retains_denominator) ... ok
+test_question_bank (test_risk_scoring.RiskTests.test_question_bank) ... ok
+test_unrounded_thresholds (test_risk_scoring.RiskTests.test_unrounded_thresholds) ... ok
+test_approved_fixture_has_no_semantic_errors_and_reports_overdue_action (test_semantic_validation.SemanticValidationTests.test_approved_fixture_has_no_semantic_errors_and_reports_overdue_action) ... ok
+test_cli_returns_nonzero_for_incomplete_snapshot_without_rewriting_sources (test_semantic_validation.SemanticValidationTests.test_cli_returns_nonzero_for_incomplete_snapshot_without_rewriting_sources) ... ok
+test_current_assessment_must_belong_to_vendor_and_not_be_superseded (test_semantic_validation.SemanticValidationTests.test_current_assessment_must_belong_to_vendor_and_not_be_superseded) ... ok
+test_decision_independence_justification_and_conditional_action_are_checked (test_semantic_validation.SemanticValidationTests.test_decision_independence_justification_and_conditional_action_are_checked) ... ok
+test_duplicate_service_link_and_questionnaire_gap_are_rejected (test_semantic_validation.SemanticValidationTests.test_duplicate_service_link_and_questionnaire_gap_are_rejected) ... ok
+test_evidence_status_cannot_disagree_with_retained_review_history (test_semantic_validation.SemanticValidationTests.test_evidence_status_cannot_disagree_with_retained_review_history) ... ok
+test_open_action_cannot_have_close_date_and_material_change_dates_are_ordered (test_semantic_validation.SemanticValidationTests.test_open_action_cannot_have_close_date_and_material_change_dates_are_ordered) ... ok
+test_phase1_invalid_vendor_and_evidence_cases_remain_rejected (test_semantic_validation.SemanticValidationTests.test_phase1_invalid_vendor_and_evidence_cases_remain_rejected) ... ok
+test_reassessment_trigger_and_material_event_link_are_checked (test_semantic_validation.SemanticValidationTests.test_reassessment_trigger_and_material_event_link_are_checked) ... ok
+test_response_must_use_option_defined_by_question (test_semantic_validation.SemanticValidationTests.test_response_must_use_option_defined_by_question) ... ok
+test_snapshot_relationship_factor_and_duplicates_are_checked (test_semantic_validation.SemanticValidationTests.test_snapshot_relationship_factor_and_duplicates_are_checked) ... ok
+test_all_declared_foreign_keys (test_validation.ValidationTests.test_all_declared_foreign_keys) ... ok
+test_all_primary_and_composite_duplicates_are_detected (test_validation.ValidationTests.test_all_primary_and_composite_duplicates_are_detected) ... ok
+test_all_rows_can_be_reordered_without_changing_results (test_validation.ValidationTests.test_all_rows_can_be_reordered_without_changing_results) ... ok
+test_answer_labels_and_verification_values (test_validation.ValidationTests.test_answer_labels_and_verification_values) ... ok
+test_audit_orphan_is_reported (test_validation.ValidationTests.test_audit_orphan_is_reported) ... ok
+test_baseline_has_no_structural_errors (test_validation.ValidationTests.test_baseline_has_no_structural_errors) ... ok
+test_conditional_approval_requires_conditions_and_deadline (test_validation.ValidationTests.test_conditional_approval_requires_conditions_and_deadline) ... ok
+test_decision_date_ordering (test_validation.ValidationTests.test_decision_date_ordering) ... ok
+test_duplicate_vendor_retains_all_rows_and_identifies_both_lines (test_validation.ValidationTests.test_duplicate_vendor_retains_all_rows_and_identifies_both_lines) ... ok
+test_each_error_has_actionable_context (test_validation.ValidationTests.test_each_error_has_actionable_context) ... ok
+test_early_action_closure_is_valid_and_closed_date_required (test_validation.ValidationTests.test_early_action_closure_is_valid_and_closed_date_required) ... ok
+test_evidence_requires_response_pair (test_validation.ValidationTests.test_evidence_requires_response_pair) ... ok
+test_evidence_state_required_fields (test_validation.ValidationTests.test_evidence_state_required_fields) ... ok
+test_invalid_dates_and_timestamp (test_validation.ValidationTests.test_invalid_dates_and_timestamp) ... ok
+test_invalid_evidence_status (test_validation.ValidationTests.test_invalid_evidence_status) ... ok
+test_missing_values_include_dictionary_required_fields (test_validation.ValidationTests.test_missing_values_include_dictionary_required_fields) ... ok
+test_orphan_assessment_reference (test_validation.ValidationTests.test_orphan_assessment_reference) ... ok
+test_reassessment_cannot_precede_change (test_validation.ValidationTests.test_reassessment_cannot_precede_change) ... ok
+test_same_vendor_required_for_linked_records (test_validation.ValidationTests.test_same_vendor_required_for_linked_records) ... ok
+test_conditional_approval_requires_explicit_confirmation (ui.test_streamlit_pages.StreamlitPages.test_conditional_approval_requires_explicit_confirmation) ... 2026-11-26 14:47:10.878 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_each_page_loads_with_fixture (ui.test_streamlit_pages.StreamlitPages.test_each_page_loads_with_fixture) ... 2026-11-26 14:47:11.656 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:11.938 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:12.297 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:12.673 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:13.010 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:13.357 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:13.695 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:14.091 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-26 14:47:14.874 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_new_vendor_and_changed_criticality (ui.test_streamlit_pages.StreamlitPages.test_new_vendor_and_changed_criticality) ... 2026-11-26 14:47:15.202 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_register_wires_readable_download (ui.test_streamlit_pages.StreamlitPages.test_register_wires_readable_download) ... 2026-11-26 14:47:15.838 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_report_date_changes_expiry_flag (ui.test_streamlit_pages.StreamlitPages.test_report_date_changes_expiry_flag) ... 2026-11-26 14:47:16.195 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_vendor_search_filter_and_validation (ui.test_streamlit_pages.StreamlitPages.test_vendor_search_filter_and_validation) ... 2026-11-26 14:47:16.640 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 100 tests in 17.921s
+
+OK

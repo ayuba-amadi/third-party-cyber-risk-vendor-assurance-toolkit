@@ -8,6 +8,7 @@ APPLICATION_VERSION = "0.1.0"
 REPOSITORY_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_DATA_DIR = REPOSITORY_ROOT / "sample-data"
 DEFAULT_REPORTS_DIR = REPOSITORY_ROOT / "reports" / "phase1"
+DEFAULT_PHASE2_REPORTS_DIR = REPOSITORY_ROOT / "reports" / "phase2"
 DEFAULT_REPORT_DATE = date(2026, 11, 18)
 DATE_FORMAT = "%Y-%m-%d"
 SOURCE_TABLES = (
@@ -15,6 +16,8 @@ SOURCE_TABLES = (
     "question", "response", "evidence_item", "finding", "corrective_action",
     "decision", "change_event", "reviewer_audit_entry",
 )
+CRITICALITY_SNAPSHOT_TABLE = "assessment_criticality_snapshot"
+PHASE2_SOURCE_TABLES = SOURCE_TABLES + (CRITICALITY_SNAPSHOT_TABLE,)
 EXPECTED_OUTPUT_FILES = (
     "expected_criticality.csv", "expected_domain_completeness.csv",
     "expected_management.csv", "expected_question_scores.csv", "expected_risk.csv",
@@ -32,6 +35,10 @@ ALLOWED_VALUES = {
     ("vendor", "system_access"): ("None", "Standard", "Privileged"),
     ("vendor", "dependency_impact"): ("1", "2", "3", "4"),
     ("vendor", "replaceability"): ("Easy", "Moderate", "Hard", "Very hard"),
+    ("assessment_criticality_snapshot", "data_sensitivity"): ("None", "Internal", "Confidential", "Regulated"),
+    ("assessment_criticality_snapshot", "system_access"): ("None", "Standard", "Privileged"),
+    ("assessment_criticality_snapshot", "dependency_impact"): ("1", "2", "3", "4"),
+    ("assessment_criticality_snapshot", "replaceability"): ("Easy", "Moderate", "Hard", "Very hard"),
     ("vendor", "subcontractor_use"): YES_NO + ("Unknown",),
     ("vendor", "assessment_status"): (
         "Not started", "In progress", "Assessed", "Reassessment due",
@@ -65,6 +72,12 @@ ALLOWED_VALUES = {
 }
 
 PHASE_NOTICE = (
-    "Phase 1 validates data structure and relationships only. Risk scoring, "
-    "criticality, decision workflow and Streamlit user pages are implemented in later phases."
+    "The Phase 1 validate command checks CSV structure and relationships only. "
+    "It does not calculate criticality or run risk scoring, decisions, remediation, "
+    "management reporting or the Streamlit interface."
+)
+PHASE2_NOTICE = (
+    "Phase 2 implements semantic validation and vendor criticality calculation only. "
+    "Risk scoring, evidence scoring, decision workflow, remediation workflow, "
+    "management reporting and the Streamlit interface are later-phase work."
 )

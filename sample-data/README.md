@@ -19,13 +19,22 @@ Report date: **2026-11-18 (WAT)**. Prepared 2026-11-21. All organisations, recor
 | change_event.csv | 2 | One material change event pair for SwiftPay |
 | reviewer_audit_entry.csv | 535 | Synthetic event history |
 
+Phase 2 adds `assessment_criticality_snapshot.csv` as a separate, explicit
+assessment-level source with 11 rows, one for every assessment version. Current
+assessment rows record the factor values from the vendor register at that
+assessment; historical ASMT-004 retains its own 2026 factor values. The
+criticality engine reads this snapshot and never substitutes current VEN-004
+values into the superseded assessment. `snapshot_source` identifies how each
+row was populated. Do not edit historical snapshot values in place; preserve a
+new row under a new assessment ID for a reassessment.
+
 The question.csv parent includes the canonical Day 2 question wording, evidence descriptions and acceptance criteria. Reconstructing the original bank in its original CSV format reproduced Git blob SHA `c9b525df9c46f133e83329ed12bd793b90cfd67f` exactly. To regenerate it after an upstream change, run `python sample-data/normalize_question_bank.py` from a repository checkout. No upstream question bank edit is required.
 
 ## Expected outputs and negative inputs
 
 - `expected_domain_completeness.csv`: per-assessment verified and answered counts by domain, including the retained historical assessment. Management flag counts count vendors, not the number of findings. Seven open findings belong to six vendors; two decisions have open conditions.
 
-- `expected_risk.csv`: exact integer numerator/denominator, percentage rounded to six decimals, raw provisional band and final displayed state. `expected_question_scores.csv`: question-level arithmetic. `expected_criticality.csv`: four factor values, scores and override reasons; also preserves VEN-004 v1 inputs because Day 1 has no historical factor table. It is an expected-output file, not an additional input table.
+- `expected_risk.csv`: exact integer numerator/denominator, percentage rounded to six decimals, raw provisional band and final displayed state. `expected_question_scores.csv`: question-level arithmetic. `expected_criticality.csv`: factor values, scores and override reasons for output comparison; it remains an expected-output oracle and is never used as a calculation source. Phase 2 uses `assessment_criticality_snapshot.csv` as its runtime factor input, then compares calculated results with the oracle.
 - `invalid_vendor_cases.csv` and `invalid_evidence_cases.csv`: independent mutations, not source records. Reset the base data after each test. `expected_management.csv`: vendor IDs and totals to compare against a report.
 - Join by keys, not row order. The current assessment pointer selects the current report; exclude Superseded from current counts; historical ASMT-004 evaluated at its own date, not at report date. Decision snapshot on VEN-006 remains Low although evidence later expired. Retain historical decisions separately from the current assessment's decision status.
 - Unverified responses receive 4; confirmed critical failure receives 4 under the scoring-owner draft. A provisional numeric score is never a final risk rating. Approval is separate. See acceptance_cases.md for exact results and unresolved policy choices.

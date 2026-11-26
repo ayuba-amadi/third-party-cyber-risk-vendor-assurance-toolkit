@@ -1,0 +1,299 @@
+{
+  "report_date": "2026-11-18",
+  "results": [
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 6,
+      "maximum_points": 344,
+      "risk_percent": "1.744186",
+      "raw_band": "Low",
+      "final_rating": "Low",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "6/344 × 100 = 1.74%. Raw band Low.",
+        "24/24 verified. Complete. Final rating Low."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "answered_count": 24,
+      "verified_count": 22,
+      "weighted_points": 59,
+      "maximum_points": 344,
+      "risk_percent": "17.151163",
+      "raw_band": "Low",
+      "final_rating": "Incomplete",
+      "completeness": "Incomplete",
+      "score_label": "PROVISIONAL — INCOMPLETE ASSESSMENT",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [
+        "AM-01",
+        "DP-01"
+      ],
+      "evidence_flags": [
+        "AM-01:Missing",
+        "DP-01:Missing"
+      ],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "59/344 × 100 = 17.15%. Raw band Low.",
+        "22/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.",
+        "Unresolved critical questions: AM-01, DP-01"
+      ]
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 28,
+      "maximum_points": 344,
+      "risk_percent": "8.139535",
+      "raw_band": "Low",
+      "final_rating": "High",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [
+        "AM-01"
+      ],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "28/344 × 100 = 8.14%. Raw band Low.",
+        "24/24 verified. Complete. Final rating High.",
+        "Confirmed critical failures impose a High minimum on completed ratings: AM-01"
+      ]
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 3,
+      "maximum_points": 344,
+      "risk_percent": "0.872093",
+      "raw_band": "Low",
+      "final_rating": "Low",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-08-01",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "3/344 × 100 = 0.87%. Raw band Low.",
+        "24/24 verified. Complete. Final rating Low."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "answered_count": 24,
+      "verified_count": 23,
+      "weighted_points": 22,
+      "maximum_points": 344,
+      "risk_percent": "6.395349",
+      "raw_band": "Low",
+      "final_rating": "Incomplete",
+      "completeness": "Incomplete",
+      "score_label": "PROVISIONAL — INCOMPLETE ASSESSMENT",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [
+        "IN-02:Rejected"
+      ],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "22/344 × 100 = 6.40%. Raw band Low.",
+        "23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "answered_count": 24,
+      "verified_count": 23,
+      "weighted_points": 19,
+      "maximum_points": 344,
+      "risk_percent": "5.523256",
+      "raw_band": "Low",
+      "final_rating": "Incomplete",
+      "completeness": "Incomplete",
+      "score_label": "PROVISIONAL — INCOMPLETE ASSESSMENT",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [
+        "GV-02:Expired"
+      ],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "19/344 × 100 = 5.52%. Raw band Low.",
+        "23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 0,
+      "maximum_points": 344,
+      "risk_percent": "0.000000",
+      "raw_band": "Low",
+      "final_rating": "Low",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "0/344 × 100 = 0.00%. Raw band Low.",
+        "24/24 verified. Complete. Final rating Low."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 3,
+      "maximum_points": 344,
+      "risk_percent": "0.872093",
+      "raw_band": "Low",
+      "final_rating": "Low",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "3/344 × 100 = 0.87%. Raw band Low.",
+        "24/24 verified. Complete. Final rating Low."
+      ]
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "answered_count": 24,
+      "verified_count": 24,
+      "weighted_points": 20,
+      "maximum_points": 344,
+      "risk_percent": "5.813953",
+      "raw_band": "Low",
+      "final_rating": "High",
+      "completeness": "Complete",
+      "score_label": "Complete",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [
+        "DP-01"
+      ],
+      "unresolved_critical_questions": [],
+      "evidence_flags": [],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "20/344 × 100 = 5.81%. Raw band Low.",
+        "24/24 verified. Complete. Final rating High.",
+        "Confirmed critical failures impose a High minimum on completed ratings: DP-01"
+      ]
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "answered_count": 14,
+      "verified_count": 14,
+      "weighted_points": 141,
+      "maximum_points": 344,
+      "risk_percent": "40.988372",
+      "raw_band": "High",
+      "final_rating": "Incomplete",
+      "completeness": "Incomplete",
+      "score_label": "PROVISIONAL — INCOMPLETE ASSESSMENT",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [
+        "SC-01"
+      ],
+      "evidence_flags": [
+        "BC-03:Missing",
+        "BC-04:Missing",
+        "GV-01:Missing",
+        "GV-02:Missing",
+        "GV-03:Missing",
+        "GV-04:Missing",
+        "SC-01:Missing",
+        "SC-02:Missing",
+        "SC-03:Missing",
+        "SC-04:Missing"
+      ],
+      "unanswered_questions": [
+        "BC-03",
+        "BC-04",
+        "GV-01",
+        "GV-02",
+        "GV-03",
+        "GV-04",
+        "SC-01",
+        "SC-02",
+        "SC-03",
+        "SC-04"
+      ],
+      "calculation_trace": [
+        "141/344 × 100 = 40.99%. Raw band High.",
+        "14/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.",
+        "Unresolved critical questions: SC-01"
+      ]
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "answered_count": 24,
+      "verified_count": 23,
+      "weighted_points": 39,
+      "maximum_points": 344,
+      "risk_percent": "11.337209",
+      "raw_band": "Low",
+      "final_rating": "Incomplete",
+      "completeness": "Incomplete",
+      "score_label": "PROVISIONAL — INCOMPLETE ASSESSMENT",
+      "evidence_as_of": "2026-11-18",
+      "confirmed_critical_failures": [],
+      "unresolved_critical_questions": [
+        "SC-01"
+      ],
+      "evidence_flags": [
+        "SC-01:Received"
+      ],
+      "unanswered_questions": [],
+      "calculation_trace": [
+        "39/344 × 100 = 11.34%. Raw band Low.",
+        "23/24 verified. PROVISIONAL — INCOMPLETE ASSESSMENT. Final rating Incomplete.",
+        "Unresolved critical questions: SC-01"
+      ]
+    }
+  ],
+  "fixture_comparison": {
+    "status": "PASS",
+    "errors": [],
+    "rows": 11
+  }
+}

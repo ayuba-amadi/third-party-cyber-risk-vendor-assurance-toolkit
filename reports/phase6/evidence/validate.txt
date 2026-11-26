@@ -1,0 +1,17 @@
+The Phase 1 validate command checks CSV structure and relationships only. It does not calculate criticality or run risk scoring, decisions, remediation, management reporting or the Streamlit interface.
+Report date used: 2026-11-18
+Files loaded: 12
+Source tables: 12
+Valid tables: 12
+Errors: 0
+Warnings: 0
+Duplicates: 0
+Orphans: 0
+Missing fields: 0
+Invalid values: 0
+Date errors: 0
+Files: 0
+Duplicate records: 0
+Orphan records: 0
+Report: /tmp/p6-copy.N3mjS9/reports/phase1/validation_report.json
+Report: /tmp/p6-copy.N3mjS9/reports/phase1/validation_report.md

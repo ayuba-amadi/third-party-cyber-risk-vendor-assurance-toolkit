@@ -1,7 +1,8 @@
-# Phase 1 Python foundation
+# CSV toolkit foundation
 
-Use Python 3.10 or later from the repository root. Only the Python standard
-library is needed. No package installation, database, SQLite or network is used.
+Use Python 3.10 or later from the repository root. The Python engines and
+terminal commands use the standard library and read CSV files. The optional
+browser interface requires Streamlit. See the [Streamlit guide](../app/README.md).
 If your system provides `python3` instead of `python`, use `python3` in these commands.
 
 ```sh
@@ -11,13 +12,21 @@ python -m src.cli validate
 python -m src.cli validate --data-dir sample-data
 python -m src.cli validate --data-dir sample-data --as-of 2026-11-18
 python -m src.cli validate --as-of 2027-01-20 --reports-dir /tmp/phase1-reports
+python -m src.cli semantic-validate --data-dir sample-data --as-of 2026-11-18
+python -m src.cli criticality --all --data-dir sample-data
+python -m src.cli criticality --assessment-id ASMT-001
+python -m src.cli criticality --vendor-id VEN-004
+python -m src.cli risk --all --data-dir sample-data --as-of 2026-11-18
+python -m src.cli decisions --as-of 2026-11-18
+python -m src.cli remediation --as-of 2026-11-18
+python -m src.cli management-report --as-of 2026-11-18
+python -m src.cli reassess --vendor-id VEN-004
 ```
 
 The fixed default report date is 2026-11-18. `--as-of` records another valid
-YYYY-MM-DD date. It does not change source dates or apply later-phase expiry flags.
-Validation returns 0 for a structural pass, 1 for data errors and 2 for command
-or report-writing errors. Warnings do not fail validation. Inventory returns
-non-zero if source files cannot be read with their required headers.
+YYYY-MM-DD date and is used to classify open corrective actions as overdue in
+Phase 2. Neither validation nor calculation changes source dates. Commands return
+0 for a pass, 1 for data errors and 2 for command or report-writing errors.
 
 ```mermaid
 flowchart LR
@@ -35,11 +44,12 @@ or that the complete toolkit has passed acceptance.
 
 | Module | Purpose |
 |---|---|
-| `config.py` | Application name/version, repository-relative paths, 12 approved sources, fixed report date and dictionary enumerations |
-| `schema.py` | Actual CSV headers, required cell values, primary/composite keys, foreign keys and date fields |
-| `loader.py` | Read-only `pathlib` and `csv.DictReader` loading, source inventory and strict date parsing |
-| `validation.py` | Required fields, identifiers, duplicates, allowed values, dates, orphan references and pair integrity |
-| `cli.py` | Terminal commands, readable issue details and JSON/Markdown validation reports |
+| `config.py` | Application settings, Phase 1 and Phase 2 source lists, report dates and enumerations |
+| `schema.py` | Actual CSV headers, required values, primary/composite keys, foreign keys and date fields |
+| `loader.py` | Read-only CSV loading, source inventory and strict date parsing |
+| `validation.py` | Structural checks and cross-table business rules, including snapshot and history checks |
+| `criticality.py` | Explainable assessment-level score, thresholds and approved overrides |
+| `cli.py` | Inventory, Phase 1 validation, semantic validation and criticality reports |
 
 `load_table(path)` returns a `Table` with its original headers, raw rows, physical
 line numbers, load status and issues. Files use UTF-8. Empty CSV cells stay empty
@@ -48,15 +58,16 @@ blank/repeated headers, unreadable files, encoding errors and malformed CSV are
 reported. Parsed rows remain available even when a later record cannot be read;
 in that case loading is marked incomplete. Rows are never silently removed.
 
-`load_source_tables(data_dir)` returns a dictionary keyed by the 12 approved
-table names. `validate_tables(data)` returns issues and summary counts. All joins
+`load_source_tables(data_dir)` returns the 12 Phase 1 source tables.
+`load_source_tables(data_dir, include_criticality_snapshot=True)` adds the
+Phase 2 `assessment_criticality_snapshot` source. `validate_tables(data)` returns
+issues, summary counts and overdue actions for its supplied report date. All joins
 use keys. Duplicate parents are ambiguous and are never selected by row order.
-Do not use rows from a failing validation run for later calculations. Phase 1
-does not export accepted/rejected datasets or select a duplicate winner.
+Do not use a failing validation run for later decisions or reports.
 
 ## Baseline and header differences
 
-The research baseline is `a06ca9a`. The specification is in
+The approved Phase 1 foundation baseline is `00eb6ee`. The specification is in
 [`data_dictionary.md`](../01-research-and-risk-assessment/data_dictionary.md),
 the research methods, workflow, acceptance cases and
 [`sample-data/README.md`](../sample-data/README.md). The source CSVs, not the
@@ -106,21 +117,49 @@ python3 sample-data/validate_fixture.py
 python -m unittest discover -s tests -v
 ```
 
+## Phase 2 criticality and semantic validation
+
+Assessment-level criticality reads four factors only from the stored snapshot row.
+The vendor register is never used as a fallback for a missing snapshot field.
+The engine adds the four points, maps totals 2–3/4–6/7–9/10–13 to
+Low/Medium/High/Critical, then applies the three approved overrides. A result
+with invalid or incomplete factor or linked-service inputs is marked
+`PROVISIONAL — INCOMPLETE INPUTS` and has no final band.
+
+The historical ASMT-004 snapshot retains the 2026 fixture values separately
+from current VEN-004 factors. Expected-output CSVs are never score inputs; the
+criticality command reads `expected_criticality.csv` only to compare generated
+results after calculation. Sources remain read-only, and Phase 2 reports live in
+`reports/phase2/`.
+
 ## Limits and later work
 
-Phase 1 validates data structure and relationships only. Risk scoring, criticality, decision workflow and Streamlit user pages are implemented in later phases.
+Phase 4 adds `decisions`, `remediation`, `reassess`, `management-report` and
+`vendor-report`. See [Phase 4 status](../02-toolkit-development/PHASE_4_STATUS.md)
+for date handling, data selection and report locations.
 
-No decision authority, workflow transitions, remediation management, overdue
-flags, completeness calculations or vendor/management reports are implemented.
-Validation reports are the only reports created here. Evidence references are
-fictional paths; the files are not fetched or inspected. No real vendor data is allowed.
+Phase 3 adds `python -m src.cli risk` and `python -m src.cli question-scores`.
+Both accept assessment and vendor filters, `--as-of` and `--reports-dir`.
+See [Phase 3 status](../02-toolkit-development/PHASE_3_STATUS.md) for the
+scoring method and fixture verification.
+
+Phase 5 uses the engines in the browser. The interface stores working CSV copies
+in session memory and offers downloads for changes and generated reports. SQLite
+is unused. Deployment and production access control remain for a later phase.
+
+Phase 2 classifies overdue corrective actions for the supplied report date but
+does not run decision or remediation workflows, risk/evidence scoring or
+management reporting. Evidence references are fictional paths; files are not
+fetched or inspected. No real vendor data is allowed.
 
 There are no onboarding, finding-creation or action-creation date columns, so
 comparisons requiring them are unavailable. Early action closure is valid;
 `closed_date < due_date` is not an error. No missing schema fields are invented.
 Evidence pairs are unique in the current fixture and research validator; the
-evidence replacement-history rule will need reconciliation with the schema
-owner before workflow development. Audit references to composite-key tables
-are flagged because no baseline representation is defined. Historical factor
-snapshots exist only in an expected-output file, which remains excluded from
-production inputs. Structural success is not research-policy or toolkit approval.
+Evidence items use immutable IDs and audit events, and replacement evidence
+must be recorded as a distinct row in a retained assessment version. CSV alone
+cannot recover a prior file state that was never preserved; version control and
+the supplied audit records provide the available history trail. Audit references
+to composite-key tables remain flagged because no baseline representation is
+defined. Phase 2 success is not independent policy approval or completion of the
+whole toolkit.

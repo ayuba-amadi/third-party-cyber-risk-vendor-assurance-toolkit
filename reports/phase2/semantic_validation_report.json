@@ -1,0 +1,42 @@
+{
+  "application": "Third-Party Cyber Risk Vendor Assurance Toolkit",
+  "command": "python -m src.cli semantic-validate --data-dir sample-data --as-of 2026-11-18",
+  "errors": [],
+  "executed_at_utc": "2026-11-26T12:23:29.287901+00:00",
+  "execution_date": "2026-11-26",
+  "limitations": [
+    "Validation checks the supplied CSV state; it cannot recover a prior file version that was never preserved.",
+    "Evidence record IDs, audit events and assessment versions provide the available history trail.",
+    "This phase does not calculate security risk, evidence scores or decisions."
+  ],
+  "overdue_actions": [
+    {
+      "action_id": "ACT-001",
+      "due_date": "2026-10-31",
+      "finding_id": "FND-003",
+      "status": "Open",
+      "vendor_id": "VEN-003"
+    }
+  ],
+  "report_date": "2026-11-18",
+  "scope": "Phase 2 implements semantic validation and vendor criticality calculation only. Risk scoring, evidence scoring, decision workflow, remediation workflow, management reporting and the Streamlit interface are later-phase work.",
+  "source_directory": "/home/amadi/Documents/GitHub/third-party-cyber-risk-vendor-assurance-toolkit/sample-data",
+  "status": "PASS",
+  "summary": {
+    "date_errors": 0,
+    "duplicate_records": 0,
+    "duplicates": 0,
+    "errors": 0,
+    "files": 0,
+    "files_loaded": 13,
+    "invalid_values": 0,
+    "missing_fields": 0,
+    "orphan_records": 0,
+    "orphans": 0,
+    "source_tables": 13,
+    "valid_tables": 13,
+    "warnings": 0
+  },
+  "version": "0.1.0",
+  "warnings": []
+}

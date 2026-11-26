@@ -1,0 +1,8 @@
+Scope: application, engine, fictional fixtures and repository working files, 26 November 2026.
+Keyword scan: the requested rg scan was reviewed with candidate values kept out of the QA package.
+Disposition: Git metadata and sample-hook terms, report source paths and research file references were contextual matches. A separate credential-shaped pattern scan matched repository-name text, not credentials. No real credentials found.
+Fictional-data check: reviewed vendor and service fixtures and evidence metadata. No email-address or Nigerian international phone pattern matched the source CSVs. Governance retains attributed contributor names as project credits. No real vendor or assessment data used.
+Artifact check: no SQLite, .db, .env or physical source evidence files found in the workspace scan.
+App code-path check: the app loads its repository-relative source directory. Vendor upload consumes user-selected CSV bytes and does not accept a server file path. Evidence references are metadata. Git HEAD lookup reads repository metadata. App writes to session objects and builds downloads in memory. No app disk writes or destructive paths were identified.
+Source integrity: pre/post SHA-256 manifests matched all 20 sample-data CSV files. Git tracked diff for sample-data matched baseline. The already present assessment_criticality_snapshot.csv is untracked and included in the hash check.
+Approvals: the fixture contains fictional recorded approvals. Adding or scoring a vendor created no approval. Decision confirmation was exercised explicitly in a controlled session.

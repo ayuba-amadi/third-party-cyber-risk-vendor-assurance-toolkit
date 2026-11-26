@@ -90,6 +90,18 @@ SCHEMAS = {
     ),
 }
 
+# The separate snapshot is a Phase 2 input. Keep the Phase 1 SCHEMAS mapping
+# stable for existing callers that iterate its original 12 source tables.
+PHASE2_SCHEMAS = {
+    **SCHEMAS,
+    "assessment_criticality_snapshot": table(
+        "assessment_id vendor_id data_sensitivity system_access dependency_impact "
+        "replaceability snapshot_source", "", "assessment_id",
+        (("assessment_id", "assessment", "assessment_id"),
+         ("vendor_id", "vendor", "vendor_id")),
+    ),
+}
+
 IDENTIFIER_PATTERNS = {
     "vendor_id": r"VEN-[0-9]{3}", "service_id": r"SVC-[0-9]{2}",
     "assessment_id": r"ASMT-[0-9]{3}", "question_id": r"(?:AM|DP|IN|BC|SC|GV)-[0-9]{2}",

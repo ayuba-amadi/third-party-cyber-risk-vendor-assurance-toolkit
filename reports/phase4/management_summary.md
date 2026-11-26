@@ -1,0 +1,458 @@
+# Management summary
+
+- **Report date** 2026-11-18
+- **Source files**
+  - assessment.csv
+  - assessment_criticality_snapshot.csv
+  - business_service.csv
+  - change_event.csv
+  - corrective_action.csv
+  - decision.csv
+  - evidence_item.csv
+  - finding.csv
+  - question.csv
+  - response.csv
+  - reviewer_audit_entry.csv
+  - vendor.csv
+  - vendor_service_link.csv
+- **Rule** Select current records by vendor.current_assessment_id. Date flags use a strict earlier-than comparison.
+- **Warnings** None
+- **Errors** None
+- **Limitations** CSV records supply role names and written exceptions. The toolkit cannot authenticate approvers, reconstruct prior evidence reviews, or independently certify condition closure.
+- **Expected fixture comparison** PASS (33 rows)
+- **Overdue reviews**
+  - Record
+    - **Vendor id** VEN-003
+    - **Vendor name** SalaryBridge Payroll
+    - **Current assessment id** ASMT-003
+    - **Next review date** 2026-10-31
+    - **Report date** 2026-11-18
+    - **Days overdue** 18
+    - **Source id** VEN-003
+  - Record
+    - **Vendor id** VEN-006
+    - **Vendor name** SecureTech Managed IT
+    - **Current assessment id** ASMT-006
+    - **Next review date** 2026-10-31
+    - **Report date** 2026-11-18
+    - **Days overdue** 18
+    - **Source id** VEN-006
+
+## Results
+
+- **Breakdown** category
+- **Group** Cloud hosting
+- **Count** 2
+- **Vendor ids**
+  - VEN-001
+  - VEN-007
+- **Source ids**
+  - VEN-001
+  - VEN-007
+
+- **Breakdown** category
+- **Group** Collaboration SaaS
+- **Count** 2
+- **Vendor ids**
+  - VEN-009
+  - VEN-010
+- **Source ids**
+  - VEN-009
+  - VEN-010
+
+- **Breakdown** category
+- **Group** Payment processing
+- **Count** 2
+- **Vendor ids**
+  - VEN-002
+  - VEN-004
+- **Source ids**
+  - VEN-002
+  - VEN-004
+
+- **Breakdown** category
+- **Group** Payroll
+- **Count** 2
+- **Vendor ids**
+  - VEN-003
+  - VEN-008
+- **Source ids**
+  - VEN-003
+  - VEN-008
+
+- **Breakdown** category
+- **Group** Technical support
+- **Count** 2
+- **Vendor ids**
+  - VEN-005
+  - VEN-006
+- **Source ids**
+  - VEN-005
+  - VEN-006
+
+- **Breakdown** criticality
+- **Group** Critical
+- **Count** 4
+- **Vendor ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+- **Source ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+
+- **Breakdown** criticality
+- **Group** High
+- **Count** 3
+- **Vendor ids**
+  - VEN-006
+  - VEN-007
+  - VEN-009
+- **Source ids**
+  - VEN-006
+  - VEN-007
+  - VEN-009
+
+- **Breakdown** criticality
+- **Group** Low
+- **Count** 1
+- **Vendor ids**
+  - VEN-010
+- **Source ids**
+  - VEN-010
+
+- **Breakdown** criticality
+- **Group** Medium
+- **Count** 2
+- **Vendor ids**
+  - VEN-005
+  - VEN-008
+- **Source ids**
+  - VEN-005
+  - VEN-008
+
+- **Breakdown** decision
+- **Group** Approved
+- **Count** 4
+- **Vendor ids**
+  - VEN-001
+  - VEN-006
+  - VEN-007
+  - VEN-008
+- **Source ids**
+  - VEN-001
+  - VEN-006
+  - VEN-007
+  - VEN-008
+
+- **Breakdown** decision
+- **Group** Awaiting decision
+- **Count** 3
+- **Vendor ids**
+  - VEN-002
+  - VEN-004
+  - VEN-010
+- **Source ids**
+  - VEN-002
+  - VEN-004
+  - VEN-010
+
+- **Breakdown** decision
+- **Group** Conditionally Approved
+- **Count** 2
+- **Vendor ids**
+  - VEN-003
+  - VEN-005
+- **Source ids**
+  - VEN-003
+  - VEN-005
+
+- **Breakdown** decision
+- **Group** Rejected
+- **Count** 1
+- **Vendor ids**
+  - VEN-009
+- **Source ids**
+  - VEN-009
+
+- **Breakdown** flag
+- **Group** Confirmed critical failure
+- **Count** 2
+- **Vendor ids**
+  - VEN-003
+  - VEN-009
+- **Source ids**
+  - VEN-003
+  - VEN-009
+
+- **Breakdown** flag
+- **Group** Expired approval
+- **Count** 1
+- **Vendor ids**
+  - VEN-006
+- **Source ids**
+  - VEN-006
+
+- **Breakdown** flag
+- **Group** Expired evidence
+- **Count** 1
+- **Vendor ids**
+  - VEN-006
+- **Source ids**
+  - VEN-006
+
+- **Breakdown** flag
+- **Group** Incomplete
+- **Count** 5
+- **Vendor ids**
+  - VEN-002
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-010
+- **Source ids**
+  - VEN-002
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-010
+
+- **Breakdown** flag
+- **Group** Missing evidence
+- **Count** 2
+- **Vendor ids**
+  - VEN-002
+  - VEN-010
+- **Source ids**
+  - VEN-002
+  - VEN-010
+
+- **Breakdown** flag
+- **Group** Open condition
+- **Count** 2
+- **Vendor ids**
+  - VEN-003
+  - VEN-005
+- **Source ids**
+  - VEN-003
+  - VEN-005
+
+- **Breakdown** flag
+- **Group** Open finding
+- **Count** 6
+- **Vendor ids**
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-009
+- **Source ids**
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-009
+
+- **Breakdown** flag
+- **Group** Overdue action
+- **Count** 1
+- **Vendor ids**
+  - VEN-003
+- **Source ids**
+  - VEN-003
+
+- **Breakdown** flag
+- **Group** Overdue review
+- **Count** 2
+- **Vendor ids**
+  - VEN-003
+  - VEN-006
+- **Source ids**
+  - VEN-003
+  - VEN-006
+
+- **Breakdown** flag
+- **Group** Received evidence
+- **Count** 1
+- **Vendor ids**
+  - VEN-004
+- **Source ids**
+  - VEN-004
+
+- **Breakdown** flag
+- **Group** Rejected evidence
+- **Count** 1
+- **Vendor ids**
+  - VEN-005
+- **Source ids**
+  - VEN-005
+
+- **Breakdown** flag
+- **Group** Unanswered
+- **Count** 1
+- **Vendor ids**
+  - VEN-010
+- **Source ids**
+  - VEN-010
+
+- **Breakdown** flag
+- **Group** Unexpired Approved outcome
+- **Count** 3
+- **Vendor ids**
+  - VEN-001
+  - VEN-007
+  - VEN-008
+- **Source ids**
+  - VEN-001
+  - VEN-007
+  - VEN-008
+
+- **Breakdown** flag
+- **Group** Unresolved critical question
+- **Count** 3
+- **Vendor ids**
+  - VEN-002
+  - VEN-004
+  - VEN-010
+- **Source ids**
+  - VEN-002
+  - VEN-004
+  - VEN-010
+
+- **Breakdown** service concentration
+- **Group** SVC-03
+- **Count** 3
+- **Vendor ids**
+  - VEN-001
+  - VEN-002
+  - VEN-004
+- **Source ids**
+  - VEN-001
+  - VEN-002
+  - VEN-004
+
+- **Breakdown** service concentration
+- **Group** SVC-04
+- **Count** 2
+- **Vendor ids**
+  - VEN-001
+  - VEN-006
+- **Source ids**
+  - VEN-001
+  - VEN-006
+
+- **Breakdown** service concentration
+- **Group** SVC-05
+- **Count** 2
+- **Vendor ids**
+  - VEN-001
+  - VEN-010
+- **Source ids**
+  - VEN-001
+  - VEN-010
+
+- **Breakdown** service concentration
+- **Group** SVC-06
+- **Count** 2
+- **Vendor ids**
+  - VEN-005
+  - VEN-006
+- **Source ids**
+  - VEN-005
+  - VEN-006
+
+- **Breakdown** service dependency
+- **Group** Business-critical vendor
+- **Count** 4
+- **Vendor ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+- **Source ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+
+- **Breakdown** vendor concentration
+- **Group** Multiple services
+- **Count** 2
+- **Vendor ids**
+  - VEN-001
+  - VEN-006
+- **Source ids**
+  - VEN-001
+  - VEN-006
+
+- **Breakdown** total
+- **Group** Current vendors
+- **Count** 10
+- **Vendor ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-007
+  - VEN-008
+  - VEN-009
+  - VEN-010
+- **Source ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-007
+  - VEN-008
+  - VEN-009
+  - VEN-010
+
+- **Breakdown** total
+- **Group** Open findings
+- **Count** 7
+- **Vendor ids**
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-009
+- **Source ids**
+  - FND-001
+  - FND-002
+  - FND-003
+  - FND-004
+  - FND-005
+  - FND-006
+  - FND-007
+
+- **Breakdown** total
+- **Group** Service categories
+- **Count** 5
+- **Vendor ids**
+  - VEN-001
+  - VEN-002
+  - VEN-003
+  - VEN-004
+  - VEN-005
+  - VEN-006
+  - VEN-007
+  - VEN-008
+  - VEN-009
+  - VEN-010
+- **Source ids**
+  - Cloud hosting
+  - Collaboration SaaS
+  - Payment processing
+  - Payroll
+  - Technical support
+

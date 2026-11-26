@@ -1,0 +1,12 @@
+assessment_id,vendor_id,data_sensitivity,system_access,dependency_impact,replaceability,snapshot_source
+ASMT-001,VEN-001,Regulated,Privileged,4,Very hard,Current vendor register at assessment
+ASMT-002,VEN-002,Regulated,Privileged,4,Hard,Current vendor register at assessment
+ASMT-003,VEN-003,Regulated,Standard,4,Very hard,Current vendor register at assessment
+ASMT-004,VEN-004,Regulated,Standard,3,Moderate,Historical research fixture values
+ASMT-005,VEN-005,Internal,Standard,2,Moderate,Current vendor register at assessment
+ASMT-006,VEN-006,Confidential,Privileged,3,Moderate,Current vendor register at assessment
+ASMT-007,VEN-007,Confidential,Standard,3,Hard,Current vendor register at assessment
+ASMT-008,VEN-008,Confidential,None,2,Moderate,Current vendor register at assessment
+ASMT-009,VEN-009,Regulated,Standard,3,Moderate,Current vendor register at assessment
+ASMT-010,VEN-010,Internal,None,1,Easy,Current vendor register at assessment
+ASMT-011,VEN-004,Regulated,Privileged,4,Hard,Current vendor register at assessment

@@ -7,10 +7,10 @@ from datetime import date
 from pathlib import Path
 
 from .config import (
-    DEFAULT_REPORT_DATE, EXPECTED_OUTPUT_FILES, NEGATIVE_TEST_FILES,
-    REFERENCE_FILES, SOURCE_TABLES,
+    DEFAULT_REPORT_DATE, EXPECTED_OUTPUT_FILES,
+    NEGATIVE_TEST_FILES, PHASE2_SOURCE_TABLES, REFERENCE_FILES, SOURCE_TABLES,
 )
-from .schema import SCHEMAS, ValidationIssue
+from .schema import PHASE2_SCHEMAS, SCHEMAS, ValidationIssue
 
 
 @dataclass
@@ -64,7 +64,7 @@ def load_table(path):
             if len(result.headers) != len(set(result.headers)):
                 issue(1, "header", repr(result.headers), "Header names must be unique",
                       "Remove repeated header names; preserve each column's data.")
-            schema = SCHEMAS.get(path.stem)
+            schema = PHASE2_SCHEMAS.get(path.stem)
             if schema:
                 for column in schema.columns:
                     if column not in result.headers:
@@ -103,9 +103,10 @@ def load_table(path):
     return result
 
 
-def load_source_tables(data_dir):
-    """Load exactly the 12 approved inputs, keyed by table name."""
-    return {name: load_table(Path(data_dir) / f"{name}.csv") for name in SOURCE_TABLES}
+def load_source_tables(data_dir, include_criticality_snapshot=False):
+    """Load Phase 1 sources, optionally adding the Phase 2 snapshot source."""
+    names = PHASE2_SOURCE_TABLES if include_criticality_snapshot else SOURCE_TABLES
+    return {name: load_table(Path(data_dir) / f"{name}.csv") for name in names}
 
 
 def get_table_inventory(data, include_references=False):
@@ -115,7 +116,7 @@ def get_table_inventory(data, include_references=False):
         inventory.append({
             "table": name, "file": str(table.path), "row_count": len(table.rows),
             "column_count": len(table.headers),
-            "primary_identifier": ", ".join(SCHEMAS[name].primary_key),
+            "primary_identifier": ", ".join(PHASE2_SCHEMAS[name].primary_key),
             "classification": "source", "loaded": table.loaded,
         })
     if include_references and data:

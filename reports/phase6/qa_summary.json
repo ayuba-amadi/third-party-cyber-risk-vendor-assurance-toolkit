@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-26",
+  "fixture_date": "2026-11-18",
+  "branch": "main",
+  "base_commit": "00eb6ee6d27dd4fad720cdc45f440328424f7a76",
+  "tested_revision": "Working tree with uncommitted Phases 2\u20136",
+  "unit_tests": {
+    "run": 100,
+    "passed": 100,
+    "failed": 0,
+    "skipped": 0
+  },
+  "pytest": {
+    "passed": 100,
+    "subtests_passed": 138
+  },
+  "acceptance_register": {
+    "passed": 14,
+    "failed": 0
+  },
+  "required_demonstrations": {
+    "passed": 10,
+    "failed": 0
+  },
+  "management": {
+    "expected_rows_matched": 33,
+    "phase4_rows_matched": 36
+  },
+  "fixed_defects": [
+    "P6-001"
+  ],
+  "remaining_defects": [],
+  "health": "ok",
+  "source_csv_integrity": "PASS",
+  "secrets_scan": "PASS",
+  "deployment_status": "NOT ATTEMPTED",
+  "deployment_recommendation": "READY FOR DEPLOYMENT",
+  "submission_recommendation": "NOT READY FOR SUBMISSION",
+  "submission_gates": [
+    "Independent QA/team-lead approval",
+    "Verified member contributions"
+  ],
+  "qa_reviewer": null
+}

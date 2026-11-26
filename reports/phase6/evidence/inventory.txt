@@ -1,0 +1,23 @@
+| Table | File | Rows | Columns | Primary identifier | Classification | Loaded |
+|---|---|---:|---:|---|---|---|
+| vendor | /tmp/p6-copy.N3mjS9/sample-data/vendor.csv | 10 | 15 | vendor_id | source | True |
+| business_service | /tmp/p6-copy.N3mjS9/sample-data/business_service.csv | 8 | 4 | service_id | source | True |
+| vendor_service_link | /tmp/p6-copy.N3mjS9/sample-data/vendor_service_link.csv | 13 | 3 | vendor_id, service_id | source | True |
+| assessment | /tmp/p6-copy.N3mjS9/sample-data/assessment.csv | 11 | 8 | assessment_id | source | True |
+| question | /tmp/p6-copy.N3mjS9/sample-data/question.csv | 24 | 9 | question_id | source | True |
+| response | /tmp/p6-copy.N3mjS9/sample-data/response.csv | 264 | 6 | assessment_id, question_id | source | True |
+| evidence_item | /tmp/p6-copy.N3mjS9/sample-data/evidence_item.csv | 264 | 10 | evidence_id | source | True |
+| finding | /tmp/p6-copy.N3mjS9/sample-data/finding.csv | 7 | 6 | finding_id | source | True |
+| corrective_action | /tmp/p6-copy.N3mjS9/sample-data/corrective_action.csv | 4 | 8 | action_id | source | True |
+| decision | /tmp/p6-copy.N3mjS9/sample-data/decision.csv | 8 | 11 | decision_id | source | True |
+| change_event | /tmp/p6-copy.N3mjS9/sample-data/change_event.csv | 2 | 6 | change_id | source | True |
+| reviewer_audit_entry | /tmp/p6-copy.N3mjS9/sample-data/reviewer_audit_entry.csv | 535 | 7 | audit_id | source | True |
+| assessment_criticality_snapshot | /tmp/p6-copy.N3mjS9/sample-data/assessment_criticality_snapshot.csv | 11 | 7 | assessment_id | source | True |
+| expected_criticality | /tmp/p6-copy.N3mjS9/sample-data/expected_criticality.csv | 11 | 14 |  | expected-output | True |
+| expected_domain_completeness | /tmp/p6-copy.N3mjS9/sample-data/expected_domain_completeness.csv | 66 | 7 |  | expected-output | True |
+| expected_management | /tmp/p6-copy.N3mjS9/sample-data/expected_management.csv | 33 | 4 |  | expected-output | True |
+| expected_question_scores | /tmp/p6-copy.N3mjS9/sample-data/expected_question_scores.csv | 264 | 9 |  | expected-output | True |
+| expected_risk | /tmp/p6-copy.N3mjS9/sample-data/expected_risk.csv | 11 | 13 |  | expected-output | True |
+| invalid_vendor_cases | /tmp/p6-copy.N3mjS9/sample-data/invalid_vendor_cases.csv | 3 | 5 |  | negative-test | True |
+| invalid_evidence_cases | /tmp/p6-copy.N3mjS9/sample-data/invalid_evidence_cases.csv | 2 | 6 |  | negative-test | True |
+| validation_results | /tmp/p6-copy.N3mjS9/sample-data/validation_results.txt | n/a | n/a |  | reference | n/a |

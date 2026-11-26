@@ -1,0 +1,569 @@
+{
+  "report_date": "2026-11-18",
+  "source_files": [
+    "assessment.csv",
+    "assessment_criticality_snapshot.csv",
+    "business_service.csv",
+    "change_event.csv",
+    "corrective_action.csv",
+    "decision.csv",
+    "evidence_item.csv",
+    "finding.csv",
+    "question.csv",
+    "response.csv",
+    "reviewer_audit_entry.csv",
+    "vendor.csv",
+    "vendor_service_link.csv"
+  ],
+  "rule": "Select current records by vendor.current_assessment_id. Date flags use a strict earlier-than comparison.",
+  "warnings": [],
+  "errors": [],
+  "limitations": "CSV records supply role names and written exceptions. The toolkit cannot authenticate approvers, reconstruct prior evidence reviews, or independently certify condition closure.",
+  "expected_fixture_comparison": "PASS (33 rows)",
+  "overdue_reviews": [
+    {
+      "vendor_id": "VEN-003",
+      "vendor_name": "SalaryBridge Payroll",
+      "current_assessment_id": "ASMT-003",
+      "next_review_date": "2026-10-31",
+      "report_date": "2026-11-18",
+      "days_overdue": 18,
+      "source_id": "VEN-003"
+    },
+    {
+      "vendor_id": "VEN-006",
+      "vendor_name": "SecureTech Managed IT",
+      "current_assessment_id": "ASMT-006",
+      "next_review_date": "2026-10-31",
+      "report_date": "2026-11-18",
+      "days_overdue": 18,
+      "source_id": "VEN-006"
+    }
+  ],
+  "results": [
+    {
+      "breakdown": "category",
+      "group": "Cloud hosting",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-007"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-007"
+      ]
+    },
+    {
+      "breakdown": "category",
+      "group": "Collaboration SaaS",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-009",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-009",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "category",
+      "group": "Payment processing",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-004"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-004"
+      ]
+    },
+    {
+      "breakdown": "category",
+      "group": "Payroll",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-003",
+        "VEN-008"
+      ],
+      "source_ids": [
+        "VEN-003",
+        "VEN-008"
+      ]
+    },
+    {
+      "breakdown": "category",
+      "group": "Technical support",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-005",
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-005",
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "criticality",
+      "group": "Critical",
+      "count": 4,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004"
+      ]
+    },
+    {
+      "breakdown": "criticality",
+      "group": "High",
+      "count": 3,
+      "vendor_ids": [
+        "VEN-006",
+        "VEN-007",
+        "VEN-009"
+      ],
+      "source_ids": [
+        "VEN-006",
+        "VEN-007",
+        "VEN-009"
+      ]
+    },
+    {
+      "breakdown": "criticality",
+      "group": "Low",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "criticality",
+      "group": "Medium",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-005",
+        "VEN-008"
+      ],
+      "source_ids": [
+        "VEN-005",
+        "VEN-008"
+      ]
+    },
+    {
+      "breakdown": "decision",
+      "group": "Approved",
+      "count": 4,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-006",
+        "VEN-007",
+        "VEN-008"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-006",
+        "VEN-007",
+        "VEN-008"
+      ]
+    },
+    {
+      "breakdown": "decision",
+      "group": "Awaiting decision",
+      "count": 3,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "decision",
+      "group": "Conditionally Approved",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-003",
+        "VEN-005"
+      ],
+      "source_ids": [
+        "VEN-003",
+        "VEN-005"
+      ]
+    },
+    {
+      "breakdown": "decision",
+      "group": "Rejected",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-009"
+      ],
+      "source_ids": [
+        "VEN-009"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Confirmed critical failure",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-003",
+        "VEN-009"
+      ],
+      "source_ids": [
+        "VEN-003",
+        "VEN-009"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Expired approval",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Expired evidence",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Incomplete",
+      "count": 5,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Missing evidence",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Open condition",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-003",
+        "VEN-005"
+      ],
+      "source_ids": [
+        "VEN-003",
+        "VEN-005"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Open finding",
+      "count": 6,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-009"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-009"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Overdue action",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-003"
+      ],
+      "source_ids": [
+        "VEN-003"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Overdue review",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-003",
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-003",
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Received evidence",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-004"
+      ],
+      "source_ids": [
+        "VEN-004"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Rejected evidence",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-005"
+      ],
+      "source_ids": [
+        "VEN-005"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Unanswered",
+      "count": 1,
+      "vendor_ids": [
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Unexpired Approved outcome",
+      "count": 3,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-007",
+        "VEN-008"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-007",
+        "VEN-008"
+      ]
+    },
+    {
+      "breakdown": "flag",
+      "group": "Unresolved critical question",
+      "count": 3,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-002",
+        "VEN-004",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "service concentration",
+      "group": "SVC-03",
+      "count": 3,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-004"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-004"
+      ]
+    },
+    {
+      "breakdown": "service concentration",
+      "group": "SVC-04",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "service concentration",
+      "group": "SVC-05",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "service concentration",
+      "group": "SVC-06",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-005",
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-005",
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "service dependency",
+      "group": "Business-critical vendor",
+      "count": 4,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004"
+      ]
+    },
+    {
+      "breakdown": "vendor concentration",
+      "group": "Multiple services",
+      "count": 2,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-006"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-006"
+      ]
+    },
+    {
+      "breakdown": "total",
+      "group": "Current vendors",
+      "count": 10,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-007",
+        "VEN-008",
+        "VEN-009",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-007",
+        "VEN-008",
+        "VEN-009",
+        "VEN-010"
+      ]
+    },
+    {
+      "breakdown": "total",
+      "group": "Open findings",
+      "count": 7,
+      "vendor_ids": [
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-009"
+      ],
+      "source_ids": [
+        "FND-001",
+        "FND-002",
+        "FND-003",
+        "FND-004",
+        "FND-005",
+        "FND-006",
+        "FND-007"
+      ]
+    },
+    {
+      "breakdown": "total",
+      "group": "Service categories",
+      "count": 5,
+      "vendor_ids": [
+        "VEN-001",
+        "VEN-002",
+        "VEN-003",
+        "VEN-004",
+        "VEN-005",
+        "VEN-006",
+        "VEN-007",
+        "VEN-008",
+        "VEN-009",
+        "VEN-010"
+      ],
+      "source_ids": [
+        "Cloud hosting",
+        "Collaboration SaaS",
+        "Payment processing",
+        "Payroll",
+        "Technical support"
+      ]
+    }
+  ]
+}

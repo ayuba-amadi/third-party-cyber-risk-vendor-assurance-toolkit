@@ -1,0 +1,252 @@
+# Decision results
+
+- **Report date** 2026-11-18
+- **Source files**
+  - assessment.csv
+  - assessment_criticality_snapshot.csv
+  - business_service.csv
+  - change_event.csv
+  - corrective_action.csv
+  - decision.csv
+  - evidence_item.csv
+  - finding.csv
+  - question.csv
+  - response.csv
+  - reviewer_audit_entry.csv
+  - vendor.csv
+  - vendor_service_link.csv
+- **Rule** Select current records by vendor.current_assessment_id. Date flags use a strict earlier-than comparison.
+- **Warnings** None
+- **Errors** None
+- **Limitations** CSV records supply role names and written exceptions. The toolkit cannot authenticate approvers, reconstruct prior evidence reviews, or independently certify condition closure.
+
+## Results
+
+- **Decision id** DEC-001
+- **Assessment id** ASMT-001
+- **Calculated rating** Low
+- **Outcome** Approved
+- **Decision maker role** Head of Risk
+- **Justification** Strong verified controls
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-09-01
+- **Expiry date** 2027-03-01
+- **Review date** 2026-12-01
+- **Vendor id** VEN-001
+- **Report date** 2026-11-18
+- **Current risk rating** Low
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-001
+  - ASMT-001
+  - VEN-001
+- **Selection** Current
+
+- **Decision id** DEC-002
+- **Assessment id** ASMT-003
+- **Calculated rating** High
+- **Outcome** Conditionally Approved
+- **Decision maker role** Head of Risk
+- **Justification** Written exception: payroll continuity with time-limited MFA remediation; restricted access and monitoring
+- **Conditions** Enforce privileged MFA
+- **Condition deadline** 2026-10-31
+- **Decision date** 2026-09-01
+- **Expiry date** 2027-03-01
+- **Review date** 2026-10-31
+- **Vendor id** VEN-003
+- **Report date** 2026-11-18
+- **Current risk rating** High
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** True
+- **Overdue condition** True
+- **Warnings** None
+- **Source ids**
+  - DEC-002
+  - ASMT-003
+  - VEN-003
+  - ACT-001
+- **Selection** Current
+
+- **Decision id** DEC-003
+- **Assessment id** ASMT-004
+- **Calculated rating** Low
+- **Outcome** Approved
+- **Decision maker role** Head of Risk
+- **Justification** Prior scope and verified controls
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-08-01
+- **Expiry date** 2027-02-01
+- **Review date** 2026-12-01
+- **Vendor id** VEN-004
+- **Report date** 2026-11-18
+- **Current risk rating** Low
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-003
+  - ASMT-004
+  - VEN-004
+- **Selection** Historical
+
+- **Decision id** DEC-004
+- **Assessment id** ASMT-005
+- **Calculated rating** Incomplete
+- **Outcome** Conditionally Approved
+- **Decision maker role** Head of Risk
+- **Justification** Non-critical evidence gap; current report required
+- **Conditions** Submit current IN-02 test report
+- **Condition deadline** 2026-12-15
+- **Decision date** 2026-11-10
+- **Expiry date** 2027-05-10
+- **Review date** 2026-12-15
+- **Vendor id** VEN-005
+- **Report date** 2026-11-18
+- **Current risk rating** Incomplete
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** True
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-004
+  - ASMT-005
+  - VEN-005
+  - ACT-002
+- **Selection** Current
+
+- **Decision id** DEC-005
+- **Assessment id** ASMT-006
+- **Calculated rating** Low
+- **Outcome** Approved
+- **Decision maker role** Head of Risk
+- **Justification** Assurance valid at decision time; historical snapshot in decision record
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-08-25
+- **Expiry date** 2026-10-31
+- **Review date** 2026-10-31
+- **Vendor id** VEN-006
+- **Report date** 2026-11-18
+- **Current risk rating** Incomplete
+- **Expired approval** True
+- **Active approval** False
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings**
+  - Evidence expired on or after the decision date. The recorded decision-time rating is preserved.
+- **Source ids**
+  - DEC-005
+  - ASMT-006
+  - VEN-006
+  - ACT-003
+- **Selection** Current
+
+- **Decision id** DEC-006
+- **Assessment id** ASMT-007
+- **Calculated rating** Low
+- **Outcome** Approved
+- **Decision maker role** Head of Risk
+- **Justification** All required controls verified
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-11-10
+- **Expiry date** 2027-11-10
+- **Review date** 2027-05-18
+- **Vendor id** VEN-007
+- **Report date** 2026-11-18
+- **Current risk rating** Low
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-006
+  - ASMT-007
+  - VEN-007
+- **Selection** Current
+
+- **Decision id** DEC-007
+- **Assessment id** ASMT-008
+- **Calculated rating** Low
+- **Outcome** Approved
+- **Decision maker role** Head of Risk
+- **Justification** Verified controls; minor leaver process weakness
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-11-10
+- **Expiry date** 2027-11-10
+- **Review date** 2027-05-18
+- **Vendor id** VEN-008
+- **Report date** 2026-11-18
+- **Current risk rating** Low
+- **Expired approval** False
+- **Active approval** True
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-007
+  - ASMT-008
+  - VEN-008
+- **Selection** Current
+
+- **Decision id** DEC-008
+- **Assessment id** ASMT-009
+- **Calculated rating** High
+- **Outcome** Rejected
+- **Decision maker role** Head of Risk
+- **Justification** Confirmed DP-01 encryption failure; do not onboard
+- **Conditions** None
+- **Condition deadline** None
+- **Decision date** 2026-11-10
+- **Expiry date** 2027-05-18
+- **Review date** 2027-05-18
+- **Vendor id** VEN-009
+- **Report date** 2026-11-18
+- **Current risk rating** High
+- **Expired approval** False
+- **Active approval** False
+- **Open condition** False
+- **Overdue condition** False
+- **Warnings** None
+- **Source ids**
+  - DEC-008
+  - ASMT-009
+  - VEN-009
+- **Selection** Current
+
+- **Vendor id** VEN-002
+- **Assessment id** ASMT-002
+- **Selection** Current
+- **Outcome** Awaiting decision
+- **Source ids**
+  - VEN-002
+  - ASMT-002
+
+- **Vendor id** VEN-004
+- **Assessment id** ASMT-011
+- **Selection** Current
+- **Outcome** Awaiting decision
+- **Source ids**
+  - VEN-004
+  - ASMT-011
+
+- **Vendor id** VEN-010
+- **Assessment id** ASMT-010
+- **Selection** Current
+- **Outcome** Awaiting decision
+- **Source ids**
+  - VEN-010
+  - ASMT-010
+

@@ -1,0 +1,223 @@
+# Remediation results
+
+- **Report date** 2026-11-18
+- **Source files**
+  - assessment.csv
+  - assessment_criticality_snapshot.csv
+  - business_service.csv
+  - change_event.csv
+  - corrective_action.csv
+  - decision.csv
+  - evidence_item.csv
+  - finding.csv
+  - question.csv
+  - response.csv
+  - reviewer_audit_entry.csv
+  - vendor.csv
+  - vendor_service_link.csv
+- **Rule** Select current records by vendor.current_assessment_id. Date flags use a strict earlier-than comparison.
+- **Warnings** None
+- **Errors** None
+- **Limitations** CSV records supply role names and written exceptions. The toolkit cannot authenticate approvers, reconstruct prior evidence reviews, or independently certify condition closure.
+
+## Results
+
+- **Record type** Finding or action
+- **Finding id** FND-001
+- **Assessment id** ASMT-002
+- **Question id** AM-01
+- **Severity** High
+- **Description** Privileged MFA evidence missing
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-002
+- **Current** True
+- **Decision id** None
+- **Action id** None
+- **Action text** None
+- **Responsible party** None
+- **Due date** None
+- **Closed date** None
+- **Action status** None
+- **Action overdue** False
+- **Source ids**
+  - ASMT-002
+  - VEN-002
+  - FND-001
+
+- **Record type** Finding or action
+- **Finding id** FND-002
+- **Assessment id** ASMT-002
+- **Question id** DP-01
+- **Severity** High
+- **Description** Encryption evidence missing
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-002
+- **Current** True
+- **Decision id** None
+- **Action id** None
+- **Action text** None
+- **Responsible party** None
+- **Due date** None
+- **Closed date** None
+- **Action status** None
+- **Action overdue** False
+- **Source ids**
+  - ASMT-002
+  - VEN-002
+  - FND-002
+
+- **Record type** Finding or action
+- **Finding id** FND-003
+- **Assessment id** ASMT-003
+- **Question id** AM-01
+- **Severity** High
+- **Description** Privileged account MFA gap; confirmed critical failure
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-003
+- **Current** True
+- **Decision id** DEC-002
+- **Action id** ACT-001
+- **Action text** Enforce MFA for every privileged account
+- **Responsible party** Vendor security lead
+- **Due date** 2026-10-31
+- **Closed date** None
+- **Action status** Open
+- **Action overdue** True
+- **Source ids**
+  - ASMT-003
+  - VEN-003
+  - FND-003
+  - ACT-001
+  - DEC-002
+
+- **Record type** Finding or action
+- **Finding id** FND-004
+- **Assessment id** ASMT-005
+- **Question id** IN-02
+- **Severity** Medium
+- **Description** Incident-response exercise evidence rejected for age
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-005
+- **Current** True
+- **Decision id** DEC-004
+- **Action id** ACT-002
+- **Action text** Submit current incident exercise report
+- **Responsible party** Vendor security lead
+- **Due date** 2026-12-15
+- **Closed date** None
+- **Action status** Open
+- **Action overdue** False
+- **Source ids**
+  - ASMT-005
+  - VEN-005
+  - FND-004
+  - ACT-002
+  - DEC-004
+
+- **Record type** Finding or action
+- **Finding id** FND-005
+- **Assessment id** ASMT-006
+- **Question id** GV-02
+- **Severity** High
+- **Description** Independent assurance report expired
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-006
+- **Current** True
+- **Decision id** DEC-005
+- **Action id** ACT-003
+- **Action text** Submit renewed independent assurance
+- **Responsible party** Vendor security lead
+- **Due date** 2026-12-15
+- **Closed date** None
+- **Action status** In progress
+- **Action overdue** False
+- **Source ids**
+  - ASMT-006
+  - VEN-006
+  - FND-005
+  - ACT-003
+  - DEC-005
+
+- **Record type** Finding or action
+- **Finding id** FND-006
+- **Assessment id** ASMT-009
+- **Question id** DP-01
+- **Severity** Critical
+- **Description** Accepted configuration proves regulated data not encrypted
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-009
+- **Current** True
+- **Decision id** DEC-008
+- **Action id** None
+- **Action text** None
+- **Responsible party** None
+- **Due date** None
+- **Closed date** None
+- **Action status** None
+- **Action overdue** False
+- **Source ids**
+  - ASMT-009
+  - VEN-009
+  - FND-006
+  - DEC-008
+
+- **Record type** Finding or action
+- **Finding id** FND-007
+- **Assessment id** ASMT-011
+- **Question id** SC-01
+- **Severity** High
+- **Description** New subcontractor register awaiting review
+- **Status** Open
+- **Finding status** Open
+- **Vendor id** VEN-004
+- **Current** True
+- **Decision id** None
+- **Action id** ACT-004
+- **Action text** Review new subcontractor register and notification clause
+- **Responsible party** Security reviewer
+- **Due date** 2026-12-15
+- **Closed date** None
+- **Action status** Open
+- **Action overdue** False
+- **Source ids**
+  - ASMT-011
+  - VEN-004
+  - FND-007
+  - ACT-004
+
+- **Record type** Condition
+- **Decision id** DEC-002
+- **Vendor id** VEN-003
+- **Assessment id** ASMT-003
+- **Selection** Current
+- **Conditions** Enforce privileged MFA
+- **Condition deadline** 2026-10-31
+- **Open condition** True
+- **Overdue condition** True
+- **Source ids**
+  - DEC-002
+  - ASMT-003
+  - VEN-003
+  - ACT-001
+
+- **Record type** Condition
+- **Decision id** DEC-004
+- **Vendor id** VEN-005
+- **Assessment id** ASMT-005
+- **Selection** Current
+- **Conditions** Submit current IN-02 test report
+- **Condition deadline** 2026-12-15
+- **Open condition** True
+- **Overdue condition** False
+- **Source ids**
+  - DEC-004
+  - ASMT-005
+  - VEN-005
+  - ACT-002
+

@@ -1,0 +1,52 @@
+Thu Nov 26 13:46:57 UTC 2026
+
+$ python --version
+python 0
+
+$ streamlit --version
+streamlit-version 0
+
+$ python -m unittest discover -s tests -v
+unittest 0
+
+$ python -m pytest -q
+pytest 0
+
+$ python3 sample-data/validate_fixture.py
+fixture 0
+
+$ python -m src.cli inventory
+inventory 0
+
+$ python -m src.cli validate --data-dir sample-data --as-of 2026-11-18
+validate 0
+
+$ python -m src.cli semantic-validate --data-dir sample-data --as-of 2026-11-18
+semantic 0
+
+$ python -m src.cli criticality --all --data-dir sample-data
+criticality 0
+
+$ python -m src.cli risk --all --data-dir sample-data --as-of 2026-11-18
+risk 0
+
+$ python -m src.cli decisions --as-of 2026-11-18
+decisions 0
+
+$ python -m src.cli remediation --as-of 2026-11-18
+remediation 0
+
+$ python -m src.cli reassess --vendor-id VEN-004
+reassess 0
+
+$ python -m src.cli management-report --as-of 2026-11-18
+management 0
+
+$ python -m src.cli vendor-report --vendor-id VEN-009
+vendor-report 0
+
+$ python -m compileall src app tests
+compile 0
+
+$ curl -fsS http://localhost:8501/_stcore/health
+health 0

@@ -1,0 +1,13 @@
+dashboard
+vendor-register
+Vendor CSV downloaded and parsed
+data-quality
+new-vendor-criticality
+missing-evidence
+critical-failure
+conditional-approval
+expired-approval
+overdue-action
+reassessment
+Management Markdown downloaded and read
+management-reconciliation

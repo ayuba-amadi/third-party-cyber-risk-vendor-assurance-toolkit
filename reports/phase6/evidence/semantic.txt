@@ -1,0 +1,18 @@
+Phase 2 implements semantic validation and vendor criticality calculation only. Risk scoring, evidence scoring, decision workflow, remediation workflow, management reporting and the Streamlit interface are later-phase work.
+Report date used: 2026-11-18
+Files loaded: 13
+Source tables: 13
+Valid tables: 13
+Errors: 0
+Warnings: 0
+Duplicates: 0
+Orphans: 0
+Missing fields: 0
+Invalid values: 0
+Date errors: 0
+Files: 0
+Duplicate records: 0
+Orphan records: 0
+Overdue corrective actions: 1
+Report: /tmp/p6-copy.N3mjS9/reports/phase2/semantic_validation_report.json
+Report: /tmp/p6-copy.N3mjS9/reports/phase2/semantic_validation_report.md

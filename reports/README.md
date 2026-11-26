@@ -16,7 +16,7 @@ distinct affected rows; category totals count rule violations. Valid-table count
 are structural results, not evidence of vendor approval or assessment completeness.
 The research validator runs separately, with its result in the Phase 1 status file.
 
-Phase 1 validates data structure and relationships only. Risk scoring, criticality, decision workflow and Streamlit user pages are implemented in later phases.
+Phase 1 reports are in `phase1/`. Phase 2 semantic validation and criticality reports are in `phase2/`. Phase 2 implements criticality calculation and semantic validation only. Risk scoring, evidence scoring, decisions, remediation, management reporting and the Streamlit interface are later-phase work.
 
 Individual vendor and management reports belong to a later phase. Store fictional
 data only; never include real vendor evidence, personal details or credentials.

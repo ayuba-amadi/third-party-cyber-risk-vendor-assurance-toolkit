@@ -1,6 +1,13 @@
 # Third Party Cyber Risk Assessment and Vendor Assurance Toolkit
 
-ICSDF Certified GRC Engineering Group 3 capstone. This public repository is the team's working hub. **Status: planning/specification; no functioning toolkit has been delivered yet.** The final implementation may be a Python tool, automated workbook or another suitable approach. A web application is not required. All public examples must use fictional data.
+ICSDF Certified GRC Engineering Group 3 capstone. This public repository is the team's working hub. **Status: fictional-data toolkit prepared for final review.** All public examples must use fictional data.
+
+## Toolkit and final review
+
+- [User guide](docs/user_guide.md) and [deployment instructions](docs/deployment_guide.md)
+- [Project documentation PDF](docs/project_documentation.pdf) and [abstract](docs/abstract.md)
+- [QA sign-off](tests/QA_SIGNOFF.md), [acceptance matrix](reports/phase6/final_acceptance_matrix.md) and [management reconciliation](reports/phase6/reconciliation_report.md)
+- [Presentation outline](docs/presentation_outline.md), [demonstration script](docs/demonstration_script.md) and [contribution record](governance/FINAL_CONTRIBUTIONS.md)
 
 ## Two-week delivery map
 

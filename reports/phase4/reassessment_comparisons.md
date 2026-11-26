@@ -1,0 +1,217 @@
+# Reassessment comparisons
+
+- **Report date** 2026-11-18
+- **Source files**
+  - assessment.csv
+  - assessment_criticality_snapshot.csv
+  - business_service.csv
+  - change_event.csv
+  - corrective_action.csv
+  - decision.csv
+  - evidence_item.csv
+  - finding.csv
+  - question.csv
+  - response.csv
+  - reviewer_audit_entry.csv
+  - vendor.csv
+  - vendor_service_link.csv
+- **Rule** Select current records by vendor.current_assessment_id. Date flags use a strict earlier-than comparison.
+- **Warnings** None
+- **Errors** None
+- **Limitations** CSV records supply role names and written exceptions. The toolkit cannot authenticate approvers, reconstruct prior evidence reviews, or independently certify condition closure.
+
+## Results
+
+- **Vendor id** VEN-004
+- **Current assessment id** ASMT-011
+- **Previous assessment id** ASMT-004
+- **Versions**
+  - Record
+    - **Assessment id** ASMT-004
+    - **Vendor id** VEN-004
+    - **Version no** 1
+    - **Assessment date** 2026-08-01
+    - **Trigger** Initial
+    - **Assessor role** GRC analyst
+    - **Status** Superseded
+    - **Supersedes id** None
+    - **Selection** Historical
+    - **Data sensitivity** Regulated
+    - **System access** Standard
+    - **Dependency impact** 3
+    - **Replaceability** Moderate
+    - **Criticality score** 9
+    - **Criticality band** High
+    - **Risk numerator** 3
+    - **Risk percent** 0.872093
+    - **Completeness** Complete
+    - **Evidence flags** None
+    - **Decision status** Approved
+    - **Decision id** DEC-003
+    - **Finding ids** None
+    - **Corrective action ids** None
+    - **Evidence ids**
+      - EV-073
+      - EV-074
+      - EV-075
+      - EV-076
+      - EV-077
+      - EV-078
+      - EV-079
+      - EV-080
+      - EV-081
+      - EV-082
+      - EV-083
+      - EV-084
+      - EV-085
+      - EV-086
+      - EV-087
+      - EV-088
+      - EV-089
+      - EV-090
+      - EV-091
+      - EV-092
+      - EV-093
+      - EV-094
+      - EV-095
+      - EV-096
+    - **Source ids**
+      - ASMT-004
+      - VEN-004
+      - DEC-003
+      - EV-073
+      - EV-074
+      - EV-075
+      - EV-076
+      - EV-077
+      - EV-078
+      - EV-079
+      - EV-080
+      - EV-081
+      - EV-082
+      - EV-083
+      - EV-084
+      - EV-085
+      - EV-086
+      - EV-087
+      - EV-088
+      - EV-089
+      - EV-090
+      - EV-091
+      - EV-092
+      - EV-093
+      - EV-094
+      - EV-095
+      - EV-096
+  - Record
+    - **Assessment id** ASMT-011
+    - **Vendor id** VEN-004
+    - **Version no** 2
+    - **Assessment date** 2026-09-16
+    - **Trigger** Material change
+    - **Assessor role** GRC analyst
+    - **Status** Draft
+    - **Supersedes id** ASMT-004
+    - **Selection** Current
+    - **Data sensitivity** Regulated
+    - **System access** Privileged
+    - **Dependency impact** 4
+    - **Replaceability** Hard
+    - **Criticality score** 12
+    - **Criticality band** Critical
+    - **Risk numerator** 39
+    - **Risk percent** 11.337209
+    - **Completeness** Incomplete
+    - **Evidence flags**
+      - SC-01:Received
+    - **Decision status** Awaiting decision
+    - **Decision id** None
+    - **Finding ids**
+      - FND-007
+    - **Corrective action ids**
+      - ACT-004
+    - **Evidence ids**
+      - EV-241
+      - EV-242
+      - EV-243
+      - EV-244
+      - EV-245
+      - EV-246
+      - EV-247
+      - EV-248
+      - EV-249
+      - EV-250
+      - EV-251
+      - EV-252
+      - EV-253
+      - EV-254
+      - EV-255
+      - EV-256
+      - EV-257
+      - EV-258
+      - EV-259
+      - EV-260
+      - EV-261
+      - EV-262
+      - EV-263
+      - EV-264
+    - **Source ids**
+      - ASMT-011
+      - VEN-004
+      - FND-007
+      - ACT-004
+      - EV-241
+      - EV-242
+      - EV-243
+      - EV-244
+      - EV-245
+      - EV-246
+      - EV-247
+      - EV-248
+      - EV-249
+      - EV-250
+      - EV-251
+      - EV-252
+      - EV-253
+      - EV-254
+      - EV-255
+      - EV-256
+      - EV-257
+      - EV-258
+      - EV-259
+      - EV-260
+      - EV-261
+      - EV-262
+      - EV-263
+      - EV-264
+- **Changed factors**
+  - system_access
+  - dependency_impact
+  - replaceability
+- **Change events**
+  - Record
+    - **Change id** CHG-001
+    - **Vendor id** VEN-004
+    - **Change date** 2026-09-15
+    - **Change type** New subcontractor
+    - **Material** Yes
+    - **Reassessment assessment id** ASMT-011
+  - Record
+    - **Change id** CHG-002
+    - **Vendor id** VEN-004
+    - **Change date** 2026-09-15
+    - **Change type** Access increase
+    - **Material** Yes
+    - **Reassessment assessment id** ASMT-011
+- **Linked reassessment change ids**
+  - CHG-001
+  - CHG-002
+- **Reassessment required** False
+- **Pending triggers** None
+- **Source ids**
+  - VEN-004
+  - ASMT-004
+  - ASMT-011
+  - CHG-001
+  - CHG-002
+

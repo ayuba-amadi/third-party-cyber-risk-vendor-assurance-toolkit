@@ -1,0 +1,604 @@
+{
+  "report_date": "2026-11-18",
+  "results": [
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-001",
+      "vendor_id": "VEN-001",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 3,
+      "completeness_percent": "75.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 3,
+      "completeness_percent": "75.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-002",
+      "vendor_id": "VEN-002",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-003",
+      "vendor_id": "VEN-003",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-004",
+      "vendor_id": "VEN-004",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 3,
+      "completeness_percent": "75.000000"
+    },
+    {
+      "assessment_id": "ASMT-005",
+      "vendor_id": "VEN-005",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 3,
+      "completeness_percent": "75.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-006",
+      "vendor_id": "VEN-006",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-007",
+      "vendor_id": "VEN-007",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-008",
+      "vendor_id": "VEN-008",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-009",
+      "vendor_id": "VEN-009",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 2,
+      "verified_count": 2,
+      "completeness_percent": "50.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 0,
+      "verified_count": 0,
+      "completeness_percent": "0.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-010",
+      "vendor_id": "VEN-010",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 0,
+      "verified_count": 0,
+      "completeness_percent": "0.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "AM",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "BC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "DP",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "GV",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "IN",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 4,
+      "completeness_percent": "100.000000"
+    },
+    {
+      "assessment_id": "ASMT-011",
+      "vendor_id": "VEN-004",
+      "domain": "SC",
+      "total_questions": 4,
+      "answered_count": 4,
+      "verified_count": 3,
+      "completeness_percent": "75.000000"
+    }
+  ],
+  "fixture_comparison": {
+    "status": "PASS",
+    "errors": [],
+    "rows": 66
+  }
+}
